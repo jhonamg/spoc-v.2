@@ -133,7 +133,7 @@ $("#categoriastiendas").change(function(){
                           '</div>'+
                         '</div>'+
                         '<div class="col-8 col-md-6">'+
-                          '<label for="nombreprod">'+value['dsc_exhibicion']Jalavista+' de '+value['dsc_producto']+'</label>'+
+                          '<label for="nombreprod">'+value['dsc_exhibicion']+' de '+value['dsc_producto']+'</label>'+
                         '</div>'+
                         '<div class="input-group col-2 col-md-4">'+
                           '<label for="prop_vis_'+(index+1)+'" class="btn btn-sm btn-light" id="label_prop_vis_'+(index+1)+'" hidden>'+
