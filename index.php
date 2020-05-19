@@ -333,58 +333,33 @@
                                       <span style="color: crimson;">+25 SPOCS</span>
                                     </h4>
 
-                                    <!-- comienza el bloque -->
-                                    <div class="row">
+                                    <div id="containerProp5stg">
+                                      <!-- comienza el bloque -->
+                                     <!--  <div class="row">
                                         <div class="contador col-1 col-md-2">
-                                        <label for="">1.</label>
-                                      </div>
-
-                                      <div class="radio col-2 col-md-3">
-                                        <div class="form-check form-check-inline">
-                                          <input
-                                            class="form-check-input radio_vis"
-                                            type="radio"
-                                            name="radio_1"
-                                            id="radio_vis_1"
-                                            value="option1"
-                                          />
-                                          <label class="form-check-label" for="radio_vis_1">Si</label>
+                                          <label for="">1.</label>
                                         </div>
-
-                                        <div class="form-check form-check-inline">
-                                          <input
-                                            class="form-check-input radio_vis"
-                                            type="radio"
-                                            name="radio_1"
-                                            id="radio_vis_1"
-                                            value="option2"
-                                          />
-                                          <label class="form-check-label" for="radio_vis_1">No</label>
+                                        <div class="radio col-2 col-md-3">
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input radio_vis" type="radio" name="radio_1" id="radio_vis_1" value="option1"/>
+                                            <label class="form-check-label" for="radio_vis_1">Si</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input radio_vis" type="radio" name="radio_1" id="radio_vis_1" value="option2" />
+                                            <label class="form-check-label" for="radio_vis_1">No</label>
+                                          </div>
                                         </div>
-                                      </div>
-
-                                      <div class="col-8 col-md-6">
-                                        <label for="nombreprod">
-                                          Jalavista de Nescafe fina selección 200gr.</label
-                                        >
-                                      </div>
-
-                                      <div class="input-group col-2 col-md-4">
-                                        <label for="prop_vis_1" class="btn btn-sm btn-light" id="label_prop_vis_1" hidden>
-                                          <i class="bx bx-upload" id="texto_prop_vis_1"> Cargar</i>
-                                          <input id="prop_vis_1"
-                                            disabled
-                                            class="form-control-file btnCarga"
-                                            type="file"
-                                            accept=".jpeg, .jpg, .png"
-                                            name=""
-                                            hidden
-                                        /></label>
-                                      </div>
+                                        <div class="col-8 col-md-6">
+                                          <label for="nombreprod">Jalavista de Nescafe fina selección 200gr.</label>
+                                        </div>
+                                        <div class="input-group col-2 col-md-4">
+                                          <label for="prop_vis_1" class="btn btn-sm btn-light" id="label_prop_vis_1" hidden>
+                                            <i class="bx bx-upload" id="texto_prop_vis_1"> Cargar</i>
+                                            <input id="prop_vis_1" disabled class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="" hidden /></label>
+                                        </div>
+                                      </div> -->
+                                      <!-- final de linea -->
                                     </div>
-                                    
-
-                                    <!-- final de linea -->
 
                                     <!-- seguna parte -->
 

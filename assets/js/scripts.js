@@ -108,6 +108,42 @@ $("#categoriastiendas").change(function(){
             });//each
         }//success
     });//ajax
+    $("#containerProp5stg").empty();
+    $.ajax({
+        method:'POST',
+        url: 'conexion/funciones.php',
+        dataType: 'json',
+        data: {'tienda' : valor, 'entrada':'stg5Prop'},
+        success : function(respuesta){
+            // console.log(respuesta);
+            $.each(respuesta,function(index,value){
+                $("#containerProp5stg").append(
+                    '<div class="row">'+
+                        '<div class="contador col-1 col-md-2">'+
+                          '<label for="">'+(index+1)+'.</label>'+
+                        '</div>'+
+                       ' <div class="radio col-2 col-md-3">'+
+                          '<div class="form-check form-check-inline">'+
+                            '<input class="form-check-input radio_vis" type="radio" name="radio_'+(index+1)+'" id="radio_vis_'+(index+1)+'" value="option1"/>'+
+                            '<label class="form-check-label" for="radio_vis_'+(index+1)+'">Si</label>'+
+                          '</div>'+
+                          '<div class="form-check form-check-inline">'+
+                            '<input class="form-check-input radio_vis" type="radio" name="radio_'+(index+1)+'" id="radio_vis_'+(index+1)+'" value="option2" />'+
+                            '<label class="form-check-label" for="radio_vis_'+(index+1)+'">No</label>'+
+                          '</div>'+
+                        '</div>'+
+                        '<div class="col-8 col-md-6">'+
+                          '<label for="nombreprod">'+value['dsc_exhibicion']Jalavista+' de '+value['dsc_producto']+'</label>'+
+                        '</div>'+
+                        '<div class="input-group col-2 col-md-4">'+
+                          '<label for="prop_vis_'+(index+1)+'" class="btn btn-sm btn-light" id="label_prop_vis_'+(index+1)+'" hidden>'+
+                            '<i class="bx bx-upload" id="texto_prop_vis_'+(index+1)+'"> Cargar</i>'+
+                            '<input id="prop_vis_'+(index+1)+'" disabled class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="" hidden /></label>'+
+                        '</div>'+
+                      '</div>');//append
+            });//each
+        }//success
+    });//ajax
 });
 
 function bar_progress(progress_line_object, direction) {
