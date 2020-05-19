@@ -20,6 +20,11 @@ class ControladorFunciones{
 		$tienda = $_POST['tienda'];
 		$respuesta = ModeloFunciones::mdlMostrarStg4Comp($tienda);
 		return $respuesta;
-	}//function ctrMostrarStg4Propios
+	}//function ctrMostrarStg4Comp
+	static public function ctrMostrarStg5Prop(){
+		$tienda = $_POST['tienda'];
+		$respuesta = ModeloFunciones::mdlMostrarStg5Prop($tienda);
+		return $respuesta;
+	}//function ctrMostrarStg5Prop
 }//class ControladorFunciones
 ?>
