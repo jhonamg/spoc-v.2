@@ -52,7 +52,8 @@ class ModeloFunciones{
 		if ($mysqli->connect_errno) {
 		  echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 		}
-		$query = "SELECT DISTINCT configuraciones_tx.id_producto, producto.dsc_producto FROM configuraciones_tx INNER JOIN producto ON configuraciones_tx.id_producto = producto.id WHERE id_banner = ".$_SESSION['banner']; 
+		$query = "SELECT DISTINCT configuraciones_tx.id_producto, producto.dsc_producto FROM configuraciones_tx INNER JOIN producto ON configuraciones_tx.id_producto = producto.id WHERE configuraciones_tx.id_banner = ".$_SESSION['banner']; 
+		// echo $query;
 		$mysqli->real_query($query);
 		$resultado = $mysqli->use_result();
 
@@ -71,6 +72,7 @@ class ModeloFunciones{
 		  echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 		}
 		$query = "SELECT DISTINCT dsc_competencia FROM competencia WHERE id_banner = ".$_SESSION['banner']; 
+		echo $query;
 		$mysqli->real_query($query);
 		$resultado = $mysqli->use_result();
 
