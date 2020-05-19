@@ -172,7 +172,7 @@
                                       <img src="assets/img/hero-img.png" class="img-fluid" alt="">
                                     </div> -->           
 
-                                <div class="f1-buttons">
+                                <div class="f1-buttons" hidden>
                                   <button type="button" class="btn btn-previous">Atras</button>
                                   <button id="bannerbuton" type="button" class="btn btn-next">siguiente</button>
                                 </div>
@@ -230,13 +230,13 @@
                                 
                                 <div class="row">
 
-                                    <div class="col-sm-12 col-md-12 col-lg-4 responsive"><a href="precios.html"><img class="img-responsive emp" src="assets/img/Nueva carpeta/Imagen1.png" alt=""></a></div>
+                                    <div id="tyc1" class="col-sm-12 col-md-12 col-lg-4 responsive"><a href="#"><img class="img-responsive emp" src="assets/img/Nueva carpeta/Imagen1.png" alt=""></a></div>
 
 
-                                    <div class="col-sm-12 col-md-12 col-lg-4 responsive"><a href="visibilidad.html"><img class="img-responsive emp" src="assets/img/Nueva carpeta/Imagen2.png" alt=""></a></div>
+                                    <div id="tyc2" class="col-sm-12 col-md-12 col-lg-4 responsive"><a href="#"><img class="img-responsive emp" src="assets/img/Nueva carpeta/Imagen2.png" alt=""></a></div>
 
 
-                                    <div class="col-sm-12 col-md-12 col-lg-4 responsive"><a href="exhibiciones.html"><img class="img-responsive emp" src="assets/img/Nueva carpeta/Imagen3.png" alt=""></a></div>
+                                    <div id="tyc3" class="col-sm-12 col-md-12 col-lg-4 responsive"><a href="#"><img class="img-responsive emp" src="assets/img/Nueva carpeta/Imagen3.png" alt=""></a></div>
                                   
 
                                  </div>

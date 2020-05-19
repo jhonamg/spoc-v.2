@@ -421,16 +421,59 @@ $(".btn-anadir2").on('click',function(){
     }
 });
 
+
+// funcion boton animado siguiente pagina
 $('.imgbotones').click(function(obj) {
   
   var i= this.id;
   var div = $("#"+i);
-  div.animate({height: '300px', opacity: '0.4'}, "slow");
-  div.animate({width: '300px', opacity: '0.8'}, "slow");
-  div.animate({height: '100px', opacity: '0.4'}, "slow");
-  div.animate({width: '100px', opacity: '0.8'}, "slow");
   
-   //$("#bannerbuton").delay(5000,trigger("click"));
-  
+for ( a = 1; a < 5; a++) {
+    
+    if (i != a) {
+      // console.log(i);
+      // console.log(a);
+      $('#' + a).fadeOut();
+       
+    }
+      
+}
+      div.animate({height: '14rem', opacity: '0.4'}, "fast");
+      div.animate({width: '8rem', opacity: '0.4'}, "fast");
+      div.animate({height: '8rem', opacity: '0.4'}, "fast");
+      div.animate({width: '8rem', opacity: '0.4'}, "fast");
+      div.animate({height: '8rem', opacity: '0.4'}, "fast");
+      div.animate({width: '10rem', opacity: '0.4'}, "fast");
+      div.animate({height: '10rem', opacity: '0.4'}, "fast");
+      div.animate({width: '10rem', opacity: '0.4'}, "fast");
+      $("#bannerbuton").trigger("click");
 
 });
+////////////////////////////////////////////////////////////////
+// funcion boton animado siguiente pagina
+// $('.emp').click(function(obj) {
+  
+//   var i= this.id;
+//   var div = $("#tyc"+i);
+  
+// for ( a = 1; a < 5; a++) {
+    
+//     if (i != a) {
+      
+//       $('#tyc' + a).fadeOut();
+       
+//     }
+      
+// }
+//       div.animate({height: '14rem', opacity: '0.4'}, "fast");
+//       div.animate({width: '8rem', opacity: '0.4'}, "fast");
+//       div.animate({height: '8rem', opacity: '0.4'}, "fast");
+//       div.animate({width: '8rem', opacity: '0.4'}, "fast");
+//       div.animate({height: '8rem', opacity: '0.4'}, "fast");
+//       div.animate({width: '10rem', opacity: '0.4'}, "fast");
+//       div.animate({height: '10rem', opacity: '0.4'}, "fast");
+//       div.animate({width: '10rem', opacity: '0.4'}, "fast");
+//       $("#bannerbuton").trigger("click");
+
+// });
+////////////////////////////////////////////////////////////////
