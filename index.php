@@ -183,7 +183,7 @@
 
                             <fieldset>
                               <div class="row">
-                                <img id = "1" class="img-responsive imgbotones" src="assets/img/Nueva carpeta/Wong.png" alt="">
+                                <img id = "tycimg" class="img-responsive imgbanner" src="" alt="">
                               </div>
                             
 
