@@ -482,10 +482,22 @@ for ( a = 1; a < 5; a++) {
       div.animate({width: '10rem', opacity: '0.4'}, "fast");
       div.animate({height: '10rem', opacity: '0.4'}, "fast");
       div.animate({width: '10rem', opacity: '0.4'}, "fast");
-      $("#bannerbuton").trigger("click");  
+      $("#bannerbuton").trigger("click");
+       
       $("#tycimg").attr('src',div.attr('src'));
 
+      for ( a = 1; a < 5; a++) {
+    
+        if (i != a) {
+          // console.log(i);
+          // console.log(a);
+          $('#' + a).fadeIn();
+           
+        }
+      } 
+
 });
+
 ////////////////////////////////////////////////////////////////
 // funcion boton animado siguiente pagina
 // $('.emp').click(function(obj) {
