@@ -103,5 +103,24 @@ class ModeloFunciones{
 		return $datos;
 		$mysqli->close();
 	}//function mdlMostrarStg5Prop
+
+	static public function mdlMostrarStg6Prop($tienda){
+		$mysqli = new mysqli("localhost", "root", "", "spoc_bd");
+		if ($mysqli->connect_errno) {
+		  echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+		}
+		$query = "SELECT producto.dsc_producto, exhibiciones.dsc_exhibicion FROM configuraciones_tx INNER JOIN producto ON producto.id = configuraciones_tx.id_producto INNER JOIN exhibiciones ON exhibiciones.id = configuraciones_tx.id_exhibicion WHERE exhibiciones.tipo = 'EXH' AND configuraciones_tx.id_tienda = ".$tienda; 
+		// echo $query;
+		$mysqli->real_query($query);
+		$resultado = $mysqli->use_result();
+
+		$datos = array();
+		while ($fila = $resultado->fetch_assoc()) {
+		    $datos[] =  $fila;
+		}
+
+		return $datos;
+		$mysqli->close();
+	}//function mdlMostrarStg6Prop
 }//class ModeloFunciones
 ?>

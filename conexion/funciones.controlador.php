@@ -26,5 +26,10 @@ class ControladorFunciones{
 		$respuesta = ModeloFunciones::mdlMostrarStg5Prop($tienda);
 		return $respuesta;
 	}//function ctrMostrarStg5Prop
+	static public function ctrMostrarStg6Prop(){
+		$tienda = $_POST['tienda'];
+		$respuesta = ModeloFunciones::mdlMostrarStg6Prop($tienda);
+		return $respuesta;
+	}//function ctrMostrarStg6Prop
 }//class ControladorFunciones
 ?>

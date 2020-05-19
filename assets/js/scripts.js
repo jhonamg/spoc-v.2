@@ -124,11 +124,11 @@ $("#categoriastiendas").change(function(){
                         '</div>'+
                        ' <div class="radio col-2 col-md-3">'+
                           '<div class="form-check form-check-inline">'+
-                            '<input class="form-check-input radio_vis" type="radio" name="radio_'+(index+1)+'" id="radio_vis_'+(index+1)+'" value="option1"/>'+
+                            '<input class="form-check-input radio_vis" type="radio" name="radio_'+(index+1)+'" id="radio_vis_'+(index+1)+'" value="option1" onclick="cargaArchivos(this.id);"/>'+
                             '<label class="form-check-label" for="radio_vis_'+(index+1)+'">Si</label>'+
                           '</div>'+
                           '<div class="form-check form-check-inline">'+
-                            '<input class="form-check-input radio_vis" type="radio" name="radio_'+(index+1)+'" id="radio_vis_'+(index+1)+'" value="option2" />'+
+                            '<input class="form-check-input radio_vis" type="radio" name="radio_'+(index+1)+'" id="radio_vis_'+(index+1)+'" value="option2"  onclick="cargaArchivos(this.id);"/>'+
                             '<label class="form-check-label" for="radio_vis_'+(index+1)+'">No</label>'+
                           '</div>'+
                         '</div>'+
@@ -141,6 +141,44 @@ $("#categoriastiendas").change(function(){
                             '<input id="prop_vis_'+(index+1)+'" disabled class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="" hidden /></label>'+
                         '</div>'+
                       '</div>');//append
+            });//each
+        }//success
+    });//ajax
+     $("#containerProp6stg").empty();
+    $.ajax({
+        method:'POST',
+        url: 'conexion/funciones.php',
+        dataType: 'json',
+        data: {'tienda' : valor, 'entrada':'stg6Prop'},
+        success : function(respuesta){
+            // console.log(respuesta);
+            $.each(respuesta,function(index,value){
+                $("#containerProp6stg").append(
+                    '<div class="row">'+
+                        '<div class="contador col-1">'+
+                            '<label for="">'+(index+1)+'.</label>'+
+                        '</div>'+
+                        '<div class="radio2 col-3 col-md-3">'+
+                            '<div class= "form-check form-check-inline" >'+
+                                '<input class= "form-check-input radio2_vis" type= "radio" name= "radio2_'+(index+1)+'" id= "radio2_vis_'+(index+1)+'" value= "option1" >'+
+                                '<label class= "form-check-label" for= "radio2_vis_'+(index+1)+'" >Si</label>'+
+                            '</div> '+
+                            '<div class= "form-check form-check-inline" >'+
+                                '<input class= "form-check-input radio2_vis" type= "radio" name= "radio2_'+(index+1)+'" id= "radio2_vis_'+(index+1)+'" value= "option2" >'+
+                                '<label class= "form-check-label" for= "radio2_vis_'+(index+1)+'" >No</label>'+
+                            '</div> '+
+                        '</div>'+
+                            '<label for="my-input" class="col-7 col-sm-4 txelem">'+value['dsc_exhibicion']+' de '+value['dsc_producto']+'</label>'+
+                        '<div class="input-group col-7 col-md-3">'+
+                            '<div class="input-group-prepend suiche21">'+
+                                '<span class="input-group-text " id="my-addon">S/</span>'+
+                            '</div>'+
+                            '<input class="form-control suiche21" type="text" id="precio_prop_'+(index+1)+'" name="precio_prop_'+(index+1)+'" placeholder="Precio" aria-label="Recipients " aria-describedby="my-addon">'+
+                        '</div>'+
+                       ' <div class="input-group col-2 col-md-2">'+
+                           ' <label for="prop_vis_1" class="btn btn-sm btn-light" id="label2_prop_vis_1" hidden><i class="bx bx-upload" id="texto2_prop_vis_1"> Cargar</i><input id="prop2_vis_1" class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="" hidden></label>'+
+                        '</div>'+
+                    '</div>');//append
             });//each
         }//success
     });//ajax
@@ -257,10 +295,9 @@ jQuery(document).ready(function() {
 
 // añadir en visibilidad
 
-$(".radio_vis").on('click',function(){
-    var id = this.id;
-    var valor = this.value;
-    aux = id.split('_')[2]
+function cargaArchivos(id){
+    var valor = $("#"+id).val();
+    aux = id.split('_')[2];
     // console.log('id',id);
     // console.log('valor',valor);
     // console.log('aux'.aux);
@@ -283,7 +320,7 @@ $(".radio_vis").on('click',function(){
         $("#label_prop_vis_"+aux).prop('hidden',true);
     }
     // console.log(aux);
-});
+}
 
 function borrarFila(compo){
     Swal.fire({
@@ -314,12 +351,9 @@ $(".btn-anadir").on('click',function(){
                         '</div>'+
                         '<div class="col-6 col-lg-5 selec">'+
                           '<select id="my-select" class="custom-select suiche2" name="">'+
-                            '<option selected>Elementos visuales</option>'+
-                            '<option value="">Promociones cruzadas</option>'+
-                            '<option value="">jalavistas</option>'+
-                            '<option value="">marco de góndola</option>'+
-                            '<option value="">volantes</option>'+
-                            '<option value="">canjes</option>'+
+                            '<option value="">Seleccione...</option>'+
+                            '<option value="5">Jalavistas</option>'+
+                            '<option value="6">Marco de góndola</option>'+
                           '</select>'+
                         '</div>'+
                         '<div class="input-group btn-group filefot col-8 col-md-6 col-lg-3">'+
@@ -425,12 +459,11 @@ $(".btn-anadir2").on('click',function(){
                         '</div>'+
                         '<div class="col-6 col-lg-3 selec">'+
                           '<select id="my-select" class="custom-select suiche2" name="">'+
-                            '<option selected>Elementos visuales</option>'+
-                            '<option value="">Promociones cruzadas</option>'+
-                            '<option value="">jalavistas</option>'+
-                            '<option value="">marco de góndola</option>'+
-                            '<option value="">volantes</option>'+
-                            '<option value="">canjes</option>'+
+                            '<option value="">Seleccione...</option>'+
+                            '<option value="">Cabecera</option>'+
+                            '<option value="">Ruma</option>'+
+                            '<option value="">Lateral</option>'+
+                            '<option value="">Cabeceras checkout</option>'+
                           '</select>'+
                         '</div>'+
 

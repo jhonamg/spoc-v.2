@@ -335,7 +335,7 @@
 
                                     <div id="containerProp5stg">
                                       <!-- comienza el bloque -->
-                                     <!--  <div class="row">
+                                      <!-- <div class="row">
                                         <div class="contador col-1 col-md-2">
                                           <label for="">1.</label>
                                         </div>
@@ -370,7 +370,7 @@
                                       >
                                     </h4>
                                     <h7>
-                                      (Promociones cruzadas, jalavistas, marco de góndola, volantes, canjes)
+                                      (Jalavistas, marco de góndola, volantes, canjes)
                                     </h7>
 
                                     <!-- comienza el bloque (fila) -->
@@ -386,12 +386,9 @@
 
                                                 <div class="col-6 col-lg-5 selec">
                                                   <select id="my-select" class="custom-select suiche2" name="">
-                                                    <option selected>Elementos visuales</option>
-                                                    <option value="">Promociones cruzadas</option>
-                                                    <option value="">jalavistas</option>
-                                                    <option value="">marco de góndola</option>
-                                                    <option value="">volantes</option>
-                                                    <option value="">canjes</option>
+                                                    <option value="">Seleccione...</option>
+                                                    <option value="5">Jalavistas</option>
+                                                    <option value="6">Marco de góndola</option>
                                                   </select>
                                                 </div>
 
@@ -463,55 +460,36 @@
                                         <div class="bloqueform">
                                             <!-- comienza el bloque -->
                                             <div class="filit">
-
                                                 <div class="suiche">
-
-                                                    <div class="row">
-                                            
+                                                  <div id="containerProp6stg">
+                                                    <!-- <div class="row">
                                                         <div class="contador col-1">
                                                             <label for="">1.</label>
                                                         </div>
-
                                                         <div class="radio2 col-3 col-md-3">
-
                                                             <div class= "form-check form-check-inline" >
-                                  
                                                                 <input class= "form-check-input radio2_vis" type= "radio" name= "radio2_1" id= "radio2_vis_1" value= "option1" >
                                                                 <label class= "form-check-label" for= "radio2_vis_1" >Si</label>
-                                  
                                                             </div> 
-                                              
                                                             <div class= "form-check form-check-inline" >
-                                  
                                                                 <input class= "form-check-input radio2_vis" type= "radio" name= "radio2_1" id= "radio2_vis_1" value= "option2" >
                                                                 <label class= "form-check-label" for= "radio2_vis_1" >No</label>
-                                  
                                                             </div> 
-                                              
                                                         </div>
-
                                                             <label for="my-input" class="col-7 col-sm-4 txelem">Cabecera de Nescafe 200gr.</label>
-
                                                         <div class="input-group col-7 col-md-3">
                                                             <div class="input-group-prepend suiche21">
                                                                 <span class="input-group-text " id="my-addon">S/</span>
                                                             </div>
                                                             <input class="form-control suiche21" type="text" name="" placeholder="Precio" aria-label="Recipient's " aria-describedby="my-addon">
                                                         </div>
-
-
                                                         <div class="input-group col-2 col-md-2">
-
                                                             <label for="prop_vis_1" class="btn btn-sm btn-light" id="label2_prop_vis_1" hidden><i class="bx bx-upload" id="texto2_prop_vis_1"> Cargar</i><input id="prop2_vis_1" class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="" hidden></label>
-                                  
                                                         </div>
-
-                                                    </div>
-
+                                                    </div> -->
+                                                  </div>
                                                 </div>                
-
                                             </div>
-
                                         </div>
                                     </div>
 
@@ -536,12 +514,11 @@
                                               <div class="col-6 col-lg-3 selec">
 
                                                 <select id="my-select" class="custom-select suiche2" name="">
-                                                  <option selected>Elementos visuales</option>
-                                                  <option value="">Promociones cruzadas</option>
-                                                  <option value="">jalavistas</option>
-                                                  <option value="">marco de góndola</option>
-                                                  <option value="">volantes</option>
-                                                  <option value="">canjes</option>
+                                                  <option value="">Seleccione...</option>
+                                                  <option value="1">Cabecera</option>
+                                                  <option value="2">Ruma</option>
+                                                  <option value="3">Lateral</option>
+                                                  <option value="4">Cabeceras checkout</option>
                                                 </select>
 
                                               </div>
