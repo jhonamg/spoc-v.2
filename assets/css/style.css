@@ -193,7 +193,7 @@ only screen and (                min-resolution: 2dppx) {
 
 .imgbotones {
     width: auto;
-    padding-top: 1rem;
+    padding-top: 2rem;
     height: auto;
 }
 
@@ -209,7 +209,7 @@ only screen and (                min-resolution: 2dppx) {
 }
 
 
-
+/* pequeña */
 @media only screen and (max-width: 370px), only screen and (max-device-width: 370px){
 	
 	/* .imgbotones {
@@ -225,9 +225,16 @@ only screen and (                min-resolution: 2dppx) {
 		max-height: 4rem;
 		padding: 0rem 0rem 0rem 2rem;
 	  }
+	  .imgbanner{
+		width: auto;
+		padding-top: 1rem;
+		height: auto;
+		padding: 1rem 5rem 1rem 5rem;
+	  }
 
 }
 
+/* movil */
 @media only screen and (min-width: 371px) and (max-width: 767px), only screen and (min-device-width: 371px) and (max-device-width: 989px){
 	/* .imgbotones {
 		width: auto;
@@ -242,21 +249,41 @@ only screen and (                min-resolution: 2dppx) {
 		max-height: 4rem;
 		padding: 0rem 0rem 0rem 2rem;
 	  }
+	  .imgbanner{
+		width: auto;
+		padding-top: 1rem;
+		height: auto;
+		padding: 1rem 5rem 1rem 5rem;
+	  }
 
 }
 
+/* laptop */
 @media only screen and (min-width: 990px) and (max-width: 1399px), only screen and (min-device-width: 990px) and (max-device-width: 1399px){
 	.muyancho{
 		padding: 0rem 15rem 0rem 15rem;
 	}
+	.imgbanner{
+		width: auto;
+		padding-top: 1rem;
+		height: auto;
+		padding: 1rem 0rem 1rem 23rem;
+	  }
 
 }
 
+/* monitor lg */
 @media only screen and (min-width: 1400px), only screen and (min-device-width: 1400px){
 
 	.muyancho{
 		padding: 0rem 15rem 0rem 15rem;
 	}
+	.imgbanner{
+		width: auto;
+		padding-top: 1rem;
+		height: auto;
+		padding: 1rem 0rem 1rem 24rem;
+	  }
 }
 
 .gris {

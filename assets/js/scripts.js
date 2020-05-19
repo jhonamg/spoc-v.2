@@ -446,7 +446,8 @@ for ( a = 1; a < 5; a++) {
       div.animate({width: '10rem', opacity: '0.4'}, "fast");
       div.animate({height: '10rem', opacity: '0.4'}, "fast");
       div.animate({width: '10rem', opacity: '0.4'}, "fast");
-      $("#bannerbuton").trigger("click");
+      $("#bannerbuton").trigger("click");  
+      $("#tycimg").attr('src',div.attr('src'));
 
 });
 ////////////////////////////////////////////////////////////////
