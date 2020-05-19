@@ -182,6 +182,10 @@
                             <!-- segundo stage selecciontyc -->
 
                             <fieldset>
+                              <div class="row">
+                                <img id = "1" class="img-responsive imgbotones" src="assets/img/Nueva carpeta/Wong.png" alt="">
+                              </div>
+                            
 
                               <!-- <img class=" col-6 col-xm-6 col-sm-6 col-md-6 col-lg-6 img-responsive imgbotones" src="assets/img/Nueva carpeta/Tottus.png" alt=""> -->
 
