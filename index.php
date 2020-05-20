@@ -235,13 +235,13 @@
                                 
                                 <div class="row">
 
-                                    <div id="tyc1" class="col-sm-12 col-md-12 col-lg-4 responsive"><a href="#"><img class="img-responsive emp" src="assets/img/Nueva carpeta/Imagen1.png" alt=""></a></div>
+                                    <div class="col-sm-12 col-md-12 col-lg-4 responsive"><a id="tyc4" class="tyc" href="#"><img class="img-responsive emp" src="assets/img/Nueva carpeta/Imagen1.png" alt=""></a></div>
 
 
-                                    <div id="tyc2" class="col-sm-12 col-md-12 col-lg-4 responsive"><a href="#"><img class="img-responsive emp" src="assets/img/Nueva carpeta/Imagen2.png" alt=""></a></div>
+                                    <div class="col-sm-12 col-md-12 col-lg-4 responsive"><a id="tyc5" class="tyc" href="#"><img class="img-responsive emp" src="assets/img/Nueva carpeta/Imagen2.png" alt=""></a></div>
 
 
-                                    <div id="tyc3" class="col-sm-12 col-md-12 col-lg-4 responsive"><a href="#"><img class="img-responsive emp" src="assets/img/Nueva carpeta/Imagen3.png" alt=""></a></div>
+                                    <div class="col-sm-12 col-md-12 col-lg-4 responsive"><a id="tyc6" class="tyc" href="#"><img class="img-responsive emp" src="assets/img/Nueva carpeta/Imagen3.png" alt=""></a></div>
                                   
 
                                  </div>
@@ -382,7 +382,7 @@
                                             <div class="row">
                                               
                                                 <div class="col-6 col-lg-4">
-                                                  <input class="form-control texto" type="text" name="InpEdvBf2_1" id="InpEdvBf2_1" />
+                                                  <input class="form-control texto" placeholder="Descripción" type="text" name="InpEdvBf2_1" id="InpEdvBf2_1" />
                                                 </div>
 
                                                 <div class="col-6 col-lg-4 selec">
@@ -498,10 +498,10 @@
                                           <div class="row">
 
                                               <div class="col-6 col-lg-6 txtex">
-                                                <input class="form-control texto2" type="text" name="InpEdvBf3_1" id="InpEdvBf3_1"> 
+                                                <input class="form-control texto2" placeholder="Descripción" type="text" name="InpEdvBf3_1" id="InpEdvBf3_1"> 
                                               </div>
                                               <div class="col-6 col-lg-6 selec">
-                                                <select id=SelEdvBf3_1" class="custom-select suiche2" name="SelEdvBf3_1">
+                                                <select id="SelEdvBf3_1" class="custom-select suiche2" name="SelEdvBf3_1">
                                                   <option value="">Seleccione...</option>
                                                   <option value="1">Cabecera</option>
                                                   <option value="2">Ruma</option>
