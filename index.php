@@ -396,7 +396,7 @@
                                                 <div class="input-group btn-group btncargaizq col-6 col-md-6 col-lg-2">
                                                   <label for="carga_1" class="btn btn-sm upcarga btn-primary" id="label_carga_1"
                                                     ><i class="bx bx-upload" id="texto_carga_1"> Cargar</i
-                                                    ><input id="carga_1" class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png"
+                                                    ><input id="carga_1" name="carga_1" class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png"
                                                       name="carga_1" hidden /></label>
                                                 </div>
 

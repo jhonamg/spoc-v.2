@@ -178,7 +178,7 @@ $("#categoriastiendas").change(function(){
                             '<input class="form-control suiche21" type="text" id="precio_prop_'+(index+1)+'" name="precio_prop_'+(index+1)+'" placeholder="Precio" aria-label="Recipients " aria-describedby="my-addon">'+
                         '</div>'+
                        ' <div class="input-group col-2 col-md-2">'+
-                           ' <label for="prop_vis_1" class="btn btn-sm btn-light" id="label2_prop_vis_1" hidden><i class="bx bx-upload" id="texto2_prop_vis_1"> Cargar</i><input id="prop2_vis_'+(index+1)+'" class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="prop2_vis_'+(index+1)+'" hidden></label>'+
+                           ' <label for="prop_vis_'+(index+1)+'" class="btn btn-sm btn-light" id="label2_prop_vis_'+(index+1)+'" hidden><i class="bx bx-upload" id="texto2_prop_vis_'+(index+1)+'"> Cargar</i><input id="prop2_vis_'+(index+1)+'" class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="prop2_vis_'+(index+1)+'" hidden></label>'+
                         '</div>'+
                     '</div>');//append
             });//each
