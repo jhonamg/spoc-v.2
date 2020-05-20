@@ -54,6 +54,8 @@ $("#categoriastiendas").change(function(){
     var categoria = $(this).find(":selected").text();
     $("#tienda3stg").text(tienda);
     $("#categoria3stg").text(categoria);
+    $("#categoria5stg").text(categoria);
+    $("#categoria6stg").text(categoria);
     $("#containerProp4stg").empty();
     $.ajax({
         method:'POST',
@@ -75,7 +77,7 @@ $("#categoriastiendas").change(function(){
                             '<div class="input-group-prepend">'+
                               '<span class="input-group-text">S/</span>'+
                             '</div>'+
-                            '<input type="text" class="form-control numero" maxlength="10" placeholder="Precio" aria-label="Amount (to the nearest dollar)">'+
+                            '<input type="text" class="form-control numero" id="precio_top_'+(index+1)+'" name="precio_top_'+(index+1)+'" maxlength="10" placeholder="Precio" aria-label="Amount (to the nearest dollar)">'+
                           '</div>'+
                       '</div>');//append
             });//each
@@ -102,7 +104,7 @@ $("#categoriastiendas").change(function(){
                             '<div class="input-group-prepend">'+
                               '<span class="input-group-text">S/</span>'+
                             '</div>'+
-                            '<input type="text" class="form-control numero" placeholder="Precio" maxlength="10" aria-label="Amount (to the nearest dollar)">'+
+                            '<input type="text" class="form-control numero" id="precio_top_comp_'+(index+1)+'" name="precio_top_comp_'+(index+1)+'" placeholder="Precio" maxlength="10" aria-label="Amount (to the nearest dollar)">'+
                           '</div>'+
                       '</div>');//append
             });//each
@@ -124,11 +126,11 @@ $("#categoriastiendas").change(function(){
                         '</div>'+
                        ' <div class="radio col-2 col-md-3">'+
                           '<div class="form-check form-check-inline">'+
-                            '<input class="form-check-input radio_vis" type="radio" name="radio_'+(index+1)+'" id="radio_vis_'+(index+1)+'" value="option1" onclick="cargaArchivos(this.id);"/>'+
+                            '<input class="form-check-input radio_vis" type="radio" name="radio_vis_'+(index+1)+'" id="radio_vis_'+(index+1)+'" value="option1" onclick="cargaArchivos(this.id);"/>'+
                             '<label class="form-check-label" for="radio_vis_'+(index+1)+'">Si</label>'+
                           '</div>'+
                           '<div class="form-check form-check-inline">'+
-                            '<input class="form-check-input radio_vis" type="radio" name="radio_'+(index+1)+'" id="radio_vis_'+(index+1)+'" value="option2"  onclick="cargaArchivos(this.id);"/>'+
+                            '<input class="form-check-input radio_vis" type="radio" name="radio_vis_'+(index+1)+'" id="radio_vis_'+(index+1)+'" value="option2"  onclick="cargaArchivos(this.id);"/>'+
                             '<label class="form-check-label" for="radio_vis_'+(index+1)+'">No</label>'+
                           '</div>'+
                         '</div>'+
@@ -138,7 +140,7 @@ $("#categoriastiendas").change(function(){
                         '<div class="input-group col-2 col-md-4">'+
                           '<label for="prop_vis_'+(index+1)+'" class="btn btn-sm btn-light" id="label_prop_vis_'+(index+1)+'" hidden>'+
                             '<i class="bx bx-upload" id="texto_prop_vis_'+(index+1)+'"> Cargar</i>'+
-                            '<input id="prop_vis_'+(index+1)+'" disabled class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="" hidden /></label>'+
+                            '<input id="prop_vis_'+(index+1)+'" disabled class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="prop_vis_'+(index+1)+'" hidden /></label>'+
                         '</div>'+
                       '</div>');//append
             });//each
@@ -160,11 +162,11 @@ $("#categoriastiendas").change(function(){
                         '</div>'+
                         '<div class="radio2 col-3 col-md-3">'+
                             '<div class= "form-check form-check-inline" >'+
-                                '<input class= "form-check-input radio2_vis" type= "radio" name= "radio2_'+(index+1)+'" id= "radio2_vis_'+(index+1)+'" value= "option1" >'+
+                                '<input class= "form-check-input radio2_vis" type= "radio" name= "radio2_vis_'+(index+1)+'" id= "radio2_vis_'+(index+1)+'" value= "option1" >'+
                                 '<label class= "form-check-label" for= "radio2_vis_'+(index+1)+'" >Si</label>'+
                             '</div> '+
                             '<div class= "form-check form-check-inline" >'+
-                                '<input class= "form-check-input radio2_vis" type= "radio" name= "radio2_'+(index+1)+'" id= "radio2_vis_'+(index+1)+'" value= "option2" >'+
+                                '<input class= "form-check-input radio2_vis" type= "radio" name= "radio2_vis_'+(index+1)+'" id= "radio2_vis_'+(index+1)+'" value= "option2" >'+
                                 '<label class= "form-check-label" for= "radio2_vis_'+(index+1)+'" >No</label>'+
                             '</div> '+
                         '</div>'+
@@ -176,7 +178,7 @@ $("#categoriastiendas").change(function(){
                             '<input class="form-control suiche21" type="text" id="precio_prop_'+(index+1)+'" name="precio_prop_'+(index+1)+'" placeholder="Precio" aria-label="Recipients " aria-describedby="my-addon">'+
                         '</div>'+
                        ' <div class="input-group col-2 col-md-2">'+
-                           ' <label for="prop_vis_1" class="btn btn-sm btn-light" id="label2_prop_vis_1" hidden><i class="bx bx-upload" id="texto2_prop_vis_1"> Cargar</i><input id="prop2_vis_1" class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="" hidden></label>'+
+                           ' <label for="prop_vis_1" class="btn btn-sm btn-light" id="label2_prop_vis_1" hidden><i class="bx bx-upload" id="texto2_prop_vis_1"> Cargar</i><input id="prop2_vis_'+(index+1)+'" class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="prop2_vis_'+(index+1)+'" hidden></label>'+
                         '</div>'+
                     '</div>');//append
             });//each
@@ -368,7 +370,7 @@ $(".btn-anadir").on('click',function(){
                           '<input class="form-control texto" placeholder="Descripcion" type="text" name="">'+
                         '</div>'+
                         '<div class="col-6 col-lg-4 selec">'+
-                          '<select id="my-select" class="custom-select suiche2" name="">'+
+                          '<select id="SelEdvBf2_'+(cant+1)+'" class="custom-select suiche2" name="SelEdvBf2_'+(cant+1)+'">'+
                             '<option value="">Seleccione...</option>'+
                             '<option value="5">Jalavistas</option>'+
                             '<option value="6">Marco de góndola</option>'+

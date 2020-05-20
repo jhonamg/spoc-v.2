@@ -366,7 +366,7 @@
 
                                     <h4>
                                       [Opcional] Qué materiales o elementos de visibilidad de la competencia en
-                                      la categoria [$categoria] encontraste?<span style="color: crimson;">
+                                      la categoria "<span id="categoria5stg"></span>" encontraste?<span style="color: crimson;">
                                         +10 SPOCS c/u</span
                                       >
                                     </h4>
@@ -382,11 +382,11 @@
                                             <div class="row">
                                               
                                                 <div class="col-6 col-lg-4">
-                                                  <input class="form-control texto" placeholder="Descripción" type="text" name="" />
+                                                  <input class="form-control texto" placeholder="Descripción" type="text" name="InpEdvBf2_1" id="InpEdvBf2_1" />
                                                 </div>
 
                                                 <div class="col-6 col-lg-4 selec">
-                                                  <select id="my-select" class="custom-select suiche2" name="">
+                                                  <select id="SelEdvBf2_1" class="custom-select suiche2" name="SelEdvBf2_1">
                                                     <option value="">Seleccione...</option>
                                                     <option value="5">Jalavistas</option>
                                                     <option value="6">Marco de góndola</option>
@@ -394,35 +394,19 @@
                                                 </div>
 
                                                 <div class="input-group btn-group btncargaizq col-6 col-md-6 col-lg-2">
-                                                  <label
-                                                    for="carga_1"
-                                                    class="btn btn-sm upcarga btn-primary"
-                                                    id="label_carga_1"
+                                                  <label for="carga_1" class="btn btn-sm upcarga btn-primary" id="label_carga_1"
                                                     ><i class="bx bx-upload" id="texto_carga_1"> Cargar</i
-                                                    ><input
-                                                      id="carga_1"
-                                                      class="form-control-file btnCarga"
-                                                      type="file"
-                                                      accept=".jpeg, .jpg, .png"
-                                                      name=""
-                                                      hidden
-                                                  /></label>
+                                                    ><input id="carga_1" class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png"
+                                                      name="carga_1" hidden /></label>
                                                 </div>
 
                                                 <div class="input-group btn-group btncargader col-6 col-md-6 col-lg-2">
                                                   <label class="btn btn-sm btn-danger bx bxs-x-circle" for="borrarFila_1">
-                                                    Borrar<button
-                                                      id="borrarFila_1"
-                                                      type="button"
-                                                      onclick="borrarFila(this);"
-                                                      hidden
-                                                    ></button
+                                                    Borrar<button id="borrarFila_1" type="button" onclick="borrarFila(this);" hidden ></button
                                                   ></label>
                                                 </div>
 
                                               </div>
-
-                                            
 
                                           </div>
                                         
@@ -504,7 +488,7 @@
 
                                 <!-- segunda parte -->
                                 
-                                  <h4>Qué exhibiciones de la competencia en la categoria [categoria] encontraste?<span style="color: crimson;"> +15 SPOCS c/u</span></h4><h5>(Cabecera, ruma, lateral, cabecera checkout, muebles)</h5>
+                                  <h4>Qué exhibiciones de la competencia en la categoria "<span id="categoria6stg"></span>" encontraste?<span style="color: crimson;"> +15 SPOCS c/u</span></h4><h5>(Cabecera, ruma, lateral, cabecera checkout, muebles)</h5>
                                   <div class="bloqueform3" id="bloqueform3">
       
                                       <!-- comienza el bloque (fila) -->
@@ -514,57 +498,32 @@
                                           <div class="row">
 
                                               <div class="col-6 col-lg-6 txtex">
-                                                <input class="form-control texto2" placeholder="Descripción" type="text" name="">
+                                                <input class="form-control texto2" placeholder="Descripción" type="text" name="InpEdvBf3_1" id="InpEdvBf3_1"> 
                                               </div>
-
                                               <div class="col-6 col-lg-6 selec">
-
-                                                <select id="my-select" class="custom-select suiche2" name="">
+                                                <select id="SelEdvBf3_1" class="custom-select suiche2" name="SelEdvBf3_1">
                                                   <option value="">Seleccione...</option>
                                                   <option value="1">Cabecera</option>
                                                   <option value="2">Ruma</option>
                                                   <option value="3">Lateral</option>
                                                   <option value="4">Cabeceras checkout</option>
                                                 </select>
-
                                               </div>
-
                                               <div class="input-group precioex col-12 col-lg-6">
-
                                                   <div class="input-group-prepend suiche21">
                                                       <span class="input-group-text " id="my-addon">S/</span>
                                                   </div>
-
                                                   <input class="form-control suiche21" type="text" name="" placeholder="Precio" aria-label="Recipient's " aria-describedby="my-addon">
-
                                               </div>
 
-
                                               <div class="input-group btn-group btncargaizq col-6 col-lg-3">
-                                                  <label
-                                                    for="carga2_1"
-                                                    class="btn btn-sm upcarga btn-primary"
-                                                    id="label_carga2_1"
-                                                    ><i class="bx bx-upload" id="texto_carga2_1"> Cargar</i
-                                                    ><input
-                                                      id="carga2_1"
-                                                      class="form-control-file btnCarga2"
-                                                      type="file"
-                                                      accept=".jpeg, .jpg, .png"
-                                                      name=""
-                                                      hidden
-                                                  /></label>
+                                                  <label for="carga2_1" class="btn btn-sm upcarga btn-primary" id="label_carga2_1"><i class="bx bx-upload" id="texto_carga2_1"> Cargar</i><input id="carga2_1" class="form-control-file btnCarga2"
+                                                      type="file" accept=".jpeg, .jpg, .png" name="" hidden /></label>
                                                 </div>
-
                                                 <div class="input-group btn-group btncargader col-6 col-lg-3">
                                                   <label class="btn btn-sm btn-danger bx bxs-x-circle" for="borrarFila2_1">
-                                                    Borrar<button
-                                                      id="borrarFila2_1"
-                                                      type="button"
-                                                      onclick="borrarFila2(this);"
-                                                      hidden
-                                                    ></button
-                                                  ></label>
+                                                    Borrar<button id="borrarFila2_1" type="button" onclick="borrarFila2(this);" hidden ></button>
+                                                  </label>
                                                 </div>
                                                   
                                           </div>
