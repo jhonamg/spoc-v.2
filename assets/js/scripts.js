@@ -75,7 +75,7 @@ $("#categoriastiendas").change(function(){
                             '<div class="input-group-prepend">'+
                               '<span class="input-group-text">S/</span>'+
                             '</div>'+
-                            '<input type="text" class="form-control numero" maxlength="10" aria-label="Amount (to the nearest dollar)">'+
+                            '<input type="text" class="form-control numero" maxlength="10" placeholder="Precio" aria-label="Amount (to the nearest dollar)">'+
                           '</div>'+
                       '</div>');//append
             });//each
@@ -102,7 +102,7 @@ $("#categoriastiendas").change(function(){
                             '<div class="input-group-prepend">'+
                               '<span class="input-group-text">S/</span>'+
                             '</div>'+
-                            '<input type="text" class="form-control numero" maxlength="10" aria-label="Amount (to the nearest dollar)">'+
+                            '<input type="text" class="form-control numero" placeholder="Precio" maxlength="10" aria-label="Amount (to the nearest dollar)">'+
                           '</div>'+
                       '</div>');//append
             });//each
@@ -133,7 +133,7 @@ $("#categoriastiendas").change(function(){
                           '</div>'+
                         '</div>'+
                         '<div class="col-8 col-md-6">'+
-                          '<label for="nombreprod">'+value['dsc_exhibicion']+' de '+value['dsc_producto']+'</label>'+
+                          '<label for="nombreprod" placeholder="Descripcion">'+value['dsc_exhibicion']+' de '+value['dsc_producto']+'</label>'+
                         '</div>'+
                         '<div class="input-group col-2 col-md-4">'+
                           '<label for="prop_vis_'+(index+1)+'" class="btn btn-sm btn-light" id="label_prop_vis_'+(index+1)+'" hidden>'+
@@ -251,8 +251,7 @@ jQuery(document).ready(function() {
     	// });
 
 
-
-
+      
 
 
 
@@ -366,7 +365,7 @@ $(".btn-anadir").on('click',function(){
     var fila = '<div class="filit">'+
                   '<div class="row">'+
                         '<div class="col-6 col-lg-4">'+
-                          '<input class="form-control texto" type="text" name="">'+
+                          '<input class="form-control texto" placeholder="Descripcion" type="text" name="">'+
                         '</div>'+
                         '<div class="col-6 col-lg-4 selec">'+
                           '<select id="my-select" class="custom-select suiche2" name="">'+
@@ -476,7 +475,7 @@ $(".btn-anadir2").on('click',function(){
     var fila = '<div class="filit2">'+
                   '<div class="row">'+
                         '<div class="col-6 col-lg-4">'+
-                          '<input class="form-control texto2" type="text" name="">'+
+                          '<input class="form-control texto2" placeholder="Descripción" type="text" name="">'+
                         '</div>'+
                         '<div class="col-6 col-lg-3 selec">'+
                           '<select id="my-select" class="custom-select suiche2" name="">'+
@@ -580,3 +579,22 @@ for ( a = 1; a < 5; a++) {
 
 // });
 ////////////////////////////////////////////////////////////////
+
+
+// cambia de estage segun tyc
+
+// $('.tyc').click(function (){
+// var a= this.id;
+// var b= a.split('tyc');
+
+// $('#id'+b[1]).fadeIn();
+
+//   for ( i = 1; i < 7; i++) {
+//     if(('tyc'+i) != a){
+//       $('#id'+i).fadeOut();
+//     }    
+    
+//   }
+  
+// });
+///////////////////////////////////////////////////////////////////
