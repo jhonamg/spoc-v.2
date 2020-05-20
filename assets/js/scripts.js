@@ -54,6 +54,8 @@ $("#categoriastiendas").change(function(){
     var categoria = $(this).find(":selected").text();
     $("#tienda3stg").text(tienda);
     $("#categoria3stg").text(categoria);
+    $("#categoria5stg").text(categoria);
+    $("#categoria6stg").text(categoria);
     $("#containerProp4stg").empty();
     $.ajax({
         method:'POST',
@@ -369,7 +371,7 @@ $(".btn-anadir").on('click',function(){
                           '<input class="form-control texto" type="text" name="">'+
                         '</div>'+
                         '<div class="col-6 col-lg-4 selec">'+
-                          '<select id="my-select" class="custom-select suiche2" name="">'+
+                          '<select id="SelEdvBf2_'+(cant+1)+'" class="custom-select suiche2" name="SelEdvBf2_'+(cant+1)+'">'+
                             '<option value="">Seleccione...</option>'+
                             '<option value="5">Jalavistas</option>'+
                             '<option value="6">Marco de góndola</option>'+
