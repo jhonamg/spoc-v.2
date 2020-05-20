@@ -33,8 +33,7 @@ ACCIONES
 =============================================*/
 if(isset($_POST["entrada"]) && $_POST["entrada"] == 'verDistrito'){
 	$cliente = new Funciones();
-	$cliente -> ajaxListaDistrito();
-	
+	$cliente -> ajaxListaDistrito();	
 }else if(isset($_POST["entrada"]) && $_POST["entrada"] == 'verTiendas'){
 	$cliente = new Funciones();
 	$cliente -> ajaxListaTiendas();
@@ -49,6 +48,6 @@ if(isset($_POST["entrada"]) && $_POST["entrada"] == 'verDistrito'){
 	$cliente -> ajaxListaStg5Prop();
 }else if(isset($_POST["entrada"]) && $_POST["entrada"] == 'stg6Prop'){
 	$cliente = new Funciones();
-	$cliente -> ajaxListaStg5Prop();
+	$cliente -> ajaxListaStg6Prop();
 }
 

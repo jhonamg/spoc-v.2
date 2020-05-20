@@ -80,7 +80,7 @@
                 <!-- comienza el bloque -->
                 <div class="row">
                     <div class="col-sm-12 col-sm-offset-1 col-md-12 col-md-offset-2 col-lg-12 col-lg-offset-3 form-box">
-                    	<form role="form" action="end.html" method="post" class="f1">
+                    	<form role="form" action="end.html" id="formSpoc" method="post" class="f1">
 
                     		<h1>¡Bienvenido <span style="color: crimson;">Spoc</span>!</h1>
                             <!-- barra de progreso -->

@@ -144,7 +144,7 @@ $("#categoriastiendas").change(function(){
             });//each
         }//success
     });//ajax
-     $("#containerProp6stg").empty();
+    $("#containerProp6stg").empty();
     $.ajax({
         method:'POST',
         url: 'conexion/funciones.php',
