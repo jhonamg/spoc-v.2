@@ -293,7 +293,7 @@ jQuery(document).ready(function() {
     	});
     });
     
-    // submit
+    // // submit
     $('.f1').on('submit', function(e) {
     	
     	// fields validation
@@ -558,6 +558,11 @@ for ( a = 1; a < 5; a++) {
         }
       } 
 
+});
+
+$("#formSpoc").submit(function(){
+    var valores = $("#formSpoc").serialize();
+    console.log(valores);
 });
 
 ////////////////////////////////////////////////////////////////
