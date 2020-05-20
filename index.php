@@ -127,7 +127,7 @@
 
                             <!-- primer stage index -->
                     		
-                            <fieldset class="muyancho">
+                            <fieldset id="id1" class="muyancho">
 
                                 <div class="row" data-aos="fade-up">
                                       <div style="text-align: center;">
@@ -182,7 +182,7 @@
 
                             <!-- segundo stage selecciontyc -->
 
-                            <fieldset>
+                            <fieldset id="id2">
                               <div class="row">
                                 <img id = "tycimg" class="img-responsive imgbanner" src="" alt="">
                               </div>
@@ -225,7 +225,7 @@
 
                             <!-- tercer stage empezemos -->
 
-                            <fieldset>
+                            <fieldset id="id3">
 
 
                                 <!-- <h1>¡EMPEZEMOS!</h1> -->
@@ -256,7 +256,7 @@
 
                             <!-- cuarto stage precios -->
 
-                            <fieldset class="muyancho">
+                            <fieldset id="id4" class="muyancho">
                                 
                                 <div class="row">
                                   <h2 class="col-8 subt">A. Precios TOP</h2><img class="col-4 xxpts" src="assets/img/Nueva carpeta/20pts.png" alt="">
@@ -323,7 +323,7 @@
 
                             <!-- quinto stage visibilidad -->
 
-                            <fieldset class="muyancho">
+                            <fieldset id="id5" class="muyancho">
                                 
 
                                 <h2 class="subt col-xm-6">B. Elementos de visibilidad</h2>
@@ -451,7 +451,7 @@
 
                             <!-- sexto stage exhibiciones -->
 
-                            <fieldset class="muyancho">
+                            <fieldset id="id6" class="muyancho">
                                 
 
                                 
