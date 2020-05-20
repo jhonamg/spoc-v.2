@@ -27,6 +27,7 @@ SET time_zone = "+00:00";
 --
 -- Estructura de tabla para la tabla `configuraciones_tx`
 --
+DROP TABLE `configuraciones_tx`;
 
 CREATE TABLE `configuraciones_tx` (
   `id` int(5) NOT NULL,
