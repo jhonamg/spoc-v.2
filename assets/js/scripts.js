@@ -474,38 +474,45 @@ function borrarFila2(compo){
 
 $(".btn-anadir2").on('click',function(){
     var cant = $(".bloqueform3 .filit2").length;
-    var fila = '<div class="filit2">'+
-                  '<div class="row">'+
-                        '<div class="col-6 col-lg-4">'+
-                          '<input class="form-control texto2" placeholder="Descripción" type="text" name="">'+
-                        '</div>'+
-                        '<div class="col-6 col-lg-3 selec">'+
-                          '<select id="my-select" class="custom-select suiche2" name="">'+
-                            '<option value="">Seleccione...</option>'+
-                            '<option value="">Cabecera</option>'+
-                            '<option value="">Ruma</option>'+
-                            '<option value="">Lateral</option>'+
-                            '<option value="">Cabeceras checkout</option>'+
-                          '</select>'+
-                        '</div>'+
+    var fila = 
+    '<div class="filit2">'+
+                                          '<div class="col-12">'+(cant+1)+'.</div>'+
+                                          '<div class="row" style="padding-top: 1rem;">'+
 
+                                              '<div class="col-6 col-lg-6 txtex">'+
+                                                '<input class="form-control texto2" placeholder="Descripción" type="text" name="InpEdvBf3_1" id="InpEdvBf3_1">'+ 
+                                              '</div>'+
+                                              '<div class="col-6 col-lg-6 selec">'+
+                                                '<select id="SelEdvBf3_1" class="custom-select suiche2" name="SelEdvBf3_1">'+
+                                                  '<option value="">Seleccione...</option>'+
+                                                  '<option value="1">Cabecera</option>'+
+                                                  '<option value="2">Ruma</option>'+
+                                                  '<option value="3">Lateral</option>'+
+                                                  '<option value="4">Cabeceras checkout</option>'+
+                                                '</select>'+
+                                              '</div>'+
+                                              '<div class="input-group precioex col-12 col-lg-6">'+
+                                                  '<div class="input-group-prepend suiche21">'+
+                                                      '<span class="input-group-text " id="my-addon">S/</span>'+
+                                                  '</div>'+
+                                                  '<input class="form-control suiche21" type="text" name="" placeholder="Precio" aria-label="Recipient" aria-describedby="my-addon">'+
+                                              '</div>'+
 
-                        '<div class="input-group col-6 col-md-3 col-lg-3">'+
+                                              '<div class="input-group btn-group btncargaizq col-6 col-lg-3">'+
+                                                  '<label for="carga2_'+(cant+1)+'" class="btn btn-sm upcarga btn-primary" id="label_carga2_'+(cant+1)+'"><i class="bx bx-upload" id="texto_carga2_'+(cant+1)+'"> Cargar</i>'+
+                                                  '<input id="carga2_'+(cant+1)+'" class="form-control-file btnCarga2" type="file" accept=".jpeg, .jpg, .png" name="" hidden />'+
+                                                      '</label>'+
+                                                '</div>'+
+                                                '<div class="input-group btn-group btncargader col-6 col-lg-3">'+
+                                                  '<label class="btn btn-sm btn-danger bx bxs-x-circle" for="borrarFila2_'+(cant+1)+'">'+
+                                                    'Borrar<button id="borrarFila2_'+(cant+1)+'" type="button" onclick="borrarFila2(this);" hidden ></button>'+
+                                                  '</label>'+
+                                                '</div>'+
+                                                  
+                                          '</div>'+
+                                  
+                                    '</div>';
 
-                            '<div class="input-group-prepend suiche21">'+
-                              '<span class="input-group-text " id="my-addon">S/</span>'+
-                            '</div>'+
-
-                            '<input class="form-control suiche21" type="text" name="" placeholder="Precio" aria-label="" aria-describedby="my-addon">'+
-
-                          '</div>'+
-
-
-                        '<div class="input-group btn-group filefot col-5 col-md-6 col-lg-3">'+
-                          '<label for="carga2_'+(cant+1)+'" class="btn btn-sm upcarga btn-primary" id="label_carga2_'+(cant+1)+'"><i class="bx bx-upload" id="texto_carga2_'+(cant+1)+'"> Cargar</i><input id="carga2_'+(cant+1)+'" class="form-control-file btnCarga2" type="file" accept=".jpeg, .jpg, .png" name="" hidden></label>'+
-                          '<label class="btn btn-sm upcarga btn-danger bx bxs-x-circle" for="borrarFila2_'+(cant+1)+'"> Borrar<button id="borrarFila2_'+(cant+1)+'" onclick="borrarFila2(this);" type="button" hidden></button></label>'+
-                    '</div>'+                                 
-              '</div>';
     document.getElementById("bloqueform3").insertAdjacentHTML("beforeEnd" ,fila);
     if ((cant+1) >= 5) {
         $(".btn-anadir2").prop('hidden',true);

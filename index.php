@@ -497,6 +497,8 @@
 
                                           <div class="row">
 
+                                              <div class="col-12">1.</div>
+
                                               <div class="col-6 col-lg-6 txtex">
                                                 <input class="form-control texto2" placeholder="Descripción" type="text" name="InpEdvBf3_1" id="InpEdvBf3_1"> 
                                               </div>
@@ -528,7 +530,8 @@
                                                   
                                           </div>
                                   
-                                    </div></div>
+                                    </div>
+                                  </div>
                                     <!-- final del bloque (fila) -->
 
                                
