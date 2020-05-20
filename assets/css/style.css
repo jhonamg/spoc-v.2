@@ -231,6 +231,15 @@ only screen and (                min-resolution: 2dppx) {
 		height: auto;
 		padding: 1rem 5rem 1rem 5rem;
 	  }
+	  .btncargaizq{
+		padding: 1rem 4rem 0rem 1rem;
+	  }
+	  .btncargader{
+		padding: 1rem 1rem 0rem 4rem;
+	}
+	.precioex{
+		padding: 1rem 6rem 0rem 1rem;
+	}
 
 }
 
@@ -255,6 +264,15 @@ only screen and (                min-resolution: 2dppx) {
 		height: auto;
 		padding: 1rem 5rem 1rem 5rem;
 	  }
+	  .btncargaizq{
+		padding: 1rem 4rem 0rem 1rem;
+	  }
+	  .btncargader{
+		padding: 1rem 1rem 0rem 4rem;
+	}
+	.precioex{
+		padding: 1rem 9rem 0rem 1rem;
+	}
 
 }
 
@@ -269,6 +287,18 @@ only screen and (                min-resolution: 2dppx) {
 		height: auto;
 		padding: 1rem 0rem 1rem 23rem;
 	  }
+	  /* .btncargaizq{
+		padding: 1rem 0rem 0rem 29.5rem;
+	  }
+	  .btncargader{
+		padding: 1rem 1rem 0rem 4rem;
+	} */
+	.btn-anadir2{
+		margin: 1rem 0rem 0rem 0rem;
+	}
+	.txtex{
+		padding-bottom: 1rem;
+	}
 
 }
 
@@ -284,6 +314,18 @@ only screen and (                min-resolution: 2dppx) {
 		height: auto;
 		padding: 1rem 0rem 1rem 24rem;
 	  }
+	  /* .btncargaizq{
+		padding: 1rem 4rem 0rem 1rem;
+	  }
+	  .btncargader{
+		padding: 1rem 1rem 0rem 4rem;
+	} */
+	.btn-anadir2{
+		margin: 1rem 0rem 0rem 0rem;
+	}
+	.txtex{
+		padding-bottom: 1rem;
+	}
 }
 
 .gris {
@@ -292,8 +334,16 @@ only screen and (                min-resolution: 2dppx) {
 
 .btn-anadir{
 	background-color: green;
+    border-radius: 1rem !important;
+    font-size: 13px;
 }
 
 .btn-anadir2{
 	background-color: green;
+    border-radius: 1rem !important;
+    font-size: 13px;
+}
+
+.filefot{
+	padding: 0rem 0rem 0rem 0rem;
 }

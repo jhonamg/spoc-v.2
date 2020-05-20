@@ -349,18 +349,20 @@ $(".btn-anadir").on('click',function(){
                         '<div class="col-6 col-lg-4">'+
                           '<input class="form-control texto" type="text" name="">'+
                         '</div>'+
-                        '<div class="col-6 col-lg-5 selec">'+
+                        '<div class="col-6 col-lg-4 selec">'+
                           '<select id="my-select" class="custom-select suiche2" name="">'+
                             '<option value="">Seleccione...</option>'+
                             '<option value="5">Jalavistas</option>'+
                             '<option value="6">Marco de góndola</option>'+
                           '</select>'+
                         '</div>'+
-                        '<div class="input-group btn-group filefot col-8 col-md-6 col-lg-3">'+
+                        '<div class="input-group btn-group btncargaizq col-6 col-md-6 col-lg-2">'+
                           '<label for="carga_'+(cant+1)+'" class="btn btn-sm upcarga btn-primary" id="label_carga_'+(cant+1)+'"><i class="bx bx-upload" id="texto_carga_'+(cant+1)+'"> Cargar</i><input id="carga_'+(cant+1)+'" class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="carga_'+(cant+1)+'" hidden></label>'+
-                          '<label class="btn btn-sm upcarga btn-danger bx bxs-x-circle " for="borrarFila_'+(cant+1)+'"> Borrar<button id="borrarFila_'+(cant+1)+'"  type="button" onclick="borrarFila(this);" hidden></button></label>'+
-                        '</div>'+                                 
-                  '</div>'+
+                        '</div>'+
+                        '<div class="input-group btn-group btncargader col-6 col-md-6 col-lg-2">'+
+                          '<label class="btn btn-sm btn-danger bx bxs-x-circle " for="borrarFila_'+(cant+1)+'"> Borrar<button id="borrarFila_'+(cant+1)+'"  type="button" onclick="borrarFila(this);" hidden></button></label>'+
+                        '</div>'+  
+                    '</div>'+
                 '</div>';
     document.getElementById("bloqueform2").insertAdjacentHTML("beforeEnd" ,fila);
     if ((cant+1) >= 5) {

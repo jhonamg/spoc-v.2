@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
 		    <link rel="stylesheet" href="assets/css/form-elements.css">
         <link rel="stylesheet" href="assets/css/style.css">
+        <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -113,12 +114,12 @@
 
                           <div class="f1-step">
                               <div class="f1-step-icon">5</div>
-                              <p>visibilidad</p>
+                              <!-- <p>visibilidad</p> -->
                           </div>
 
                           <div class="f1-step">
                               <div class="f1-step-icon">6</div>
-                              <p>exhibiciones</p>
+                              <!-- <p>exhibiciones</p> -->
                           </div>
 
                     		</div>
@@ -384,7 +385,7 @@
                                                   <input class="form-control texto" type="text" name="" />
                                                 </div>
 
-                                                <div class="col-6 col-lg-5 selec">
+                                                <div class="col-6 col-lg-4 selec">
                                                   <select id="my-select" class="custom-select suiche2" name="">
                                                     <option value="">Seleccione...</option>
                                                     <option value="5">Jalavistas</option>
@@ -392,7 +393,7 @@
                                                   </select>
                                                 </div>
 
-                                                <div class="input-group btn-group filefot col-8 col-md-6 col-lg-3">
+                                                <div class="input-group btn-group btncargaizq col-6 col-md-6 col-lg-2">
                                                   <label
                                                     for="carga_1"
                                                     class="btn btn-sm upcarga btn-primary"
@@ -406,6 +407,9 @@
                                                       name=""
                                                       hidden
                                                   /></label>
+                                                </div>
+
+                                                <div class="input-group btn-group btncargader col-6 col-md-6 col-lg-2">
                                                   <label class="btn btn-sm btn-danger bx bxs-x-circle" for="borrarFila_1">
                                                     Borrar<button
                                                       id="borrarFila_1"
@@ -428,10 +432,12 @@
                                 <!-- final del bloque (fila) -->
 
                                     <!-- boton añadir -->
-
-                                    <button class="btn btn-anadir" type="button">
-                                      <i class="bx bx-list-plus"></i><span> Añadir</span>
-                                    </button>
+                                    <div class="">
+                                      <label class="btn btn-success btn-anadir" type="button">
+                                        <i class="bx bx-list-plus"></i><span> Añadir</span>
+                                      </label>
+                                    </div>
+                                    
                                     <!-- final de boton añadir -->  
 
 
@@ -507,11 +513,11 @@
 
                                           <div class="row">
 
-                                              <div class="col-6 col-lg-4">
+                                              <div class="col-6 col-lg-6 txtex">
                                                 <input class="form-control texto2" type="text" name="">
                                               </div>
 
-                                              <div class="col-6 col-lg-3 selec">
+                                              <div class="col-6 col-lg-6 selec">
 
                                                 <select id="my-select" class="custom-select suiche2" name="">
                                                   <option value="">Seleccione...</option>
@@ -523,7 +529,7 @@
 
                                               </div>
 
-                                              <div class="input-group col-6 col-md-3 col-lg-3">
+                                              <div class="input-group precioex col-12 col-lg-6">
 
                                                   <div class="input-group-prepend suiche21">
                                                       <span class="input-group-text " id="my-addon">S/</span>
@@ -533,10 +539,33 @@
 
                                               </div>
 
-                                              <div class="input-group btn-group filefot col-5 col-md-6 col-lg-3">
-                                                <label for="carga2_1" class="btn btn-sm upcarga btn-primary" id="label_carga2_1"><i class="bx bx-upload" id="texto_carga2_1"> Cargar</i><input id="carga2_1" class="form-control-file btnCarga2" type="file" accept=".jpeg, .jpg, .png" name="" hidden></label>
-                                                <label class="btn btn-sm btn-danger bx bxs-x-circle " for="borrarFila2_1"> Borrar<button id="borrarFila2_1"  type="button" onclick="borrarFila2(this);" hidden></button></label>
-                                              </div>
+
+                                              <div class="input-group btn-group btncargaizq col-6 col-lg-3">
+                                                  <label
+                                                    for="carga2_1"
+                                                    class="btn btn-sm upcarga btn-primary"
+                                                    id="label_carga2_1"
+                                                    ><i class="bx bx-upload" id="texto_carga2_1"> Cargar</i
+                                                    ><input
+                                                      id="carga2_1"
+                                                      class="form-control-file btnCarga2"
+                                                      type="file"
+                                                      accept=".jpeg, .jpg, .png"
+                                                      name=""
+                                                      hidden
+                                                  /></label>
+                                                </div>
+
+                                                <div class="input-group btn-group btncargader col-6 col-lg-3">
+                                                  <label class="btn btn-sm btn-danger bx bxs-x-circle" for="borrarFila2_1">
+                                                    Borrar<button
+                                                      id="borrarFila2_1"
+                                                      type="button"
+                                                      onclick="borrarFila2(this);"
+                                                      hidden
+                                                    ></button
+                                                  ></label>
+                                                </div>
                                                   
                                           </div>
                                   
@@ -546,7 +575,11 @@
                                
 
                                     <!-- boton añadir -->
-                                    <button class="btn btn-anadir2" type="button"><i class="bx bx-list-plus"></i><span> Añadir</span></button>
+                                    <div class="">
+                                      <label class="btn btn-success btn-anadir2" type="button">
+                                        <i class="bx bx-list-plus"></i><span> Añadir</span>
+                                      </label>
+                                    </div>
                                     <!-- final de boton añadir -->
 
                                 
