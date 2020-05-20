@@ -75,7 +75,7 @@ $("#categoriastiendas").change(function(){
                             '<div class="input-group-prepend">'+
                               '<span class="input-group-text">S/</span>'+
                             '</div>'+
-                            '<input type="text" class="form-control numero" maxlength="10" aria-label="Amount (to the nearest dollar)">'+
+                            '<input type="text" class="form-control numero" id="precio_top_'+(index+1)+'" maxlength="10" aria-label="Amount (to the nearest dollar)">'+
                           '</div>'+
                       '</div>');//append
             });//each
@@ -102,7 +102,7 @@ $("#categoriastiendas").change(function(){
                             '<div class="input-group-prepend">'+
                               '<span class="input-group-text">S/</span>'+
                             '</div>'+
-                            '<input type="text" class="form-control numero" maxlength="10" aria-label="Amount (to the nearest dollar)">'+
+                            '<input type="text" class="form-control numero" id="precio_top_comp_'+(index+1)+'" maxlength="10" aria-label="Amount (to the nearest dollar)">'+
                           '</div>'+
                       '</div>');//append
             });//each
