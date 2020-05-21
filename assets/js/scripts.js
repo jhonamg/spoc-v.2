@@ -381,7 +381,7 @@ $(".btn-anadir").on('click',function(){
 });
 
 // fin añadir visibilidad
-// cambio de boton en visibilidad
+// cambio de boton en visibilidad segunda parte
 $(".btnCarga").on('click',function(){
     var id = this.id;
     // console.log(this.value);
@@ -393,8 +393,6 @@ $(".btnCarga").on('click',function(){
         $('#texto_'+id).addClass('bx-refresh');
         $('#texto_'+id).html(' Remplazar');
     }
-
-    // alert(this.id);
 });
 
 
@@ -406,9 +404,10 @@ $(".btnCarga").on('click',function(){
 
 // exhibiciones
 
-$(".btnCarga2").on('change',function(){
+$(".btnCarga2").on('click',function(){
   var id = this.id;
-  // console.log(this.value);
+  console.log(this.value);
+  console.log(id);
     if(this.value == ''){
         $('#label2_'+id).removeClass('btn-primary');
         $('#label2_'+id).addClass('btn-outline-secondary');
@@ -418,6 +417,49 @@ $(".btnCarga2").on('change',function(){
     }
     // alert(this.id);
 });
+
+function radio(a) {
+  var id= a.id;
+  var valor= a.value;
+  var aux = id.split('_')[2];
+  console.log(id);
+  console.log(valor);
+  console.log(aux);
+  if(valor == 'option1'){
+    $('#label2_prop_vis_'+aux).removeClass('btn-secondary');
+    $('#label2_prop_vis_'+aux).removeClass('btn-light');
+    $('#label2_prop_vis_'+aux).addClass('btn-primary');
+    $('#texto2_prop_vis_'+aux).removeClass('bx-refresh');
+    $('#texto2_prop_vis_'+aux).addClass('bx-upload');
+    $("#prop2_vis_"+aux).prop('disabled',false);
+    $("#label2_prop_vis_"+aux).prop('hidden',false);
+    
+}else{
+    $('#label2_prop_vis_'+aux).removeClass('btn-primary');
+    $('#label2_prop_vis_'+aux).addClass('btn-light');
+    $("#prop2_vis_"+aux).prop('disabled',true);
+    $('#texto_prop2_vis_'+aux).html(' Cargar');
+    $('#texto_prop2_vis_'+aux).removeClass('bx-upload');
+    $('#texto2_prop_vis_'+aux).addClass('bx-refresh');
+    $("#prop2_vis_"+aux).val();
+    $("#label2_prop_vis_"+aux).prop('hidden',true);
+}
+  
+};
+
+// function activafile(a){
+//   var id= a.id;
+//   console.log(id);
+//   var aux = id.split('_')[3];
+//   console.log(aux);
+//   $("#prop2_vis_"+aux).on('click',
+//   $('#texto2_prop_vis_'+aux).append(
+//         '<input id="prop2_vis_'+aux+'" class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="prop2_vis_'+aux+'" hidden></label>'
+//       ),
+//       $("#prop2_vis_"+aux).trigger('click')
+
+//   );
+// }
 
 $(".radio2_vis").on('click',function(){
     var id = this.id;
@@ -465,6 +507,9 @@ function borrarFila2(compo){
     })
 }
 
+// segunda parte de exhibiciones////////////////////////////////////////////
+
+
 $(".btn-anadir2").on('click',function(){
     var cant = $(".bloqueform3 .filit2").length;
     var fila = '<div class="filit2">'+
@@ -506,6 +551,7 @@ $(".btn-anadir2").on('click',function(){
         $(".btn-anadir2").prop('hidden',true);
     }
 });
+///////////////////////////////////////////////////////////
 
 
 // funcion boton animado siguiente pagina
