@@ -384,7 +384,7 @@ $(".btn-anadir").on('click',function(){
 });
 
 // fin añadir visibilidad
-// cambio de boton en visibilidad
+// cambio de boton en visibilidad segunda parte
 $(".btnCarga").on('click',function(){
     var id = this.id;
     // console.log(this.value);
@@ -396,8 +396,6 @@ $(".btnCarga").on('click',function(){
         $('#texto_'+id).addClass('bx-refresh');
         $('#texto_'+id).html(' Remplazar');
     }
-
-    // alert(this.id);
 });
 
 
@@ -409,9 +407,10 @@ $(".btnCarga").on('click',function(){
 
 // exhibiciones
 
-$(".btnCarga2").on('change',function(){
+$(".btnCarga2").on('click',function(){
   var id = this.id;
-  // console.log(this.value);
+  console.log(this.value);
+  console.log(id);
     if(this.value == ''){
         $('#label2_'+id).removeClass('btn-primary');
         $('#label2_'+id).addClass('btn-outline-secondary');
@@ -421,6 +420,7 @@ $(".btnCarga2").on('change',function(){
     }
     // alert(this.id);
 });
+
 function radio(a) {
   var id= a.id;
   var valor= a.value;
@@ -516,6 +516,9 @@ function borrarFila2(compo){
     })
 }
 
+// segunda parte de exhibiciones////////////////////////////////////////////
+
+
 $(".btn-anadir2").on('click',function(){
     var cant = $(".bloqueform3 .filit2").length;
     var fila = '<div class="filit2">'+
@@ -557,6 +560,7 @@ $(".btn-anadir2").on('click',function(){
         $(".btn-anadir2").prop('hidden',true);
     }
 });
+///////////////////////////////////////////////////////////
 
 
 // funcion boton animado siguiente pagina
