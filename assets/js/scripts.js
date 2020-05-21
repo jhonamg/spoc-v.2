@@ -156,33 +156,30 @@ $("#categoriastiendas").change(function(){
             // console.log(respuesta);
             $.each(respuesta,function(index,value){
                 $("#containerProp6stg").append(
-                  '<div class="row">'+
+                    '<div class="row">'+
                         '<div class="contador col-1">'+
-                          '<label for="">'+(index+1)+'.</label>'+
+                            '<label for="">'+(index+1)+'.</label>'+
                         '</div>'+
-                      '<div class="radio2 col-3 col-md-3">'+
-                        '<div class="form-check form-check-inline">'+
-                          '<input class="form-check-input radio2_vis" type="radio" name="radio2_vis_'+(index+1)+'" onclick="radio(this);" id="radio2_vis2_'+(index+1)+'" value="option1">'+
-                          '<label class="form-check-label" for="radio2_vis_'+(index+1)+'">Si</label>'+
+                        '<div class="radio2 col-3 col-md-3">'+
+                            '<div class= "form-check form-check-inline" >'+
+                                '<input class= "form-check-input radio2_vis" type= "radio" name= "radio2_vis_'+(index+1)+'" id= "radio2_vis_'+(index+1)+'" value= "option1" >'+
+                                '<label class= "form-check-label" for= "radio2_vis_'+(index+1)+'" >Si</label>'+
+                            '</div> '+
+                            '<div class= "form-check form-check-inline" >'+
+                                '<input class= "form-check-input radio2_vis" type= "radio" name= "radio2_vis_'+(index+1)+'" id= "radio2_vis_'+(index+1)+'" value= "option2" >'+
+                                '<label class= "form-check-label" for= "radio2_vis_'+(index+1)+'" >No</label>'+
+                            '</div> '+
                         '</div>'+
-                        '<div class="form-check form-check-inline">'+
-                          '<input class="form-check-input radio2_vis" type="radio" name="radio2_vis_'+(index+1)+'" onclick="radio(this);" id="radio2_vis_'+(index+1)+'" value="option2">'+
-                          '<label class="form-check-label" for="radio2_vis_'+(index+1)+'">No</label>'+
+                            '<label for="my-input" class="col-7 col-sm-4 txelem">'+value['dsc_exhibicion']+' de '+value['dsc_producto']+'</label>'+
+                        '<div class="input-group col-7 col-md-3">'+
+                            '<div class="input-group-prepend suiche21">'+
+                                '<span class="input-group-text " id="my-addon">S/</span>'+
+                            '</div>'+
+                            '<input class="form-control suiche21" type="text" id="precio_prop_'+(index+1)+'" name="precio_prop_'+(index+1)+'" placeholder="Precio" aria-label="Recipients " aria-describedby="my-addon">'+
                         '</div>'+
-                      '</div>'+
-                      '<div class="col-7 col-sm-4">'+
-                        '<label for="my-input" class="txelem">'+value['dsc_exhibicion']+' de '+value['dsc_producto']+'</label>'+
-                      '</div>'+
-                      '<div class="input-group col-7 col-md-3">'+
-                        '<div class="input-group-prepend suiche21">'+
-                          '<span class="input-group-text " id="my-addon">S/</span>'+
+                       ' <div class="input-group col-2 col-md-2">'+
+                           ' <label for="prop_vis_'+(index+1)+'" class="btn btn-sm btn-light" id="label2_prop_vis_'+(index+1)+'" hidden><i class="bx bx-upload" id="texto2_prop_vis_'+(index+1)+'"> Cargar</i><input id="prop2_vis_'+(index+1)+'" class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="prop2_vis_'+(index+1)+'" hidden></label>'+
                         '</div>'+
-                        '<input class="form-control suiche21" type="text" id="precio_prop_'+(index+1)+'" name="precio_prop_'+(index+1)+'" placeholder="Precio" aria-label="Recipients"'+ 'aria-describedby="my-addon">'+
-                      '</div>'+
-                      '<div class="input-group col-2 col-md-2">'+
-                        '<label for="prop_vis_'+(index+1)+'" class="btn btn-sm btn-light" id="label2_prop_vis_'+(index+1)+'" hidden><i class="bx bx-upload" id="texto2_prop_vis_'+(index+1)+'"> Cargar</i>'+
-                        '<input id="prop2_vis_'+(index+1)+'" class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="prop2_vis_'+(index+1)+'" hidden></label>'+
-                      '</div>'+
                     '</div>');//append
             });//each
         }//success
@@ -421,80 +418,32 @@ $(".btnCarga2").on('change',function(){
     }
     // alert(this.id);
 });
-function radio(a) {
-  var id= a.id;
-  var valor= a.value;
-  var aux = id.split('_')[2];
-  console.log(id);
-  console.log(valor);
-  console.log(aux);
-  if(valor == 'option1'){
-    $('#label2_prop_vis_'+aux).removeClass('btn-secondary');
-    $('#label2_prop_vis_'+aux).removeClass('btn-light');
-    $('#label2_prop_vis_'+aux).addClass('btn-primary');
-    $('#texto2_prop_vis_'+aux).removeClass('bx-refresh');
-    $('#texto2_prop_vis_'+aux).addClass('bx-upload');
-    $("#prop2_vis_"+aux).prop('disabled',false);
-    $("#label2_prop_vis_"+aux).prop('hidden',false);
-    
-}else{
-    $('#label2_prop_vis_'+aux).removeClass('btn-primary');
-    $('#label2_prop_vis_'+aux).addClass('btn-light');
-    $("#prop2_vis_"+aux).prop('disabled',true);
-    $('#texto_prop2_vis_'+aux).html(' Cargar');
-    $('#texto_prop2_vis_'+aux).removeClass('bx-upload');
-    $('#texto2_prop_vis_'+aux).addClass('bx-refresh');
-    $("#prop2_vis_"+aux).val();
-    $("#label2_prop_vis_"+aux).prop('hidden',true);
-}
-  
-};
 
-// function activafile(a){
-//   var id= a.id;
-//   console.log(id);
-//   var aux = id.split('_')[3];
-//   console.log(aux);
-//   $("#prop2_vis_"+aux).on('click',
-//   $('#texto2_prop_vis_'+aux).append(
-//         '<input id="prop2_vis_'+aux+'" class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="prop2_vis_'+aux+'" hidden></label>'
-//       ),
-//       $("#prop2_vis_"+aux).trigger('click')
-
-//   );
-// }
-
-
-// $(".radio2_vis").on('click',function(){
-//     var id = this.id;
-//     console.log(id);
-//     var valor = this.value;
-//     var aux = id.split('_')[2];
-    
-//     console.log(valor);
-//     console.log(aux);
-//     if(valor == 'option1'){
-//         $('#label2_prop_vis_'+aux).removeClass('btn-secondary');
-//         $('#label2_prop_vis_'+aux).removeClass('btn-light');
-//         $('#label2_prop_vis_'+aux).addClass('btn-primary');
-//         $('#texto2_prop_vis_'+aux).removeClass('bx-refresh');
-//         $('#texto2_prop_vis_'+aux).addClass('bx-upload');
-//         $("#prop2_vis_"+aux).prop('disabled',false);
-//         $("#label2_prop_vis_"+aux).prop('hidden',false);
-//         console.log($("#prop2_vis_"+aux).value());
-//     }else{
-//         $('#label2_prop_vis_'+aux).removeClass('btn-primary');
-//         $('#label2_prop_vis_'+aux).addClass('btn-light');
-//         $("#prop2_vis_"+aux).prop('disabled',true);
-//         $('#texto_prop2_vis_'+aux).html(' Cargar');
-//         $('#texto_prop2_vis_'+aux).removeClass('bx-upload');
-//         $('#texto2_prop_vis_'+aux).addClass('bx-refresh');
-//         $("#prop2_vis_"+aux).val();
-//         $("#label2_prop_vis_"+aux).prop('hidden',true);
-//     }
-//   // console.log(aux);
-//   // console.log(valor);
-// });
+$(".radio2_vis").on('click',function(){
+    var id = this.id;
+    var valor = this.value;
+    aux = id.split('_')[2]
+    if(valor == 'option1'){
+        $('#label2_prop_vis_'+aux).removeClass('btn-secondary');
+        $('#label2_prop_vis_'+aux).removeClass('btn-light');
+        $('#label2_prop_vis_'+aux).addClass('btn-primary');
+        $('#texto2_prop_vis_'+aux).removeClass('bx-refresh');
+        $('#texto2_prop_vis_'+aux).addClass('bx-upload');
+        $("#prop2_vis2_"+aux).prop('disabled',false);
+        $("#label2_prop_vis_"+aux).prop('hidden',false);
+    }else{
+        $('#label2_prop_vis_'+aux).removeClass('btn-primary');
+        $('#label2_prop_vis_'+aux).addClass('btn-light');
+        $("#prop2_vis_"+aux).prop('disabled',true);
+        $('#texto_prop2_vis_'+aux).html(' Cargar');
+        $('#texto_prop2_vis_'+aux).removeClass('bx-upload');
+        $('#texto2_prop_vis_'+aux).addClass('bx-refresh');
+        $("#prop2_vis_"+aux).val();
+        $("#label2_prop_vis_"+aux).prop('hidden',true);
+    }
+  // console.log(aux);
+  // console.log(valor);
+});
 
 function borrarFila2(compo){
     Swal.fire({
@@ -609,7 +558,7 @@ $("#formSpoc").submit(function(e){
     $("#totEDV").val(length3);
      var length4 = $(".bloqueform2 .filit").length;
     $("#totEDVComp").val(length4);
-     var length5 = $("#containerProp6stg .row").length;
+      var length5 = $("#containerProp6stg .row").length;
     $("#totEXH").val(length5);
      var length6 = $(".bloqueform3 .filit2").length;
     $("#totEXHComp").val(length6);

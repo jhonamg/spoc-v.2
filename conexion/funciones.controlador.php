@@ -59,14 +59,21 @@ class ControladorFunciones{
 		for($i = 1; $i <= $totEDVComp; $i++){
 			$productoEDVComp += [ "InpEdvBf2_$i" => $_POST["InpEdvBf2_$i"] ];
 			$elementoEDVComp += [ "SelEdvBf2_$i" => $_POST["SelEdvBf2_$i"] ];
+			//falta foto
 		}
-		$datosEXH = [];
+		$productoEXH = [];
+		$elementoEXH = [];
+		$precioEXH = [];
 		for($i = 1; $i <= $totEXH; $i++){
-			$datosEXH += [ "precio_top_comp_$i" => $_POST["precio_top_comp_$i"] ];
+			$productoEXH += [ "precio_top_comp_$i" => $_POST["precio_top_comp_$i"] ];
+			$elementoEXH += [ "precio_top_comp_$i" => $_POST["precio_top_comp_$i"] ];
+			$precioEXH += [ "precio_top_comp_$i" => $_POST["precio_top_comp_$i"] ];
+			//falta foto
 		}
 		$datosEXHComp = [];
 		for($i = 1; $i <= $totEXHComp; $i++){
 			$datosEXHComp += [ "precio_top_comp_$i" => $_POST["precio_top_comp_$i"] ];
+			//falta foto
 		}
 		$tienda = $_POST['listatiendas'];
 		$respuesta = ModeloFunciones::mdlGuardar($tienda);
