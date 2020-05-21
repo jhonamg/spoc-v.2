@@ -33,6 +33,7 @@ $(".imgbotones").click(function(){
 
 function buscaTienda(){
     var valor = $("#listadistrito").val();
+    $("#categoriastiendas").val();
     $("#listatiendas").empty();
     $.ajax({
         method:'POST',
@@ -128,11 +129,11 @@ $("#categoriastiendas").change(function(){
                         '</div>'+
                        ' <div class="radio col-2 col-md-3">'+
                           '<div class="form-check form-check-inline">'+
-                            '<input class="form-check-input radio_vis" type="radio" name="radio_vis_'+(index+1)+'" id="radio_vis_'+(index+1)+'" value="option1" onclick="cargaArchivos(this.id);"/>'+
+                            '<input class="form-check-input radio_vis" type="radio" name="radio_vis_'+(index+1)+'" id="radio_vis_'+(index+1)+'" value="SI" onclick="cargaArchivos(this.id);"/>'+
                             '<label class="form-check-label" for="radio_vis_'+(index+1)+'">Si</label>'+
                           '</div>'+
                           '<div class="form-check form-check-inline">'+
-                            '<input class="form-check-input radio_vis" type="radio" name="radio_vis_'+(index+1)+'" id="radio_vis_'+(index+1)+'" value="option2"  onclick="cargaArchivos(this.id);"/>'+
+                            '<input class="form-check-input radio_vis" type="radio" name="radio_vis_'+(index+1)+'" id="radio_vis_'+(index+1)+'" value="NO"  onclick="cargaArchivos(this.id);"/>'+
                             '<label class="form-check-label" for="radio_vis_'+(index+1)+'">No</label>'+
                           '</div>'+
                         '</div>'+
@@ -167,11 +168,11 @@ $("#categoriastiendas").change(function(){
                         '</div>'+
                         '<div class="radio2 col-3 col-md-3">'+
                             '<div class= "form-check form-check-inline" >'+
-                                '<input class= "form-check-input radio2_vis" type= "radio" name= "radio_EXH_'+(index+1)+'" id= "radio_EXH_'+(index+1)+'" value= "option1" >'+
+                                '<input class= "form-check-input radio2_vis" type= "radio" name= "radio_EXH_'+(index+1)+'" id= "radio_EXH_'+(index+1)+'" value= "SI" >'+
                                 '<label class= "form-check-label" for= "radio_EXH_'+(index+1)+'" >Si</label>'+
                             '</div> '+
                             '<div class= "form-check form-check-inline" >'+
-                                '<input class= "form-check-input radio_EXH" type= "radio" name= "radio_EXH_'+(index+1)+'" id= "radio_EXH_'+(index+1)+'" value= "option2" >'+
+                                '<input class= "form-check-input radio_EXH" type= "radio" name= "radio_EXH_'+(index+1)+'" id= "radio_EXH_'+(index+1)+'" value= "NO" >'+
                                 '<label class= "form-check-label" for= "radio2_vis_'+(index+1)+'" >No</label>'+
                             '</div> '+
                         '</div>'+
@@ -365,7 +366,7 @@ $(".btn-anadir").on('click',function(){
     var fila = '<div class="filit">'+
                   '<div class="row">'+
                         '<div class="col-6 col-lg-4">'+
-                          '<input class="form-control texto" placeholder="Descripcion" type="text" name="">'+
+                          '<input class="form-control texto" placeholder="Descripcion" type="text" name="InpEdvBf2_'+(cant+1)+'">'+
                         '</div>'+
                         '<div class="col-6 col-lg-4 selec">'+
                           '<select id="SelEdvBf2_'+(cant+1)+'" class="custom-select suiche2" name="SelEdvBf2_'+(cant+1)+'">'+

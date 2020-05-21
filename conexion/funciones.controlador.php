@@ -42,16 +42,23 @@ class ControladorFunciones{
 		$totEXH = $_POST['totEXH'];
 		$totEXHComp = $_POST['totEXHComp'];
 		$datosPreTop = [];
+		$nombrePreTop = [];
 		for($i = 1; $i <= $totPrecioTop; $i++){
 			$datosPreTop += [ "precio_top_$i" => $_POST["precio_top_$i"] ];
+			$nombrePreTop += [ "id_prod_prec_top_$i" => $_POST["id_prod_prec_top_$i"] ];
 		}
 		$datosPreTopComp = [];
+		$nombrePreTopComp = [];
+
 		for($i = 1; $i <= $totPrecioTopComp; $i++){
 			$datosPreTopComp += [ "precio_top_comp_$i" => $_POST["precio_top_comp_$i"] ];
+			$nombrePreTopComp += [ "id_comp_prec_top_$i" => $_POST["id_comp_prec_top_$i"] ];
 		}
 		$datosEDV = [];
 		for($i = 1; $i <= $totEDV; $i++){
 			$datosEDV += [ "radio_vis_$i" => $_POST["radio_vis_$i"] ];
+			$datosEDV += [ "id_produc_prop_vis_$i" => $_POST["id_produc_prop_vis_$i"] ];
+			$datosEDV += [ "id_elemento_vis_$i" => $_POST["id_elemento_vis_$i"] ];
 			//falta foto
 		}
 		$productoEDVComp = [];
@@ -64,19 +71,25 @@ class ControladorFunciones{
 		$productoEXH = [];
 		$elementoEXH = [];
 		$precioEXH = [];
+		$radio_EXH = []:
 		for($i = 1; $i <= $totEXH; $i++){
-			$productoEXH += [ "precio_top_comp_$i" => $_POST["precio_top_comp_$i"] ];
-			$elementoEXH += [ "precio_top_comp_$i" => $_POST["precio_top_comp_$i"] ];
-			$precioEXH += [ "precio_top_comp_$i" => $_POST["precio_top_comp_$i"] ];
+			$productoEXH += [ "id_produc_prop_exh_$i" => $_POST["id_produc_prop_exh_$i"] ];
+			$elementoEXH += [ "id_elemento_exh_$i" => $_POST["id_elemento_exh_$i"] ];
+			$precioEXH += [ "precio_prop_$i" => $_POST["precio_prop_$i"] ];
+			$radio_EXH += [ "radio_EXH_$i" => $_POST["radio_EXH_$i"] ];
 			//falta foto
 		}
-		$datosEXHComp = [];
+		$productoEXHComp = [];
+		$elementoEXHComp = [];
+		$precioEXHComp = [];
 		for($i = 1; $i <= $totEXHComp; $i++){
-			$datosEXHComp += [ "precio_top_comp_$i" => $_POST["precio_top_comp_$i"] ];
+			$productoEXHComp += [ "InpEdvBf3_$i" => $_POST["InpEdvBf3_$i"] ];
+			$elementoEXHComp += [ "SelEdvBf3_$i" => $_POST["SelEdvBf3_$i"] ];
+			$precioEXHComp += [ "preEdvComp_$i" => $_POST["preEdvComp_$i"] ];
 			//falta foto
 		}
 		$tienda = $_POST['listatiendas'];
-		$respuesta = ModeloFunciones::mdlGuardar($tienda);
+		$respuesta = ModeloFunciones::mdlGuardar($tienda, $fechaActual, $totPrecioTop, $totPrecioTopComp, $totEDV, $totEDVComp, $totEXH, $totEXHComp, $datosPreTop, $nombrePreTop, $datosPreTopComp, $nombrePreTopComp, $datosEDV, $productoEDVComp, $elementoEDVComp, $productoEXH, $elementoEXH, $precioEXH, $productoEXHComp, $elementoEXHComp, $precioEXHComp);
 		return $respuesta;
 	}//function ctrGuardar
 }//class ControladorFunciones
