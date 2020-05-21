@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-05-2020 a las 07:58:57
+-- Tiempo de generación: 21-05-2020 a las 23:15:45
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -99,29 +99,30 @@ CREATE TABLE `configuraciones_tx` (
   `id_banner` int(5) NOT NULL,
   `id_tienda` int(5) NOT NULL,
   `id_exhibicion` int(5) NOT NULL,
-  `precio` float(10,2) DEFAULT NULL
+  `precio` float(10,2) DEFAULT NULL,
+  `sku_cadena` varchar(10) COLLATE utf8_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Volcado de datos para la tabla `configuraciones_tx`
 --
 
-INSERT INTO `configuraciones_tx` (`id`, `id_producto`, `id_banner`, `id_tienda`, `id_exhibicion`, `precio`) VALUES
-(1, 1, 2, 1, 1, 20.00),
-(2, 1, 2, 1, 2, 20.00),
-(3, 1, 2, 2, 3, 20.00),
-(4, 1, 1, 4, 3, 26.00),
-(5, 2, 2, 1, 4, 19.99),
-(6, 3, 3, 9, 3, 19.00),
-(7, 4, 3, 10, 3, 19.00),
-(8, 5, 3, 11, 1, 17.90),
-(9, 6, 2, 1, 3, 19.99),
-(10, 1, 2, 1, 5, NULL),
-(11, 1, 2, 1, 6, NULL),
-(12, 1, 2, 2, 5, NULL),
-(13, 2, 2, 1, 5, NULL),
-(14, 5, 3, 11, 5, NULL),
-(15, 6, 2, 1, 6, NULL);
+INSERT INTO `configuraciones_tx` (`id`, `id_producto`, `id_banner`, `id_tienda`, `id_exhibicion`, `precio`, `sku_cadena`) VALUES
+(1, 1, 2, 1, 1, 20.00, '105'),
+(2, 1, 2, 1, 2, 20.00, '105'),
+(3, 1, 2, 2, 3, 20.00, '105'),
+(4, 1, 1, 4, 3, 26.00, 'ht001'),
+(5, 2, 2, 1, 4, 19.99, '105'),
+(6, 3, 3, 9, 3, 19.00, 'T004'),
+(7, 4, 3, 10, 3, 19.00, 'T001'),
+(8, 5, 3, 11, 1, 17.90, 'T002'),
+(9, 6, 2, 1, 3, 19.99, '105'),
+(10, 1, 2, 1, 5, NULL, '105'),
+(11, 1, 2, 1, 6, NULL, '105'),
+(12, 1, 2, 2, 5, NULL, '105'),
+(13, 2, 2, 1, 5, NULL, '105'),
+(14, 5, 3, 11, 5, NULL, 'T002'),
+(15, 6, 2, 1, 6, NULL, '105');
 
 -- --------------------------------------------------------
 
@@ -131,15 +132,17 @@ INSERT INTO `configuraciones_tx` (`id`, `id_producto`, `id_banner`, `id_tienda`,
 
 CREATE TABLE `detalle_spoc` (
   `id` int(5) NOT NULL,
+  `id_tx` int(5) NOT NULL,
   `id_usuario` int(20) NOT NULL,
   `id_tienda` int(5) NOT NULL,
   `id_producto` int(5) NOT NULL,
   `id_exhibicion` int(5) NOT NULL,
-  `precio` float NOT NULL,
+  `precio` float DEFAULT NULL,
   `foto` varchar(50) COLLATE utf8_bin NOT NULL,
   `fecha_carga` datetime NOT NULL,
   `flg_competencia` varchar(2) COLLATE utf8_bin NOT NULL,
-  `dsc_competencia` varchar(50) COLLATE utf8_bin NOT NULL
+  `dsc_competencia` varchar(50) COLLATE utf8_bin NOT NULL,
+  `flg_existe` varchar(2) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
@@ -174,6 +177,7 @@ INSERT INTO `exhibiciones` (`id`, `dsc_exhibicion`, `tipo`) VALUES
 
 CREATE TABLE `producto` (
   `id` int(5) NOT NULL,
+  `sku_nestle` varchar(10) COLLATE utf8_bin DEFAULT NULL,
   `id_categoria` int(5) NOT NULL,
   `dsc_producto` varchar(50) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
@@ -182,14 +186,14 @@ CREATE TABLE `producto` (
 -- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `producto` (`id`, `id_categoria`, `dsc_producto`) VALUES
-(1, 1, 'Nescafe 200'),
-(2, 1, 'Kirma 100'),
-(3, 1, 'Fina selección 175'),
-(4, 1, 'Gold 200'),
-(5, 1, 'Gold 100'),
-(6, 1, 'Decaf 170gr'),
-(999, 1, 'Competencia');
+INSERT INTO `producto` (`id`, `sku_nestle`, `id_categoria`, `dsc_producto`) VALUES
+(1, '4155678', 1, 'Nescafe 200'),
+(2, '4155672', 1, 'Kirma 100'),
+(3, '4155676', 1, 'Fina selección 175'),
+(4, '7155678', 1, 'Gold 200'),
+(5, '8155678', 1, 'Gold 100'),
+(6, '9155678', 1, 'Decaf 170gr'),
+(999, NULL, 1, 'Competencia');
 
 -- --------------------------------------------------------
 
