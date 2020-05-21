@@ -77,6 +77,7 @@ $("#categoriastiendas").change(function(){
                             '<div class="input-group-prepend">'+
                               '<span class="input-group-text">S/</span>'+
                             '</div>'+
+                            '<input type="hidden" name="id_prod_prec_top_'+(index+1)+'" value="'+value['id_producto']+'">'+
                             '<input type="text" class="form-control numero" id="precio_top_'+(index+1)+'" name="precio_top_'+(index+1)+'" maxlength="10" placeholder="Precio" aria-label="Amount (to the nearest dollar)">'+
                           '</div>'+
                       '</div>');//append
@@ -104,6 +105,7 @@ $("#categoriastiendas").change(function(){
                             '<div class="input-group-prepend">'+
                               '<span class="input-group-text">S/</span>'+
                             '</div>'+
+                            '<input type="hidden" name="id_comp_prec_top_'+(index+1)+'" value="'+value['id']+'">'+
                             '<input type="text" class="form-control numero" id="precio_top_comp_'+(index+1)+'" name="precio_top_comp_'+(index+1)+'" placeholder="Precio" maxlength="10" aria-label="Amount (to the nearest dollar)">'+
                           '</div>'+
                       '</div>');//append
@@ -140,7 +142,10 @@ $("#categoriastiendas").change(function(){
                         '<div class="input-group col-2 col-md-4">'+
                           '<label for="prop_vis_'+(index+1)+'" class="btn btn-sm btn-light" id="label_prop_vis_'+(index+1)+'" hidden>'+
                             '<i class="bx bx-upload" id="texto_prop_vis_'+(index+1)+'"> Cargar</i>'+
-                            '<input id="prop_vis_'+(index+1)+'" disabled class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="prop_vis_'+(index+1)+'" hidden /></label>'+
+                            '<input id="prop_vis_'+(index+1)+'" disabled class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="prop_vis_'+(index+1)+'" hidden />'+
+                            '<input type="hidden" name="id_produc_prop_vis_'+(index+1)+'" value="'+value['id_producto']+'">'+
+                            '<input type="hidden" name="id_elemento_vis_'+(index+1)+'" value="'+value['id_exhibicion']+'">'+
+                            '</label>'+
                         '</div>'+
                       '</div>');//append
             });//each
@@ -178,7 +183,10 @@ $("#categoriastiendas").change(function(){
                             '<input class="form-control suiche21" type="text" id="precio_prop_'+(index+1)+'" name="precio_prop_'+(index+1)+'" placeholder="Precio" aria-label="Recipients " aria-describedby="my-addon">'+
                         '</div>'+
                        ' <div class="input-group col-2 col-md-2">'+
-                           ' <label for="prop_EXH_'+(index+1)+'" class="btn btn-sm btn-light" id="label2_prop_EXH_'+(index+1)+'" hidden><i class="bx bx-upload" id="texto2_prop_EXH_'+(index+1)+'"> Cargar</i><input id="prop2_EXH_'+(index+1)+'" class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="prop2_EXH_'+(index+1)+'" hidden></label>'+
+                           ' <label for="prop_EXH_'+(index+1)+'" class="btn btn-sm btn-light" id="label2_prop_EXH_'+(index+1)+'" hidden><i class="bx bx-upload" id="texto2_prop_EXH_'+(index+1)+'"> Cargar</i><input id="prop2_EXH_'+(index+1)+'" class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="prop2_EXH_'+(index+1)+'" hidden>'+
+                                '<input type="hidden" name="id_produc_prop_exh_'+(index+1)+'" value="'+value['id_producto']+'">'+
+                                '<input type="hidden" name="id_elemento_exh_'+(index+1)+'" value="'+value['id_exhibicion']+'">'+
+                           '</label>'+
                         '</div>'+
                     '</div>');//append
             });//each
