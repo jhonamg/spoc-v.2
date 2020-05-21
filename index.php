@@ -19,6 +19,7 @@
 		    <link rel="stylesheet" href="assets/css/form-elements.css">
         <link rel="stylesheet" href="assets/css/style.css">
         <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -555,7 +556,7 @@
                                     <input type="hidden" name="totEXH" id="totEXH" value="">
                                     <input type="hidden" name="totEXHComp" id="totEXHComp" value="">
                                     <button type="button" class="btn btn-previous">Atras</button>
-                                    <button type="submit" class="btn btn-submit">Enviar</button>
+                                    <button type="submit" class="btn btn-submit" >Enviar</button>
                                 </div>
 
                             </fieldset>
@@ -578,6 +579,7 @@
         <script src="assets/js/retina-1.1.0.min.js"></script>
         <script src="assets/plugins/sweetalert2/core.js"></script>
         <script src="assets/plugins/sweetalert2/sweetalert2.all.js"></script>
+        <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
         <script src="assets/js/jquery.number.js"></script>
         <script src="assets/js/scripts.js"></script>
         
