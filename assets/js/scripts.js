@@ -392,36 +392,39 @@ $(".btn-anadir").on('click',function(){
 
 // fin añadir visibilidad
 // cambio de boton en visibilidad
-$(".btnCarga").on('change',function(){
+$(".btnCarga").on('click',function(){
     var id = this.id;
-    console.log(this.value);
-    if(this.value != ''){
+    // console.log(this.value);
+    if(this.value == ''){
+      
         $('#label_'+id).removeClass('btn-primary');
-    $('#label_'+id).addClass('btn-secondary');
-    // $('#texto_'+id).removeClass('bx-upload');
-        // $('#texto_'+id).addClass('bx-refresh');
-        $('#texto_'+id).html(' ');
+        $('#label_'+id).addClass('btn-outline-secondary');
+        $('#texto_'+id).removeClass('bx-upload');
+        $('#texto_'+id).addClass('bx-refresh');
+        $('#texto_'+id).html(' Remplazar');
     }
+
     // alert(this.id);
 });
 
 
+
 // fin cambio de boton visibilidad
 
-$('#label_prop_vis_')
+
 
 
 // exhibiciones
 
 $(".btnCarga2").on('change',function(){
   var id = this.id;
-  console.log(this.value);
-    if(this.value != ''){
+  // console.log(this.value);
+    if(this.value == ''){
         $('#label2_'+id).removeClass('btn-primary');
-    $('#label2_'+id).addClass('btn-secondary');
-    $('#texto2_'+id).removeClass('bx-upload');
+        $('#label2_'+id).addClass('btn-outline-secondary');
+        $('#texto2_'+id).removeClass('bx-upload');
         $('#texto2_'+id).addClass('bx-refresh');
-        $('#texto2_'+id).html(' ');
+        $('#texto2_'+id).html(' Remplazar');
     }
     // alert(this.id);
 });
