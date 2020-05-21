@@ -27,6 +27,10 @@ class Funciones{
 		$respuesta = ControladorFunciones::ctrMostrarStg6Prop();
 		echo json_encode($respuesta);
 	}//function ajaxListaStg6Prop
+	public function ajaxGuardar(){
+		$respuesta = ControladorFunciones::ctrGuardar();
+		echo json_encode($respuesta);
+	}//function ajaxGuardar
 }//class Funciones
 /*=============================================
 ACCIONES
@@ -49,5 +53,8 @@ if(isset($_POST["entrada"]) && $_POST["entrada"] == 'verDistrito'){
 }else if(isset($_POST["entrada"]) && $_POST["entrada"] == 'stg6Prop'){
 	$cliente = new Funciones();
 	$cliente -> ajaxListaStg6Prop();
+}else if(isset($_POST["entrada"]) && $_POST["entrada"] == 'guardar'){
+	$cliente = new Funciones();
+	$cliente -> ajaxGuardar();
 }
 

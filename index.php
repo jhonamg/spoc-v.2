@@ -549,8 +549,15 @@
 
 
               <div class="f1-buttons">
-                <button type="button" class="btn btn-previous">Atras</button>
-                <button type="submit" class="btn btn-submit">Enviar</button>
+                  <input type="hidden" name="entrada" value="guardar">
+                  <input type="hidden" name="totPrecioTop" id="totPrecioTop" value="">
+                  <input type="hidden" name="totPrecioTopComp" id="totPrecioTopComp" value="">
+                  <input type="hidden" name="totEDV" id="totEDV" value="">
+                  <input type="hidden" name="totEDVComp" id="totEDVComp" value="">
+                  <input type="hidden" name="totEXH" id="totEXH" value="">
+                  <input type="hidden" name="totEXHComp" id="totEXHComp" value="">
+                  <button type="button" class="btn btn-previous">Atras</button>
+                  <button type="submit" class="btn btn-submit" >Enviar</button>
               </div>
 
             </fieldset>
