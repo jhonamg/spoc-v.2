@@ -250,16 +250,7 @@ jQuery(document).ready(function() {
     	// 	else {
     	// 		$(this).removeClass('input-error');
     	// 	}
-    	// });
-
-
-      
-
-
-
-
-
-      
+    	// });      
     	if( next_step ) {
     		parent_fieldset.fadeOut(400, function() {
     			// change icons
@@ -309,8 +300,7 @@ jQuery(document).ready(function() {
     	// fields validation
     	
     });
-    
-    
+       
 });
 
 // añadir en visibilidad
@@ -555,9 +545,31 @@ for ( a = 1; a < 5; a++) {
 
 });
 
-$("#formSpoc").submit(function(){
+$("#formSpoc").submit(function(e){
     var valores = $("#formSpoc").serialize();
-    console.log(valores);
+    var length1 = $("#containerProp4stg .row").length;
+    $("#totPrecioTop").val(length1);
+     var length2 = $("#containerComp4stg .row").length;
+    $("#totPrecioTopComp").val(length2);
+     var length3 = $("#containerProp5stg .row").length;
+    $("#totEDV").val(length3);
+     var length4 = $(".bloqueform2 .filit").length;
+    $("#totEDVComp").val(length4);
+     var length5 = $("#containerProp6stg .row").length;
+    $("#totEXH").val(length5);
+     var length6 = $(".bloqueform3 .filit2").length;
+    $("#totEXHComp").val(length6);
+    console.log('length1',length1);
+    $.ajax({
+        method:'POST',
+        url: 'conexion/funciones.php',
+        dataType: 'json',
+        data:  $("#formSpoc").serialize(),
+        success : function(respuesta){
+
+        }//success
+    });//ajax
+    e.preventDefault();
 });
 
 ////////////////////////////////////////////////////////////////

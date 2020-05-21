@@ -122,5 +122,32 @@ class ModeloFunciones{
 		return $datos;
 		$mysqli->close();
 	}//function mdlMostrarStg6Prop
+
+	static public function mdlGuardar($tienda){
+		$mysqli = new mysqli("localhost", "root", "", "spoc_bd");
+		if ($mysqli->connect_errno) {
+		  echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+		}
+		$query = "SELECT id_tx FROM detalle_spoc ORDER BY id_tx DESC LIMIT 1"; 
+		// echo $query;
+		$mysqli->real_query($query);
+		$resultado = $mysqli->use_result();
+		$idTx = $resultado->fetch_assoc();
+		if($idTx == null || $idTx == ''){
+			$idTx = 1;
+		}else{
+			$idTx = $idTx + 1;
+		}
+		echo($idTx);
+
+
+		// $datos = array();
+		// while ($fila = $resultado->fetch_assoc()) {
+		//     $datos[] =  $fila;
+		// }
+
+		// return $datos;
+		$mysqli->close();
+	}//function mdlGuardar
 }//class ModeloFunciones
 ?>
