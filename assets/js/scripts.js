@@ -129,11 +129,11 @@ $("#categoriastiendas").change(function(){
                         '</div>'+
                        ' <div class="radio col-2 col-md-3">'+
                           '<div class="form-check form-check-inline">'+
-                            '<input class="form-check-input radio_vis" type="radio" name="radio_vis_'+(index+1)+'" id="radio_vis_'+(index+1)+'" value="SI" onclick="cargaArchivos(this.id);"/>'+
+                            '<input class="form-check-input radio_vis" type="radio" name="radio_vis_'+(index+1)+'" id="radio_vis_'+(index+1)+'" value="SI" onclick="cargaArchivos(this);"/>'+
                             '<label class="form-check-label" for="radio_vis_'+(index+1)+'">Si</label>'+
                           '</div>'+
                           '<div class="form-check form-check-inline">'+
-                            '<input class="form-check-input radio_vis" type="radio" name="radio_vis_'+(index+1)+'" id="radio_vis_'+(index+1)+'" value="NO"  onclick="cargaArchivos(this.id);"/>'+
+                            '<input class="form-check-input radio_vis" type="radio" name="radio_vis_'+(index+1)+'" id="radio_vis_'+(index+1)+'" value="NO"  onclick="cargaArchivos(this);"/>'+
                             '<label class="form-check-label" for="radio_vis_'+(index+1)+'">No</label>'+
                           '</div>'+
                         '</div>'+
@@ -141,13 +141,13 @@ $("#categoriastiendas").change(function(){
                           '<label for="nombreprod" placeholder="Descripcion">'+value['dsc_exhibicion']+' de '+value['dsc_producto']+'</label>'+
                         '</div>'+
                         '<div class="input-group col-2 col-md-4">'+
-                          '<label for="prop_vis_'+(index+1)+'" class="btn btn-sm btn-light" id="label_prop_vis_'+(index+1)+'" hidden>'+
-                            '<i class="bx bx-upload" id="texto_prop_vis_'+(index+1)+'"> Cargar</i>'+
-                            '<input id="prop_vis_'+(index+1)+'" disabled class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="prop_vis_'+(index+1)+'" hidden />'+
-                            '<input type="hidden" name="id_produc_prop_vis_'+(index+1)+'" value="'+value['id_producto']+'">'+
-                            '<input type="hidden" name="id_elemento_vis_'+(index+1)+'" value="'+value['id_exhibicion']+'">'+
+                          '<label for="prop_vis1_'+(index+1)+'" class="btn btn-sm btn-primary" id="label_prop_vis1_'+(index+1)+'" hidden>'+
+                            '<i class="bx bx-upload" id="texto_prop_vis1_'+(index+1)+'"> Cargar</i>'+
+                            '<input id="prop_vis1_'+(index+1)+'" onClick="btncargavis1part(this);" class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="prop_vis_'+(index+1)+'" hidden />'+
                             '</label>'+
                         '</div>'+
+                        '<input type="hidden" name="id_produc_prop_vis_'+(index+1)+'" value="'+value['id_producto']+'">'+
+                        '<input type="hidden" name="id_elemento_vis_'+(index+1)+'" value="'+value['id_exhibicion']+'">'+
                       '</div>');//append
             });//each
         }//success
@@ -162,33 +162,35 @@ $("#categoriastiendas").change(function(){
             // console.log(respuesta);
             $.each(respuesta,function(index,value){
                 $("#containerProp6stg").append(
-                    '<div class="row">'+
+                    '<div class="row" style="margin-bottom: 0.5rem;">'+
                         '<div class="contador col-1">'+
                             '<label for="">'+(index+1)+'.</label>'+
                         '</div>'+
                         '<div class="radio2 col-3 col-md-3">'+
                             '<div class= "form-check form-check-inline" >'+
-                                '<input class= "form-check-input radio2_vis" type= "radio" name= "radio_EXH_'+(index+1)+'" id= "radio_EXH_'+(index+1)+'" value= "SI" >'+
+                                '<input class= "form-check-input radio2_vis" type= "radio" name= "radio_EXH_'+(index+1)+'" id= "radio_EXH_'+(index+1)+'" value= "SI" onClick="cargaArchivosEx(this);">'+
                                 '<label class= "form-check-label" for= "radio_EXH_'+(index+1)+'" >Si</label>'+
                             '</div> '+
                             '<div class= "form-check form-check-inline" >'+
-                                '<input class= "form-check-input radio_EXH" type= "radio" name= "radio_EXH_'+(index+1)+'" id= "radio_EXH_'+(index+1)+'" value= "NO" >'+
+                                '<input class= "form-check-input radio_EXH" type= "radio" name= "radio_EXH_'+(index+1)+'" id= "radio_EXH_'+(index+1)+'" value= "NO" onClick="cargaArchivosEx(this);">'+
                                 '<label class= "form-check-label" for= "radio2_vis_'+(index+1)+'" >No</label>'+
                             '</div> '+
                         '</div>'+
                             '<label for="my-input" class="col-7 col-sm-4 txelem">'+value['dsc_exhibicion']+' de '+value['dsc_producto']+'</label>'+
-                        '<div class="input-group col-7 col-md-3">'+
-                            '<div class="input-group-prepend suiche21">'+
-                                '<span class="input-group-text " id="my-addon">S/</span>'+
+                          '<div class="container col-7 col-md-3" style="margin: 0rem 0rem 0rem 3rem;">'+
+                            '<div class="input-group">'+
+                              '<div class="input-group-prepend suiche21">'+
+                                  '<span class="input-group-text " id="my-addon">S/</span>'+
+                              '</div>'+
+                              '<input class="form-control suiche21" type="text" id="precio_prop_'+(index+1)+'" name="precio_prop_'+(index+1)+'" placeholder="Precio" aria-label="Recipients " aria-describedby="my-addon">'+
                             '</div>'+
-                            '<input class="form-control suiche21" type="text" id="precio_prop_'+(index+1)+'" name="precio_prop_'+(index+1)+'" placeholder="Precio" aria-label="Recipients " aria-describedby="my-addon">'+
-                        '</div>'+
+                          '</div>'+
                        ' <div class="input-group col-2 col-md-2">'+
-                           ' <label for="prop_EXH_'+(index+1)+'" class="btn btn-sm btn-light" id="label2_prop_EXH_'+(index+1)+'" hidden><i class="bx bx-upload" id="texto2_prop_EXH_'+(index+1)+'"> Cargar</i><input id="prop2_EXH_'+(index+1)+'" class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="prop2_EXH_'+(index+1)+'" hidden>'+
-                                '<input type="hidden" name="id_produc_prop_exh_'+(index+1)+'" value="'+value['id_producto']+'">'+
-                                '<input type="hidden" name="id_elemento_exh_'+(index+1)+'" value="'+value['id_exhibicion']+'">'+
+                           ' <label for="prop2_EXH_'+(index+1)+'" class="btn btn-sm btn-primary" id="label_prop2_EXH_'+(index+1)+'" hidden><i class="bx bx-upload" id="texto_prop2_EXH_'+(index+1)+'"> Cargar</i><input id="prop2_EXH_'+(index+1)+'" onClick="btncargaex1part(this);" class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="prop2_EXH_'+(index+1)+'" hidden>'+
                            '</label>'+
                         '</div>'+
+                        '<input type="hidden" name="id_produc_prop_exh_'+(index+1)+'" value="'+value['id_producto']+'">'+
+                        '<input type="hidden" name="id_elemento_exh_'+(index+1)+'" value="'+value['id_exhibicion']+'">'+
                     '</div>');//append
             });//each
         }//success
@@ -314,29 +316,30 @@ jQuery(document).ready(function() {
 
 // añadir en visibilidad
 
-function cargaArchivos(id){
-    var valor = $("#"+id).val();
-    aux = id.split('_')[2];
+function cargaArchivos(obj){
+    var id= obj.id;
+    var valor = obj.value;
+    var aux = id.split('_')[2];
     // console.log('id',id);
     // console.log('valor',valor);
-    // console.log('aux'.aux);
-    if(valor == 'option1'){
-        $('#label_prop_vis_'+aux).removeClass('btn-secondary');
-        $('#label_prop_vis_'+aux).removeClass('btn-light');
-        $('#label_prop_vis_'+aux).addClass('btn-primary');
-    // $('#texto_prop_vis_'+aux).removeClass('bx-refresh');
-        // $('#texto_prop_vis_'+aux).addClass('bx-upload');
-        $("#prop_vis_"+aux).prop('disabled',false);
-        $("#label_prop_vis_"+aux).prop('hidden',false);
+    // console.log('aux',aux);
+    if(valor == 'SI'){
+        // $('#label_prop_vis1_'+aux).removeClass('btn-secondary');
+        // $('#label_prop_vis1_'+aux).removeClass('btn-light');
+        // $('#label_prop_vis1_'+aux).addClass('btn-primary');
+        // $('#texto_prop_vis1_'+aux).removeClass('bx-refresh');
+        // $('#texto_prop_vis1_'+aux).addClass('bx-upload');
+        // $("#prop_vis1_"+aux).prop('disabled',false);
+        $("#label_prop_vis1_"+aux).prop('hidden',false);
     }else{
-        $('#label_prop_vis_'+aux).removeClass('btn-primary');
-        $('#label_prop_vis_'+aux).addClass('btn-light');
-        $("#prop_vis_"+aux).prop('disabled',true);
-        $('#texto_prop_vis_'+aux).html(' Cargar');
-    // $('#texto_prop_vis_'+aux).removeClass('bx-upload');
-        // $('#texto_prop_vis_'+aux).addClass('bx-refresh');
-        $("#prop_vis_"+aux).val();
-        $("#label_prop_vis_"+aux).prop('hidden',true);
+        // $('#label_prop_vis1_'+aux).removeClass('btn-primary');
+        // $('#label_prop_vis1_'+aux).addClass('btn-light');
+        // $("#prop_vis1_"+aux).prop('disabled',true);
+        // $('#texto_prop_vis1_'+aux).html(' Cargar');
+        // $('#texto_prop_vis1_'+aux).removeClass('bx-upload');
+        // $('#texto_prop_vis1_'+aux).addClass('bx-refresh');
+        // $("#prop_vis1_"+aux).val();
+        $("#label_prop_vis1_"+aux).prop('hidden',true);
     }
     // console.log(aux);
 }
@@ -376,7 +379,7 @@ $(".btn-anadir").on('click',function(){
                           '</select>'+
                         '</div>'+
                         '<div class="input-group btn-group btncargaizq col-6 col-md-6 col-lg-2">'+
-                          '<label for="carga_'+(cant+1)+'" class="btn btn-sm upcarga btn-primary" id="label_carga_'+(cant+1)+'"><i class="bx bx-upload" id="texto_carga_'+(cant+1)+'"> Cargar</i><input id="carga_'+(cant+1)+'" class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="carga_'+(cant+1)+'" hidden></label>'+
+                          '<label for="carga_'+(cant+1)+'" class="btn btn-sm upcarga btn-primary" id="label_carga_'+(cant+1)+'"><i class="bx bx-upload" id="texto_carga_'+(cant+1)+'"> Cargar</i><input id="carga_'+(cant+1)+'" name="carga_'+(cant+1)+'" onClick="btnCargavis(this);" class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" hidden></label>'+
                         '</div>'+
                         '<div class="input-group btn-group btncargader col-6 col-md-6 col-lg-2">'+
                           '<label class="btn btn-sm btn-danger bx bxs-x-circle " for="borrarFila_'+(cant+1)+'"> Borrar<button id="borrarFila_'+(cant+1)+'"  type="button" onclick="borrarFila(this);" hidden></button></label>'+
@@ -391,18 +394,56 @@ $(".btn-anadir").on('click',function(){
 
 // fin añadir visibilidad
 // cambio de boton en visibilidad segunda parte
-$(".btnCarga").on('click',function(){
-    var id = this.id;
-    // console.log(this.value);
-    if(this.value == ''){
+// $(".btnCarga").on('click',function(){
+//     var id = this.id;
+//     console.log(this.value);
+//     if(this.value == ''){
+//       console.log(id);
       
-        $('#label_'+id).removeClass('btn-primary');
-        $('#label_'+id).addClass('btn-outline-secondary');
-        $('#texto_'+id).removeClass('bx-upload');
-        $('#texto_'+id).addClass('bx-refresh');
-        $('#texto_'+id).html(' Remplazar');
-    }
-});
+//         $('#label_'+id).removeClass('btn-primary');
+//         $('#label_'+id).addClass('btn-outline-secondary');
+//         $('#texto_'+id).removeClass('bx-upload');
+//         $('#texto_'+id).addClass('bx-refresh');
+//         $('#texto_'+id).html(' Remplazar');
+//     }
+// });
+
+
+function btncargavis1part(obj) {
+  var id = obj.id;
+  var valor = obj.value;
+  // console.log('id',id);
+  // console.log('ruta',valor);
+  if(valor == ''){
+    $('#label_'+id).removeClass('btn-primary');
+    $('#label_'+id).addClass('btn-outline-secondary');
+    $('#texto_'+id).removeClass('bx-upload');
+    $('#texto_'+id).addClass('bx-refresh');
+    $('#texto_'+id).html(' Remplazar');
+}
+  
+}
+
+
+
+
+function btnCargavis(obj) {
+  var id = obj.id;
+  var valor = obj.value;
+  // var aux = id.split('_')[1];
+  // console.log('id',id);
+  // console.log('aux', aux);
+  // console.log('ruta',valor);
+  if(valor == ''){
+    $('#label_'+id).removeClass('btn-primary');
+    $('#label_'+id).addClass('btn-outline-secondary');
+    $('#texto_'+id).removeClass('bx-upload');
+    $('#texto_'+id).addClass('bx-refresh');
+    $('#texto_'+id).html(' Remplazar');
+}
+  
+}
+
 
 
 
@@ -412,6 +453,68 @@ $(".btnCarga").on('click',function(){
 
 
 // exhibiciones
+// parte1
+
+function btncargaex1part(obj) {
+  var id = obj.id;
+  var valor = obj.value;
+  console.log('idboton',id);
+  console.log('rutaboton',valor);
+  if(valor == ''){
+    $('#label_'+id).removeClass('btn-primary');
+    $('#label_'+id).addClass('btn-outline-secondary');
+    $('#texto_'+id).removeClass('bx-upload');
+    $('#texto_'+id).addClass('bx-refresh');
+    $('#texto_'+id).html(' Remplazar');
+}
+  
+}
+
+function cargaArchivosEx(obj){
+  var id= obj.id;
+  var valor = obj.value;
+  var aux = id.split('_')[2];
+  console.log('idradio',id);
+  console.log('valorradio',valor);
+  console.log('auxradio',aux);
+  if(valor == 'SI'){
+      // $('#label_prop_vis1_'+aux).removeClass('btn-secondary');
+      // $('#label_prop_vis1_'+aux).removeClass('btn-light');
+      // $('#label_prop_vis1_'+aux).addClass('btn-primary');
+      // $('#texto_prop_vis1_'+aux).removeClass('bx-refresh');
+      // $('#texto_prop_vis1_'+aux).addClass('bx-upload');
+      // $("#prop_vis1_"+aux).prop('disabled',false);
+      $("#label_prop2_EXH_"+aux).prop('hidden',false);
+  }else{
+      // $('#label_prop_vis1_'+aux).removeClass('btn-primary');
+      // $('#label_prop_vis1_'+aux).addClass('btn-light');
+      // $("#prop_vis1_"+aux).prop('disabled',true);
+      // $('#texto_prop_vis1_'+aux).html(' Cargar');
+      // $('#texto_prop_vis1_'+aux).removeClass('bx-upload');
+      // $('#texto_prop_vis1_'+aux).addClass('bx-refresh');
+      // $("#prop_vis1_"+aux).val();
+      $("#label_prop2_EXH_"+aux).prop('hidden',true);
+  }
+  // console.log(aux);
+}
+
+// parte 2
+
+function btncargaex2part(obj) {
+  var id = obj.id;
+  var valor = obj.value;
+  console.log('idboton',id);
+  console.log('rutaboton',valor);
+  if(valor == ''){
+    $('#label_'+id).removeClass('btn-primary');
+    $('#label_'+id).addClass('btn-outline-secondary');
+    $('#texto_'+id).removeClass('bx-upload');
+    $('#texto_'+id).addClass('bx-refresh');
+    $('#texto_'+id).html(' Remplazar');
+}
+  
+}
+
 
 $(".btnCarga2").on('click',function(){
   var id = this.id;
@@ -544,11 +647,11 @@ $(".btn-anadir2").on('click',function(){
               '</div>'+
               '<div class="input-group btn-group btncargaizq col-6 col-lg-3">'+
                   '<label for="carga2_'+(cant+1)+'" class="btn btn-sm upcarga btn-primary" id="label_carga2_'+(cant+1)+'"><i class="bx bx-upload" id="texto_carga2_'+(cant+1)+'"> Cargar</i>'+
-                  '<input id="carga2_'+(cant+1)+'" class="form-control-file btnCarga2" type="file" accept=".jpeg, .jpg, .png" name="carga2_'+(cant+1)+'" hidden />'+
+                  '<input id="carga2_'+(cant+1)+'" onClick="btncargaex2part(this);" class="form-control-file btnCarga2" type="file" accept=".jpeg, .jpg, .png" name="carga2_'+(cant+1)+'" hidden />'+
                       '</label>'+
                 '</div>'+
                 '<div class="input-group btn-group btncargader col-6 col-lg-3">'+
-                  '<label class="btn btn-sm btn-danger bx bxs-x-circle" for="borrarFila2_'+(cant+1)+'">'+
+                  '<label class="btn btn-sm btn-danger bx bxs-x-circle" for="borrarFila2_'+(cant+1)+'"> '+
                     'Borrar<button id="borrarFila2_'+(cant+1)+'" type="button" onclick="borrarFila2(this);" hidden ></button>'+
                   '</label>'+
                 '</div>'+    

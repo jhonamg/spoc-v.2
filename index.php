@@ -394,7 +394,7 @@
                     </div>
 
                     <div class="input-group btn-group btncargaizq col-6 col-md-6 col-lg-2">
-                      <label for="carga_1" class="btn btn-sm upcarga btn-primary" id="label_carga_1"><i class="bx bx-upload" id="texto_carga_1"> Cargar</i><input id="carga_1" name="carga_1" class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="carga_1" hidden /></label>
+                      <label for="carga_1" class="btn btn-sm upcarga btn-primary" id="label_carga_1"><i class="bx bx-upload" id="texto_carga_1"> Cargar</i><input id="carga_1" name="carga_1" onClick="btnCargavis(this);" class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="carga_1" hidden /></label>
                     </div>
 
                     <div class="input-group btn-group btncargader col-6 col-md-6 col-lg-2">
@@ -522,11 +522,10 @@
                     </div>
 
                     <div class="input-group btn-group btncargaizq col-6 col-lg-3">
-                      <label for="carga2_1" class="btn btn-sm upcarga btn-primary" id="label_carga2_1"><i class="bx bx-upload" id="texto_carga2_1"> Cargar</i><input id="carga2_1" class="form-control-file btnCarga2" type="file" accept=".jpeg, .jpg, .png" name="" hidden /></label>
+                      <label for="carga2_1" class="btn btn-sm upcarga btn-primary" id="label_carga2_1"><i class="bx bx-upload" id="texto_carga2_1"> Cargar</i><input id="carga2_1"  onClick="btncargaex2part(this);" class="form-control-file btnCarga2" type="file" accept=".jpeg, .jpg, .png" name="" hidden /></label>
                     </div>
                     <div class="input-group btn-group btncargader col-6 col-lg-3">
-                      <label class="btn btn-sm btn-danger bx bxs-x-circle" for="borrarFila2_1">
-                        Borrar<button id="borrarFila2_1" type="button" onclick="borrarFila2(this);" hidden></button>
+                      <label class="btn btn-sm btn-danger bx bxs-x-circle" for="borrarFila2_1"> Borrar<button id="borrarFila2_1" type="button" onclick="borrarFila2(this);" hidden></button>
                       </label>
                     </div>
 
@@ -577,7 +576,7 @@
   <!-- <script src="assets/bootstrap/js/bootstrap.min.js"></script> -->
   <script src="assets/js/jsbootstrap/bootstrap.js"></script>
   <script src="assets/js/jquery.backstretch.min.js"></script>
-  <script src="assets/js/retina-1.1.0.min.js"></script>
+  <!-- <script src="assets/js/retina-1.1.0.min.js"></script> -->
   <script src="assets/plugins/sweetalert2/core.js"></script>
   <script src="assets/plugins/sweetalert2/sweetalert2.all.js"></script>
   <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
