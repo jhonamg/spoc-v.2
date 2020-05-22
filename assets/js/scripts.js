@@ -376,7 +376,7 @@ $(".btn-anadir").on('click',function(){
                           '</select>'+
                         '</div>'+
                         '<div class="input-group btn-group btncargaizq col-6 col-md-6 col-lg-2">'+
-                          '<label for="carga_'+(cant+1)+'" class="btn btn-sm upcarga btn-primary" id="label_carga_'+(cant+1)+'"><i class="bx bx-upload" id="texto_carga_'+(cant+1)+'"> Cargar</i><input id="carga_'+(cant+1)+'" class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="carga_'+(cant+1)+'" hidden></label>'+
+                          '<label for="carga_'+(cant+1)+'" class="btn btn-sm upcarga btn-primary" id="label_carga_'+(cant+1)+'"><i class="bx bx-upload" id="texto_carga_'+(cant+1)+'"> Cargar</i><input id="carga_'+(cant+1)+'" name="carga_'+(cant+1)+'" onClick="btnCargavis(this);" class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" hidden></label>'+
                         '</div>'+
                         '<div class="input-group btn-group btncargader col-6 col-md-6 col-lg-2">'+
                           '<label class="btn btn-sm btn-danger bx bxs-x-circle " for="borrarFila_'+(cant+1)+'"> Borrar<button id="borrarFila_'+(cant+1)+'"  type="button" onclick="borrarFila(this);" hidden></button></label>'+
@@ -391,18 +391,36 @@ $(".btn-anadir").on('click',function(){
 
 // fin añadir visibilidad
 // cambio de boton en visibilidad segunda parte
-$(".btnCarga").on('click',function(){
-    var id = this.id;
-    // console.log(this.value);
-    if(this.value == ''){
+// $(".btnCarga").on('click',function(){
+//     var id = this.id;
+//     console.log(this.value);
+//     if(this.value == ''){
+//       console.log(id);
       
-        $('#label_'+id).removeClass('btn-primary');
-        $('#label_'+id).addClass('btn-outline-secondary');
-        $('#texto_'+id).removeClass('bx-upload');
-        $('#texto_'+id).addClass('bx-refresh');
-        $('#texto_'+id).html(' Remplazar');
-    }
-});
+//         $('#label_'+id).removeClass('btn-primary');
+//         $('#label_'+id).addClass('btn-outline-secondary');
+//         $('#texto_'+id).removeClass('bx-upload');
+//         $('#texto_'+id).addClass('bx-refresh');
+//         $('#texto_'+id).html(' Remplazar');
+//     }
+// });
+
+function btnCargavis(obj) {
+  var id = obj.id;
+  var valor = obj.value;
+  var aux = id.split('_')[1];
+  // console.log('id',id);
+  // console.log('aux', aux);
+  // console.log('ruta',valor);
+  if(valor == ''){
+    $('#label_'+id).removeClass('btn-primary');
+    $('#label_'+id).addClass('btn-outline-secondary');
+    $('#texto_'+id).removeClass('bx-upload');
+    $('#texto_'+id).addClass('bx-refresh');
+    $('#texto_'+id).html(' Remplazar');
+}
+  
+}
 
 
 
