@@ -71,7 +71,7 @@ class ControladorFunciones{
 		$productoEXH = [];
 		$elementoEXH = [];
 		$precioEXH = [];
-		$radio_EXH = []:
+		$radio_EXH = [];
 		for($i = 1; $i <= $totEXH; $i++){
 			$productoEXH += [ "id_produc_prop_exh_$i" => $_POST["id_produc_prop_exh_$i"] ];
 			$elementoEXH += [ "id_elemento_exh_$i" => $_POST["id_elemento_exh_$i"] ];
