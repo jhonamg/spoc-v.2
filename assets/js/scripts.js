@@ -129,11 +129,11 @@ $("#categoriastiendas").change(function(){
                         '</div>'+
                        ' <div class="radio col-2 col-md-3">'+
                           '<div class="form-check form-check-inline">'+
-                            '<input class="form-check-input radio_vis" type="radio" name="radio_vis_'+(index+1)+'" id="radio_vis_'+(index+1)+'" value="SI" onclick="cargaArchivos(this.id);"/>'+
+                            '<input class="form-check-input radio_vis" type="radio" name="radio_vis_'+(index+1)+'" id="radio_vis_'+(index+1)+'" value="SI" onclick="cargaArchivos(this);"/>'+
                             '<label class="form-check-label" for="radio_vis_'+(index+1)+'">Si</label>'+
                           '</div>'+
                           '<div class="form-check form-check-inline">'+
-                            '<input class="form-check-input radio_vis" type="radio" name="radio_vis_'+(index+1)+'" id="radio_vis_'+(index+1)+'" value="NO"  onclick="cargaArchivos(this.id);"/>'+
+                            '<input class="form-check-input radio_vis" type="radio" name="radio_vis_'+(index+1)+'" id="radio_vis_'+(index+1)+'" value="NO"  onclick="cargaArchivos(this);"/>'+
                             '<label class="form-check-label" for="radio_vis_'+(index+1)+'">No</label>'+
                           '</div>'+
                         '</div>'+
@@ -141,13 +141,13 @@ $("#categoriastiendas").change(function(){
                           '<label for="nombreprod" placeholder="Descripcion">'+value['dsc_exhibicion']+' de '+value['dsc_producto']+'</label>'+
                         '</div>'+
                         '<div class="input-group col-2 col-md-4">'+
-                          '<label for="prop_vis_'+(index+1)+'" class="btn btn-sm btn-light" id="label_prop_vis_'+(index+1)+'" hidden>'+
-                            '<i class="bx bx-upload" id="texto_prop_vis_'+(index+1)+'"> Cargar</i>'+
-                            '<input id="prop_vis_'+(index+1)+'" disabled class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="prop_vis_'+(index+1)+'" hidden />'+
-                            '<input type="hidden" name="id_produc_prop_vis_'+(index+1)+'" value="'+value['id_producto']+'">'+
-                            '<input type="hidden" name="id_elemento_vis_'+(index+1)+'" value="'+value['id_exhibicion']+'">'+
+                          '<label for="prop_vis1_'+(index+1)+'" class="btn btn-sm btn-primary" id="label_prop_vis1_'+(index+1)+'" hidden>'+
+                            '<i class="bx bx-upload" id="texto_prop_vis1_'+(index+1)+'"> Cargar</i>'+
+                            '<input id="prop_vis1_'+(index+1)+'" onClick="btncargavis1part(this);" class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="prop_vis_'+(index+1)+'" hidden />'+
                             '</label>'+
                         '</div>'+
+                        '<input type="hidden" name="id_produc_prop_vis_'+(index+1)+'" value="'+value['id_producto']+'">'+
+                        '<input type="hidden" name="id_elemento_vis_'+(index+1)+'" value="'+value['id_exhibicion']+'">'+
                       '</div>');//append
             });//each
         }//success
@@ -314,29 +314,30 @@ jQuery(document).ready(function() {
 
 // añadir en visibilidad
 
-function cargaArchivos(id){
-    var valor = $("#"+id).val();
-    aux = id.split('_')[2];
+function cargaArchivos(obj){
+    var id= obj.id;
+    var valor = obj.value;
+    var aux = id.split('_')[2];
     // console.log('id',id);
     // console.log('valor',valor);
-    // console.log('aux'.aux);
-    if(valor == 'option1'){
-        $('#label_prop_vis_'+aux).removeClass('btn-secondary');
-        $('#label_prop_vis_'+aux).removeClass('btn-light');
-        $('#label_prop_vis_'+aux).addClass('btn-primary');
-    // $('#texto_prop_vis_'+aux).removeClass('bx-refresh');
-        // $('#texto_prop_vis_'+aux).addClass('bx-upload');
-        $("#prop_vis_"+aux).prop('disabled',false);
-        $("#label_prop_vis_"+aux).prop('hidden',false);
+    // console.log('aux',aux);
+    if(valor == 'SI'){
+        // $('#label_prop_vis1_'+aux).removeClass('btn-secondary');
+        // $('#label_prop_vis1_'+aux).removeClass('btn-light');
+        // $('#label_prop_vis1_'+aux).addClass('btn-primary');
+        // $('#texto_prop_vis1_'+aux).removeClass('bx-refresh');
+        // $('#texto_prop_vis1_'+aux).addClass('bx-upload');
+        // $("#prop_vis1_"+aux).prop('disabled',false);
+        $("#label_prop_vis1_"+aux).prop('hidden',false);
     }else{
-        $('#label_prop_vis_'+aux).removeClass('btn-primary');
-        $('#label_prop_vis_'+aux).addClass('btn-light');
-        $("#prop_vis_"+aux).prop('disabled',true);
-        $('#texto_prop_vis_'+aux).html(' Cargar');
-    // $('#texto_prop_vis_'+aux).removeClass('bx-upload');
-        // $('#texto_prop_vis_'+aux).addClass('bx-refresh');
-        $("#prop_vis_"+aux).val();
-        $("#label_prop_vis_"+aux).prop('hidden',true);
+        // $('#label_prop_vis1_'+aux).removeClass('btn-primary');
+        // $('#label_prop_vis1_'+aux).addClass('btn-light');
+        // $("#prop_vis1_"+aux).prop('disabled',true);
+        // $('#texto_prop_vis1_'+aux).html(' Cargar');
+        // $('#texto_prop_vis1_'+aux).removeClass('bx-upload');
+        // $('#texto_prop_vis1_'+aux).addClass('bx-refresh');
+        // $("#prop_vis1_"+aux).val();
+        $("#label_prop_vis1_"+aux).prop('hidden',true);
     }
     // console.log(aux);
 }
@@ -405,6 +406,25 @@ $(".btn-anadir").on('click',function(){
 //     }
 // });
 
+
+function btncargavis1part(obj) {
+  var id = obj.id;
+  var valor = obj.value;
+  // console.log('id',id);
+  // console.log('ruta',valor);
+  if(valor == ''){
+    $('#label_'+id).removeClass('btn-primary');
+    $('#label_'+id).addClass('btn-outline-secondary');
+    $('#texto_'+id).removeClass('bx-upload');
+    $('#texto_'+id).addClass('bx-refresh');
+    $('#texto_'+id).html(' Remplazar');
+}
+  
+}
+
+
+
+
 function btnCargavis(obj) {
   var id = obj.id;
   var valor = obj.value;
@@ -421,6 +441,7 @@ function btnCargavis(obj) {
 }
   
 }
+
 
 
 
