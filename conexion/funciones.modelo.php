@@ -145,6 +145,8 @@ class ModeloFunciones{
 			$query = "INSERT INTO detalle_spoc (id_tx', 'id_usuario', 'id_tienda', 'id_producto', 'id_exhibicion', 'precio', 'foto', 'fecha_carga', 'flg_competencia', 'dsc_competencia', 'flg_existe') VALUES ($idTx, $id_usuario, $tienda, ".$nombrePreTop['id_prod_prec_top_'.$i].", null, ".$datosPreTop['precio_top_'.$i].", null, $fechaActual, 'NO', null, 'SI') "; 
 			// echo $query;
 			$mysqli->real_query($query);
+			$query2 = "SELECT configuraciones_tx.precio, configuraciones_tx.sku_cadena, configuraciones_tx.id_tienda FROM configuraciones_tx WHERE (configuraciones_tx.id_producto = ".$nombrePreTop['id_prod_prec_top_'.$i]." AND configuraciones_tx.id_tienda = $tienda AND configuraciones_tx.precio != ".$datosPreTop['precio_top_'.$i].")";
+			echo $query2;
 		}
 
 		for($i = 1; $i <= $totPrecioTopComp; $i++){
