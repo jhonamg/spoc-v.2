@@ -498,15 +498,22 @@ function cargaArchivosEx(obj){
   // console.log(aux);
 }
 
+// parte 2
 
-
-
-
-
-
-
-
-
+function btncargaex2part(obj) {
+  var id = obj.id;
+  var valor = obj.value;
+  console.log('idboton',id);
+  console.log('rutaboton',valor);
+  if(valor == ''){
+    $('#label_'+id).removeClass('btn-primary');
+    $('#label_'+id).addClass('btn-outline-secondary');
+    $('#texto_'+id).removeClass('bx-upload');
+    $('#texto_'+id).addClass('bx-refresh');
+    $('#texto_'+id).html(' Remplazar');
+}
+  
+}
 
 
 $(".btnCarga2").on('click',function(){
@@ -640,11 +647,11 @@ $(".btn-anadir2").on('click',function(){
               '</div>'+
               '<div class="input-group btn-group btncargaizq col-6 col-lg-3">'+
                   '<label for="carga2_'+(cant+1)+'" class="btn btn-sm upcarga btn-primary" id="label_carga2_'+(cant+1)+'"><i class="bx bx-upload" id="texto_carga2_'+(cant+1)+'"> Cargar</i>'+
-                  '<input id="carga2_'+(cant+1)+'" class="form-control-file btnCarga2" type="file" accept=".jpeg, .jpg, .png" name="carga2_'+(cant+1)+'" hidden />'+
+                  '<input id="carga2_'+(cant+1)+'" onClick="btncargaex2part(this);" class="form-control-file btnCarga2" type="file" accept=".jpeg, .jpg, .png" name="carga2_'+(cant+1)+'" hidden />'+
                       '</label>'+
                 '</div>'+
                 '<div class="input-group btn-group btncargader col-6 col-lg-3">'+
-                  '<label class="btn btn-sm btn-danger bx bxs-x-circle" for="borrarFila2_'+(cant+1)+'">'+
+                  '<label class="btn btn-sm btn-danger bx bxs-x-circle" for="borrarFila2_'+(cant+1)+'"> '+
                     'Borrar<button id="borrarFila2_'+(cant+1)+'" type="button" onclick="borrarFila2(this);" hidden ></button>'+
                   '</label>'+
                 '</div>'+    
