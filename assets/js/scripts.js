@@ -162,33 +162,35 @@ $("#categoriastiendas").change(function(){
             // console.log(respuesta);
             $.each(respuesta,function(index,value){
                 $("#containerProp6stg").append(
-                    '<div class="row">'+
+                    '<div class="row" style="margin-bottom: 0.5rem;">'+
                         '<div class="contador col-1">'+
                             '<label for="">'+(index+1)+'.</label>'+
                         '</div>'+
                         '<div class="radio2 col-3 col-md-3">'+
                             '<div class= "form-check form-check-inline" >'+
-                                '<input class= "form-check-input radio2_vis" type= "radio" name= "radio_EXH_'+(index+1)+'" id= "radio_EXH_'+(index+1)+'" value= "SI" >'+
+                                '<input class= "form-check-input radio2_vis" type= "radio" name= "radio_EXH_'+(index+1)+'" id= "radio_EXH_'+(index+1)+'" value= "SI" onClick="cargaArchivosEx(this);">'+
                                 '<label class= "form-check-label" for= "radio_EXH_'+(index+1)+'" >Si</label>'+
                             '</div> '+
                             '<div class= "form-check form-check-inline" >'+
-                                '<input class= "form-check-input radio_EXH" type= "radio" name= "radio_EXH_'+(index+1)+'" id= "radio_EXH_'+(index+1)+'" value= "NO" >'+
+                                '<input class= "form-check-input radio_EXH" type= "radio" name= "radio_EXH_'+(index+1)+'" id= "radio_EXH_'+(index+1)+'" value= "NO" onClick="cargaArchivosEx(this);">'+
                                 '<label class= "form-check-label" for= "radio2_vis_'+(index+1)+'" >No</label>'+
                             '</div> '+
                         '</div>'+
                             '<label for="my-input" class="col-7 col-sm-4 txelem">'+value['dsc_exhibicion']+' de '+value['dsc_producto']+'</label>'+
-                        '<div class="input-group col-7 col-md-3">'+
-                            '<div class="input-group-prepend suiche21">'+
-                                '<span class="input-group-text " id="my-addon">S/</span>'+
+                          '<div class="container col-7 col-md-3" style="margin: 0rem 0rem 0rem 3rem;">'+
+                            '<div class="input-group">'+
+                              '<div class="input-group-prepend suiche21">'+
+                                  '<span class="input-group-text " id="my-addon">S/</span>'+
+                              '</div>'+
+                              '<input class="form-control suiche21" type="text" id="precio_prop_'+(index+1)+'" name="precio_prop_'+(index+1)+'" placeholder="Precio" aria-label="Recipients " aria-describedby="my-addon">'+
                             '</div>'+
-                            '<input class="form-control suiche21" type="text" id="precio_prop_'+(index+1)+'" name="precio_prop_'+(index+1)+'" placeholder="Precio" aria-label="Recipients " aria-describedby="my-addon">'+
-                        '</div>'+
+                          '</div>'+
                        ' <div class="input-group col-2 col-md-2">'+
-                           ' <label for="prop_EXH_'+(index+1)+'" class="btn btn-sm btn-light" id="label2_prop_EXH_'+(index+1)+'" hidden><i class="bx bx-upload" id="texto2_prop_EXH_'+(index+1)+'"> Cargar</i><input id="prop2_EXH_'+(index+1)+'" class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="prop2_EXH_'+(index+1)+'" hidden>'+
-                                '<input type="hidden" name="id_produc_prop_exh_'+(index+1)+'" value="'+value['id_producto']+'">'+
-                                '<input type="hidden" name="id_elemento_exh_'+(index+1)+'" value="'+value['id_exhibicion']+'">'+
+                           ' <label for="prop2_EXH_'+(index+1)+'" class="btn btn-sm btn-primary" id="label_prop2_EXH_'+(index+1)+'" hidden><i class="bx bx-upload" id="texto_prop2_EXH_'+(index+1)+'"> Cargar</i><input id="prop2_EXH_'+(index+1)+'" onClick="btncargaex1part(this);" class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="prop2_EXH_'+(index+1)+'" hidden>'+
                            '</label>'+
                         '</div>'+
+                        '<input type="hidden" name="id_produc_prop_exh_'+(index+1)+'" value="'+value['id_producto']+'">'+
+                        '<input type="hidden" name="id_elemento_exh_'+(index+1)+'" value="'+value['id_exhibicion']+'">'+
                     '</div>');//append
             });//each
         }//success
@@ -428,7 +430,7 @@ function btncargavis1part(obj) {
 function btnCargavis(obj) {
   var id = obj.id;
   var valor = obj.value;
-  var aux = id.split('_')[1];
+  // var aux = id.split('_')[1];
   // console.log('id',id);
   // console.log('aux', aux);
   // console.log('ruta',valor);
@@ -451,6 +453,61 @@ function btnCargavis(obj) {
 
 
 // exhibiciones
+// parte1
+
+function btncargaex1part(obj) {
+  var id = obj.id;
+  var valor = obj.value;
+  console.log('idboton',id);
+  console.log('rutaboton',valor);
+  if(valor == ''){
+    $('#label_'+id).removeClass('btn-primary');
+    $('#label_'+id).addClass('btn-outline-secondary');
+    $('#texto_'+id).removeClass('bx-upload');
+    $('#texto_'+id).addClass('bx-refresh');
+    $('#texto_'+id).html(' Remplazar');
+}
+  
+}
+
+function cargaArchivosEx(obj){
+  var id= obj.id;
+  var valor = obj.value;
+  var aux = id.split('_')[2];
+  console.log('idradio',id);
+  console.log('valorradio',valor);
+  console.log('auxradio',aux);
+  if(valor == 'SI'){
+      // $('#label_prop_vis1_'+aux).removeClass('btn-secondary');
+      // $('#label_prop_vis1_'+aux).removeClass('btn-light');
+      // $('#label_prop_vis1_'+aux).addClass('btn-primary');
+      // $('#texto_prop_vis1_'+aux).removeClass('bx-refresh');
+      // $('#texto_prop_vis1_'+aux).addClass('bx-upload');
+      // $("#prop_vis1_"+aux).prop('disabled',false);
+      $("#label_prop2_EXH_"+aux).prop('hidden',false);
+  }else{
+      // $('#label_prop_vis1_'+aux).removeClass('btn-primary');
+      // $('#label_prop_vis1_'+aux).addClass('btn-light');
+      // $("#prop_vis1_"+aux).prop('disabled',true);
+      // $('#texto_prop_vis1_'+aux).html(' Cargar');
+      // $('#texto_prop_vis1_'+aux).removeClass('bx-upload');
+      // $('#texto_prop_vis1_'+aux).addClass('bx-refresh');
+      // $("#prop_vis1_"+aux).val();
+      $("#label_prop2_EXH_"+aux).prop('hidden',true);
+  }
+  // console.log(aux);
+}
+
+
+
+
+
+
+
+
+
+
+
 
 $(".btnCarga2").on('click',function(){
   var id = this.id;
