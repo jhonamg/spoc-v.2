@@ -78,9 +78,9 @@ $("#categoriastiendas").change(function(){
                             '<div class="input-group-prepend">'+
                               '<span class="input-group-text">S/</span>'+
                             '</div>'+
-                            '<input type="hidden" name="id_prod_prec_top_'+(index+1)+'" value="'+value['id_producto']+'">'+
-                            '<input type="text" class="form-control numero" id="precio_top_'+(index+1)+'" name="precio_top_'+(index+1)+'" maxlength="10" placeholder="Precio" aria-label="Amount (to the nearest dollar)">'+
+                            '<input type="text" class="form-control numero" id="precio_top_'+(index+1)+'" name="precio_top_'+(index+1)+'" maxlength="10" placeholder="Precio" aria-label="Amount (to the nearest dollar)" onchange="formateonum(this);" >'+
                           '</div>'+
+                          '<input type="hidden" name="id_prod_prec_top_'+(index+1)+'" value="'+value['id_producto']+'">'+
                       '</div>');//append
             });//each
         }//success
@@ -780,3 +780,79 @@ $("#formSpoc").submit(function(e){
   
 // });
 ///////////////////////////////////////////////////////////////////
+
+// (function($){
+//   	/**
+// 	 * The (modified) excellent number formatting method from PHPJS.org.
+// 	 * http://phpjs.org/functions/number_format/
+// 	 *
+// 	 * @modified by Sam Sehnert (teamdf.com)
+// 	 *	- don't redefine dec_point, thousands_sep... just overwrite with defaults.
+// 	 *	- don't redefine decimals, just overwrite as numeric.
+// 	 *	- Generate regex for normalizing pre-formatted numbers.
+// 	 *
+// 	 * @param float number			: The number you wish to format, or TRUE to use the text contents
+// 	 *								  of the element as the number. Please note that this won't work for
+// 	 *								  elements which have child nodes with text content.
+// 	 * @param int decimals			: The number of decimal places that should be displayed. Defaults to 0.
+// 	 * @param string dec_point		: The character to use as a decimal point. Defaults to '.'.
+// 	 * @param string thousands_sep	: The character to use as a thousands separator. Defaults to ','.
+// 	 *
+// 	 * @return string : The formatted number as a string.
+// 	 */
+// 	$.number = function( number, decimals, dec_point, thousands_sep ){
+// 		// Set the default values here, instead so we can use them in the replace below.
+// 		thousands_sep	= (typeof thousands_sep === 'undefined') ? ',' : thousands_sep;
+// 		dec_point		= (typeof dec_point === 'undefined') ? '.' : dec_point;
+// 		decimals		= !isFinite(+decimals) ? 0 : Math.abs(decimals);
+		
+// 		// Work out the unicode representation for the decimal place and thousand sep.	
+// 		var u_dec = ('\\u'+('0000'+(dec_point.charCodeAt(0).toString(16))).slice(-4));
+// 		var u_sep = ('\\u'+('0000'+(thousands_sep.charCodeAt(0).toString(16))).slice(-4));
+		
+// 		// Fix the number, so that it's an actual number.
+// 		number = (number + '')
+// 			.replace('\.', dec_point) // because the number if passed in as a float (having . as decimal point per definition) we need to replace this with the passed in decimal point character
+// 			.replace(new RegExp(u_sep,'g'),'')
+// 			.replace(new RegExp(u_dec,'g'),'.')
+// 			.replace(new RegExp('[^0-9+\-Ee.]','g'),'');
+		
+// 		var n = !isFinite(+number) ? 0 : +number,
+// 		    s = '',
+// 		    toFixedFix = function (n, decimals) {
+// 		        var k = Math.pow(10, decimals);
+// 		        return '' + Math.round(n * k) / k;
+// 		    };
+		
+// 		// Fix for IE parseFloat(0.55).toFixed(0) = 0;
+// 		s = (decimals ? toFixedFix(n, decimals) : '' + Math.round(n)).split('.');
+// 		if (s[0].length > 3) {
+// 		    s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, thousands_sep);
+// 		}
+// 		if ((s[1] || '').length < decimals) {
+// 		    s[1] = s[1] || '';
+// 		    s[1] += new Array(decimals - s[1].length + 1).join('0');
+// 		}
+// 		return s.join(dec_point);
+// 	}
+	
+// })(jQuery);
+
+
+
+
+
+function formateonum(obj){
+  var id= obj.id;
+  // var valor= obj.value;
+  $("#"+id).number(true,2);
+  // $("#"+id).val()=$("#"+id).number($("#"+id),2);
+  // var nanaco= $("#"+id).val();
+  // $("#"+id)
+  // $("#"+id).attr('value',newvalor);
+  // $("#"+id).val(newvalor);
+  // console.log('id',id);
+  // console.log('valor',valor);
+  // console.log('newvalor',newvalor);
+  // console.log('nanaco',nanaco);
+}
