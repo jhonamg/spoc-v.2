@@ -1,14 +1,18 @@
 <?php
 @session_start();
-
+$dir_subida = 'assets/img/';
+$fecha = date('Y-m-d');
+$hora = date('H:i:s');
+$fechaActual = $fecha;
 $nombre=$_POST['a11'];
 $apellido=$_POST['a21'];
 // $foto=$_FILES['a31'];
-$pdf=$_FILES['a41']['name'];
+$pdf=$_FILES['a31']['name'];
+$datosuser= $dir_subida.$nombre.'_'.$fechaActual.'.jpg'; ///<---AQUI ES LA VARIABLE QUE RENOMBRA EL ARCHIVO .JPG///
 
 // ejeplo de subida de file//////////////////////////////
 
-$dir_subida = 'assets/img/';
+
 
 $nombre_archivo= $_FILES['a31']['name'];
 
@@ -19,7 +23,7 @@ echo '<pre>';
 
       if($_FILES['a31']['size']>10000000){
         echo"solo se permiten archivos menores a 10MB.";
-        echo"<a href='pruebadefile.php'>VOLVER</a>";
+        // echo"<a href='pruebadefile.php'>VOLVER</a>";
         exit;
     }
 
@@ -27,6 +31,7 @@ echo '<pre>';
 
 
 if (move_uploaded_file($_FILES['a31']['tmp_name'], $fichero_subido)) {
+    rename ( $fichero_subido , $datosuser );                              /////<----AQUI LA FUNCION QUE RENOMBRA EL ARCHIVO IMG EN LA BD.
     echo "El fichero es válido y se subió con éxito.\n";
 } else {
     echo "¡Posible ataque de subida de ficheros!\n";
@@ -34,16 +39,17 @@ if (move_uploaded_file($_FILES['a31']['tmp_name'], $fichero_subido)) {
 
 echo 'Más información de depuración:';
 print_r($_FILES);
+
 /////////////////////////////////////////////////////////////////
 
-if (is_uploaded_file($_FILES['a31']['tmp_name'])) {
-    echo "Archivo ". $_FILES['a31']['name'] ." subido con éxtio.\n";
-    echo "Monstrar contenido\n";
-    // readfile($_FILES['a31']['tmp_name']);
- } else {
-    echo "Posible ataque del archivo subido: ";
-    echo "nombre del archivo '". $_FILES['a31']['tmp_name'] . "'.";
- }
+// if (is_uploaded_file($_FILES['a31']['tmp_name'])) {
+//     echo "Archivo ". $_FILES['a31']['name'] ." subido con éxtio.\n";
+//     echo "Monstrar contenido\n";
+//     // readfile($_FILES['a31']['tmp_name']);
+//  } else {
+//     echo "Posible ataque del archivo subido: ";
+//     echo "nombre del archivo '". $_FILES['a31']['tmp_name'] . "'.";
+//  }
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -55,9 +61,9 @@ if (is_uploaded_file($_FILES['a31']['tmp_name'])) {
 // $id_usuario = 'user1';
 $mysqli = mysqli_connect('localhost', 'root', '', 'prueba_bd');
 if (!$mysqli) {
-    echo "Error: Unable to connect to MySQL." . PHP_EOL;
-    echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
-    echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
+    echo "Error: Unable to connect to MySQL.";
+    echo "Debugging errno: " . mysqli_connect_errno();
+    echo "Debugging error: " . mysqli_connect_error();
     exit;
 }
 // if ($mysqli->connect_errno) {
@@ -65,7 +71,7 @@ if (!$mysqli) {
 
 // }
 
-$query="INSERT INTO `tablaprueba`(`nombre_usuario`, `apellido_usuario`, `foto_img`, `pdf_img`) VALUES ('$nombre', '$apellido', '$fichero_subido',  '$pdf')";
+$query="INSERT INTO `tablaprueba`(`nombre_usuario`, `apellido_usuario`, `foto_img`, `pdf_img`) VALUES ('$nombre', '$apellido', '$fichero_subido',  '$datosuser')";
 
 // $query = "SELECT id_tx FROM detalle_spoc ORDER BY id_tx DESC LIMIT 1"; 
 echo $query;
