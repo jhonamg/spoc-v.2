@@ -182,7 +182,7 @@ $("#categoriastiendas").change(function(){
                               '<div class="input-group-prepend suiche21">'+
                                   '<span class="input-group-text " id="my-addon">S/</span>'+
                               '</div>'+
-                              '<input class="form-control suiche21" type="text" id="precio_prop_'+(index+1)+'" name="precio_prop_'+(index+1)+'" placeholder="Precio" aria-label="Recipients " aria-describedby="my-addon" onchange="formateonum(this);">'+
+                              '<input class="form-control suiche21" type="text" id="precio_prop_'+(index+1)+'" name="precio_prop_'+(index+1)+'" placeholder="Precio" aria-label="Recipients " aria-describedby="my-addon" onchange="formateonum(this);" hidden>'+
                             '</div>'+
                           '</div>'+
                        ' <div class="input-group col-2 col-md-2 botoncargaEXH1">'+
@@ -242,7 +242,7 @@ jQuery(document).ready(function() {
     	var progress_line = $(this).parents('.f1').find('.f1-progress-line');
     	
     	// fields validation
-    	parent_fieldset.find('input[type="text"], input[type="password"], textarea, select').each(function() {
+    	parent_fieldset.find('input[type="password"], select').each(function() {
     		if( $(this).val() == "" ) {
     			$(this).addClass('input-error');
     			next_step = false;
@@ -250,7 +250,19 @@ jQuery(document).ready(function() {
     		else {
     			$(this).removeClass('input-error');
     		}
-    	});
+      });
+      parent_fieldset.find('input[type="text"], textarea').each(function() {
+    		if( ($(this).attr('hidden',false) || $(this).prop(hidden)) && $(this).val()=='' ) {
+    			$(this).addClass('input-error');
+    			next_step = false;
+    		}
+    		else {
+    			$(this).removeClass('input-error');
+    		}
+      });
+
+
+
     	// fields validation
       
       // parent_fieldset.find('input[type="text"], input[type="password"], textarea').each(function() {
@@ -485,6 +497,7 @@ function cargaArchivosEx(obj){
       // $('#texto_prop_vis1_'+aux).addClass('bx-upload');
       // $("#prop_vis1_"+aux).prop('disabled',false);
       $("#div_precioEXH_"+aux).prop('hidden',false);
+      $("#precio_prop_"+aux).prop('hidden',false);
       $("#label_prop2_EXH_"+aux).prop('hidden',false);
   }else{
       // $('#label_prop_vis1_'+aux).removeClass('btn-primary');
@@ -495,6 +508,7 @@ function cargaArchivosEx(obj){
       // $('#texto_prop_vis1_'+aux).addClass('bx-refresh');
       // $("#prop_vis1_"+aux).val();
       $("#div_precioEXH_"+aux).prop('hidden',true);
+      $("#precio_prop_"+aux).prop('hidden',true);
       $("#label_prop2_EXH_"+aux).prop('hidden',true);
   }
   // console.log(aux);
