@@ -89,7 +89,7 @@ class ControladorFunciones{
 			//falta foto
 		}
 		$tienda = $_POST['listatiendas'];
-		$respuesta = ModeloFunciones::mdlGuardar($tienda, $fechaActual, $totPrecioTop, $totPrecioTopComp, $totEDV, $totEDVComp, $totEXH, $totEXHComp, $datosPreTop, $nombrePreTop, $datosPreTopComp, $nombrePreTopComp, $datosEDV, $productoEDVComp, $elementoEDVComp, $productoEXH, $elementoEXH, $precioEXH, $productoEXHComp, $elementoEXHComp, $precioEXHComp);
+		$respuesta = ModeloFunciones::mdlGuardar($tienda, $fechaActual, $totPrecioTop, $totPrecioTopComp, $totEDV, $totEDVComp, $totEXH, $totEXHComp, $datosPreTop, $nombrePreTop, $datosPreTopComp, $nombrePreTopComp, $datosEDV, $productoEDVComp, $elementoEDVComp, $productoEXH, $elementoEXH, $precioEXH, $radio_EXH, $productoEXHComp, $elementoEXHComp, $precioEXHComp);
 		return $respuesta;
 	}//function ctrGuardar
 }//class ControladorFunciones

@@ -720,17 +720,17 @@ $("#formSpoc").submit(function(e){
     $("#totEXH").val(length5);
      var length6 = $(".bloqueform3 .filit2").length;
     $("#totEXHComp").val(length6);
-    console.log('length1',length1);
-    $.ajax({
-        method:'POST',
-        url: 'conexion/funciones.php',
-        dataType: 'json',
-        data:  $("#formSpoc").serialize(),
-        success : function(respuesta){
+    // console.log('length1',length1);
+    // $.ajax({
+    //     method:'POST',
+    //     url: 'conexion/funciones.php',
+    //     dataType: 'json',
+    //     data:  $("#formSpoc").serialize(),
+    //     success : function(respuesta){
 
-        }//success
-    });//ajax
-    e.preventDefault();
+    //     }//success
+    // });//ajax
+    // e.preventDefault();
 });
 
 ////////////////////////////////////////////////////////////////

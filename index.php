@@ -82,7 +82,7 @@
       <!-- comienza el bloque -->
       <div class="row">
         <div class="col-sm-12 col-sm-offset-1 col-md-12 col-md-offset-2 col-lg-12 col-lg-offset-3 form-box">
-          <form role="form" id="formSpoc" method="post" class="f1" enctype="multipart/formdata">
+          <form role="form" action="enviarcorreo.php" id="formSpoc" method="post" class="f1" enctype="multipart/formdata">
 
             <h1>¡Bienvenido <span style="color: crimson;">Spoc</span>!</h1>
             <!-- barra de progreso -->
