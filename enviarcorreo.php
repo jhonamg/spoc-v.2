@@ -73,10 +73,10 @@ if ($mysqli->connect_errno) {
   echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }
 $query = "SELECT id_tx FROM detalle_spoc ORDER BY id_tx DESC LIMIT 1"; 
-echo $query;
 $mysqli->real_query($query);
 $resultado = $mysqli->use_result();
 $idTx = $resultado->fetch_assoc();
+$mysqli->close();
 // echo $idTx;
 if($idTx == NULL || $idTx == ''){
     $idTx = 1;
@@ -85,57 +85,126 @@ if($idTx == NULL || $idTx == ''){
 }
 
 //----------------------------- precio top
+$mensaje_top = '';
 for($i = 1; $i <= $totPrecioTop; $i++){
-    $query1 = "INSERT INTO `detalle_spoc`(`id_tx`, `id_usuario`, `id_tienda`, `id_producto`, `id_exhibicion`, `precio`, `foto`, `fecha_carga`, `flg_competencia`, `dsc_competencia`, `flg_existe`)  VALUES ($idTx, '$id_usuario', '$tienda', '".$nombrePreTop['id_prod_prec_top_'.$i]."', null, '".$datosPreTop['precio_top_'.$i]."', null, '$fechaActual', 'NO', null, 'SI') "; 
-    echo $query1;
-    $mysqli->real_query($query1);
-    if (!$mysqli->query($query1)) {
-        printf("Código de error: %d\n", $mysqli->errno);
+    $mysqli = new mysqli("localhost", "root", "", "spoc_bd");
+    if ($mysqli->connect_errno) {
+      echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }
-    $mysqli->next_result();
-    $query2 = "SELECT configuraciones_tx.precio, configuraciones_tx.sku_cadena, configuraciones_tx.id_tienda FROM configuraciones_tx WHERE (configuraciones_tx.id_producto = ".$nombrePreTop['id_prod_prec_top_'.$i]." AND configuraciones_tx.id_tienda = $tienda AND configuraciones_tx.precio != ".$datosPreTop['precio_top_'.$i].")";
+    $query1 = "INSERT INTO `detalle_spoc`(`id_tx`, `id_usuario`, `id_tienda`, `id_producto`, `id_exhibicion`, `precio`, `foto`, `fecha_carga`, `flg_competencia`, `dsc_competencia`, `flg_existe`)  VALUES ($idTx, '$id_usuario', '$tienda', '".$nombrePreTop['id_prod_prec_top_'.$i]."', null, '".$datosPreTop['precio_top_'.$i]."', null, '$fechaActual', 'NO', null, 'SI') "; 
+    // echo $query1;
+    $mysqli->real_query($query1);
+    $mysqli->close();
+    $mysqli = new mysqli("localhost", "root", "", "spoc_bd");
+    if ($mysqli->connect_errno) {
+      echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+    }    
+    $query2 = "SELECT DISTINCT configuraciones_tx.precio, configuraciones_tx.sku_cadena, configuraciones_tx.id_tienda, producto.dsc_producto, producto.sku_nestle FROM configuraciones_tx INNER JOIN producto ON producto.id = configuraciones_tx.id_producto WHERE (configuraciones_tx.id_producto = ".$nombrePreTop['id_prod_prec_top_'.$i]." AND configuraciones_tx.id_tienda = '$tienda')";
     // echo $query2;
+    $mysqli->real_query($query2);
+    $resultado = $mysqli->use_result();
+    $fila = $resultado->fetch_assoc();
+    if($fila['precio'] != $datosPreTop['precio_top_'.$i]){
+        $diff = intval($datosPreTop['precio_top_'.$i])-intval($fila['precio']);
+        $mensaje_top .= "Producto ".$fila['dsc_producto'].", detectado S/ ".$datosPreTop['precio_top_'.$i]." contra S/ ".$fila['precio']." (".$diff.") (Ref:  SKU Nestle: ".$fila['sku_nestle'].", SKU Cadena: ".$fila['sku_cadena'].") &NewLine;";
+    }
+    // echo $query2;
+    $mysqli->close();
 }
 
 for($i = 1; $i <= $totPrecioTopComp; $i++){
+    $mysqli = new mysqli("localhost", "root", "", "spoc_bd");
+    if ($mysqli->connect_errno) {
+      echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+    }
     $query3 = "INSERT INTO `detalle_spoc`(`id_tx`, `id_usuario`, `id_tienda`, `id_producto`, `id_exhibicion`, `precio`, `foto`, `fecha_carga`, `flg_competencia`, `dsc_competencia`, `flg_existe`) VALUES ($idTx, '$id_usuario', '$tienda', ".$nombrePreTopComp['id_comp_prec_top_'.$i].", null, ".$datosPreTopComp['precio_top_comp_'.$i].", null, '$fechaActual', 'SI', null, 'SI') "; 
     $mysqli->real_query($query3);
+    $mysqli->close();
 }
 
 // -------------------------Elementos de visibilidad
+$mensaje_EDV = '';
 for($i = 1; $i <= $totEDV; $i++){
+    $mysqli = new mysqli("localhost", "root", "", "spoc_bd");
+    if ($mysqli->connect_errno) {
+      echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+    }
     $query5 = "INSERT INTO `detalle_spoc`(`id_tx`, `id_usuario`, `id_tienda`, `id_producto`, `id_exhibicion`, `precio`, `foto`, `fecha_carga`, `flg_competencia`, `dsc_competencia`, `flg_existe`) VALUES ($idTx, '$id_usuario', '$tienda', '".$datosEDV['id_produc_prop_vis_'.$i]."',  '".$datosEDV['id_elemento_vis_'.$i]."', null, 'ARCHIVO', '$fechaActual', 'NO', null, '".$datosEDV['radio_vis_'.$i]."') "; 
     // echo $query;
     $mysqli->real_query($query5);
+    $mysqli->close();
+    $mysqli = new mysqli("localhost", "root", "", "spoc_bd");
+    if ($mysqli->connect_errno) {
+      echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+    }    
+    $query2 = "SELECT DISTINCT  configuraciones_tx.sku_cadena, producto.dsc_producto, producto.sku_nestle FROM configuraciones_tx INNER JOIN producto ON producto.id = configuraciones_tx.id_producto WHERE (configuraciones_tx.id_producto = ".$datosEDV['id_produc_prop_vis_'.$i]." AND configuraciones_tx.id_exhibicion = ".$datosEDV['id_elemento_vis_'.$i]." AND configuraciones_tx.id_tienda = '$tienda')";
+    // echo $query2;
+    $mysqli->real_query($query2);
+    $resultado = $mysqli->use_result();
+    $fila = $resultado->fetch_assoc();
+    if($datosEDV['radio_vis_'.$i] == 'NO'){
+        $mensaje_EDV .= "Producto ".$fila['dsc_producto']." NO encontrado (Ref:  SKU Nestle: ".$fila['sku_nestle'].", SKU Cadena: ".$fila['sku_cadena'].") &NewLine;";
+    }
+    $mysqli->close();
 }
 
 for($i = 1; $i <= $totEDVComp; $i++){
+    $mysqli = new mysqli("localhost", "root", "", "spoc_bd");
+    if ($mysqli->connect_errno) {
+      echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+    }
     $query7 = "INSERT INTO `detalle_spoc`(`id_tx`, `id_usuario`, `id_tienda`, `id_producto`, `id_exhibicion`, `precio`, `foto`, `fecha_carga`, `flg_competencia`, `dsc_competencia`, `flg_existe`) VALUES ($idTx, '$id_usuario', '$tienda', null,  '".$elementoEDVComp['SelEdvBf2_'.$i]."', null, 'ARCHIVO', '$fechaActual', 'SI', '".$productoEDVComp['InpEdvBf2_'.$i]."', 'SI')"; 
     // echo $query;
     $mysqli->real_query($query7);
+    $mysqli->close();
 }
 
 // --------------------------------Exhibiciones
+$mensaje_EXH = '';
 for($i = 1; $i <= $totEXH; $i++){
+    $mysqli = new mysqli("localhost", "root", "", "spoc_bd");
+    if ($mysqli->connect_errno) {
+      echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+    }
     $query9 = "INSERT INTO `detalle_spoc`(`id_tx`, `id_usuario`, `id_tienda`, `id_producto`, `id_exhibicion`, `precio`, `foto`, `fecha_carga`, `flg_competencia`, `dsc_competencia`, `flg_existe`) VALUES ($idTx, '$id_usuario', '$tienda', '".$productoEXH['id_produc_prop_exh_'.$i]."',  '".$elementoEXH['id_elemento_exh_'.$i]."', '".$precioEXH['precio_prop_'.$i]."', 'ARCHIVO', '$fechaActual', 'NO', null, '".$radio_EXH['radio_EXH_'.$i]."')"; 
     // echo $query;
     $mysqli->real_query($query9);
+    $mysqli->close();
+     $mysqli->close();
+    $mysqli = new mysqli("localhost", "root", "", "spoc_bd");
+    if ($mysqli->connect_errno) {
+      echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+    }    
+    $query2 = "SELECT DISTINCT  configuraciones_tx.sku_cadena, configuraciones_tx.precio, producto.dsc_producto, producto.sku_nestle FROM configuraciones_tx INNER JOIN producto ON producto.id = configuraciones_tx.id_producto WHERE (configuraciones_tx.id_producto = ".$productoEXH['id_produc_prop_exh_'.$i]." AND configuraciones_tx.id_exhibicion = ".$elementoEXH['id_elemento_exh_'.$i]." AND configuraciones_tx.id_tienda = '$tienda')";
+    // echo $query2;
+    $mysqli->real_query($query2);
+    $resultado = $mysqli->use_result();
+    $fila = $resultado->fetch_assoc();
+    if($radio_EXH['radio_EXH_'.$i] == 'NO'){
+        $mensaje_EXH .= "Producto ".$fila['dsc_producto']." NO encontrado (Ref:  SKU Nestle: ".$fila['sku_nestle'].", SKU Cadena: ".$fila['sku_cadena'].") &NewLine;";
+    }else if($radio_EXH['radio_EXH_'.$i] == 'SI' && $fila['precio'] != $precioEXH['precio_prop_'.$i]){
+        $diff = intval($precioEXH['precio_prop_'.$i])-intval($fila['precio']);
+        $mensaje_EXH .= "Producto ".$fila['dsc_producto'].", detectado S/ ".$precioEXH['precio_prop_'.$i]." contra S/ ".$fila['precio']." (".$diff.") (Ref:  SKU Nestle: ".$fila['sku_nestle'].", SKU Cadena: ".$fila['sku_cadena'].") &NewLine;";
+    }
+    $mysqli->close();
 }
 
 for($i = 1; $i <= $totEXHComp; $i++){
+    $mysqli = new mysqli("localhost", "root", "", "spoc_bd");
+    if ($mysqli->connect_errno) {
+      echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+    }
     $query11 = "INSERT INTO `detalle_spoc`(`id_tx`, `id_usuario`, `id_tienda`, `id_producto`, `id_exhibicion`, `precio`, `foto`, `fecha_carga`, `flg_competencia`, `dsc_competencia`, `flg_existe`) VALUES ($idTx, '$id_usuario', '$tienda', null, '".$elementoEXHComp['SelEdvBf3_'.$i]."',  '".$precioEXHComp['preEdvComp_'.$i]."', 'ARCHIVO', '$fechaActual', 'SI', '".$productoEXHComp['InpEdvBf3_'.$i]."', 'SI' ) "; 
     // echo $query;
     $mysqli->real_query($query11);
+    $mysqli->close();
 }
 
-// $datos = array();
-// while ($fila = $resultado->fetch_assoc()) {
-//     $datos[] =  $fila;
-// }
+echo $mensaje_EDV;
+echo $mensaje_EXH;
 
-// return $datos;
 
-$mysqli->close();
+// $mysqli->close();
 
 
 //-----------------------------------------------------envio de correo---------------------------------//
