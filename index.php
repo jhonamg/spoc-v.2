@@ -518,7 +518,7 @@
                       <div class="input-group-prepend suiche21">
                         <span class="input-group-text " id="my-addon">S/</span>
                       </div>
-                      <input class="form-control suiche21" type="text" id="preEdvComp_1" name="preEdvComp_1" placeholder="Precio" aria-label="Recipient's " aria-describedby="my-addon">
+                      <input class="form-control suiche21" type="text" id="preEdvComp_1" name="preEdvComp_1" placeholder="Precio" aria-label="Recipient's " aria-describedby="my-addon" onchange="formateonum(this);">
                     </div>
 
                     <div class="input-group btn-group btncargaizq col-6 col-lg-3">
