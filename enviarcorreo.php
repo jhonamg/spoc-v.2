@@ -128,7 +128,7 @@ for($i = 1; $i <= $totPrecioTopComp; $i++){
     if ($mysqli->connect_errno) {
       echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }    
-    $query2 = "SELECT  dsc_competencia  WHERE id = ".$nombrePreTopComp['id_comp_prec_top_'.$i];
+    $query2 = "SELECT  dsc_competencia FROM competencia  WHERE id = ".$nombrePreTopComp['id_comp_prec_top_'.$i];
     $mysqli->real_query($query2);
     $resultado = $mysqli->use_result();
     $fila = $resultado->fetch_assoc();
@@ -179,11 +179,11 @@ for($i = 1; $i <= $totEDVComp; $i++){
     if ($mysqli->connect_errno) {
       echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }    
-    $query2 = "SELECT  dsc_competencia  WHERE id = ".$nombrePreTopComp['id_comp_prec_top_'.$i];
+    $query2 = "SELECT  dsc_exhibicion FROM exhibiciones WHERE id = ".$elementoEDVComp['SelEdvBf2_'.$i];
     $mysqli->real_query($query2);
     $resultado = $mysqli->use_result();
     $fila = $resultado->fetch_assoc();
-    $mensaje_EDV_comp .= "Producto ".$fila['dsc_competencia'].", (Ref. ) </br>";
+    $mensaje_EDV_comp .= "Detectado ".$fila['dsc_exhibicion']." de ".$productoEDVComp['InpEdvBf2_'.$i].", (Ref. <b>nombre de imagen</b>) </br>";
     $mysqli->close();
 }
 
@@ -216,6 +216,7 @@ for($i = 1; $i <= $totEXH; $i++){
     $mysqli->close();
 }
 
+$mensaje_EXH_comp = '';
 for($i = 1; $i <= $totEXHComp; $i++){
     $mysqli = new mysqli("localhost", "root", "", "spoc_bd");
     if ($mysqli->connect_errno) {
@@ -225,11 +226,22 @@ for($i = 1; $i <= $totEXHComp; $i++){
     // echo $query;
     $mysqli->real_query($query11);
     $mysqli->close();
+
+    //----------------------------correo
+
+    $mysqli = new mysqli("localhost", "root", "", "spoc_bd");
+    if ($mysqli->connect_errno) {
+      echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+    }    
+     $query2 = "SELECT  dsc_exhibicion FROM exhibiciones WHERE id = ".$elementoEXHComp['SelEdvBf3_'.$i];
+    $mysqli->real_query($query2);
+    $resultado = $mysqli->use_result();
+    $fila = $resultado->fetch_assoc();
+    $mensaje_EXH_comp .=  "Detectado ".$fila['dsc_exhibicion']." de ".$productoEXHComp['InpEdvBf3_'.$i].", precio S/ ".$precioEXHComp['preEdvComp_'.$i].", (Ref. <b>nombre de imagen</b>) </br>";
+    $mysqli->close();
+
+
 }
-
-
-// $mysqli->close();
-
 
 //-----------------------------------------------------envio de correo---------------------------------//
 
@@ -257,13 +269,13 @@ require 'PHPMailer/SMTP.php';
 
 $mensaje = '';
 if($mensaje_top != ''){
-    $mensaje = "PRECIOS TOP: </br>".$mensaje_top."</br>";
+    $mensaje .= "PRECIOS TOP: </br>".$mensaje_top."</br>";
 }
 if($mensaje_EDV != ''){
-    $mensaje = "VISIBILIDAD: </br>".$mensaje_EDV."</br>";
+    $mensaje .= "VISIBILIDAD: </br>".$mensaje_EDV."</br>";
 }
 if($mensaje_EXH != ''){
-    $mensaje = "EXHIBICIONES: </br>".$mensaje_EXH."</br>";
+    $mensaje .= "EXHIBICIONES: </br>".$mensaje_EXH."</br>";
 }
 
 $subbject= "ALERTAS - ".$_POST["listatiendas"];
@@ -316,13 +328,13 @@ try {
 
 $mensaje2 = '';
 if($mensaje_top_comp != ''){
-    $mensaje2 = "PRECIOS TOP: </br>".$mensaje_top."</br>";
+    $mensaje2 .= "PRECIOS COMPETENCIA: </br>".$mensaje_top_comp."</br>";
 }
 if($mensaje_EDV_comp != ''){
-    $mensaje2 = "VISIBILIDAD: </br>".$mensaje_EDV."</br>";
+    $mensaje2 .= "VISIBILIDAD: </br>".$mensaje_EDV_comp."</br>";
 }
 if($mensaje_EXH_comp != ''){
-    $mensaje2 = "EXHIBICIONES: </br>".$mensaje_EXH."</br>";
+    $mensaje2 .= "EXHIBICIONES: </br>".$mensaje_EXH_comp."</br>";
 }
 
 $body2="<b>Spoc:</b> ".$id_usuario."</br><b>Tienda:</b> ".$fila1['id']." | ".$fila1['dsc_tienda']." | ".$fila1['dsc_ubicacion']."</br><b>Fecha y hora:</b> ".$fechaActual."</br><b>Mensaje:</b> ".$mensaje2;
