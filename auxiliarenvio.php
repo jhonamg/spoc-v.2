@@ -3,13 +3,12 @@
 $dir_subida = 'assets/img/';
 $fecha = date('Y-m-d');
 $hora = date('H:i:s');
-$fechaActual = $fecha;
 $nombre=$_POST['a11'];
 $apellido=$_POST['a21'];
-// $foto=$_FILES['a31'];
+// $foto=$_FILES['a31'];/// attr name="a11".... del file imagen
 $pdf=$_FILES['a31']['name'];
 
-$nombre_foto_correo= $nombre.'_'.$fechaActual.'.jpg'; ///<---AQUI ES LA VARIABLE QUE RENOMBRA EL ARCHIVO .JPG///
+$nombre_foto_correo= $nombre.'_'.$fecha.'.jpg'; ///<---AQUI ES LA VARIABLE QUE RENOMBRA EL ARCHIVO .JPG///
 
 $datosuser= $dir_subida.$nombre_foto_correo;
 
