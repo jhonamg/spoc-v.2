@@ -1,4 +1,5 @@
 <?php
+@session_start();
 $nombre= $_POST['enviador'];
 $correo=$_POST['respondera'];  
 $telefono="1234568, de contacto";
