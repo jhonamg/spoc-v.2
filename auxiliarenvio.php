@@ -8,7 +8,10 @@ $nombre=$_POST['a11'];
 $apellido=$_POST['a21'];
 // $foto=$_FILES['a31'];
 $pdf=$_FILES['a31']['name'];
-$datosuser= $dir_subida.$nombre.'_'.$fechaActual.'.jpg'; ///<---AQUI ES LA VARIABLE QUE RENOMBRA EL ARCHIVO .JPG///
+
+$nombre_foto_correo= $nombre.'_'.$fechaActual.'.jpg'; ///<---AQUI ES LA VARIABLE QUE RENOMBRA EL ARCHIVO .JPG///
+
+$datosuser= $dir_subida.$nombre_foto_correo;
 
 // ejeplo de subida de file//////////////////////////////
 
