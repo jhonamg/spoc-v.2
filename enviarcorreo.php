@@ -68,69 +68,75 @@ $tienda = $_POST['listatiendas'];
 //--------------------------------------proceso de guardado---------------------------------------------//
 
 $id_usuario = 'user1';
-        $mysqli = new mysqli("localhost", "root", "", "spoc_bd");
-        if ($mysqli->connect_errno) {
-          echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-        }
-        $query = "SELECT id_tx FROM detalle_spoc ORDER BY id_tx DESC LIMIT 1"; 
-        echo $query;
-        $mysqli->real_query($query);
-        $resultado = $mysqli->use_result();
-        $idTx = $resultado->fetch_assoc();
-        // echo $idTx;
-        if($idTx == NULL || $idTx == ''){
-            $idTx = 1;
-        }else{
-            $idTx = intval($idTx) + 1;
-        }
-        
-        //----------------------------- precio top
-        for($i = 1; $i <= $totPrecioTop; $i++){
-            $query1 = "INSERT INTO `detalle_spoc`(`id_tx`, `id_usuario`, `id_tienda`, `id_producto`, `id_exhibicion`, `precio`, `foto`, `fecha_carga`, `flg_competencia`, `dsc_competencia`, `flg_existe`)  VALUES ($idTx, '$id_usuario', '$tienda', '".$nombrePreTop['id_prod_prec_top_'.$i]."', null, '".$datosPreTop['precio_top_'.$i]."', null, '$fechaActual', 'NO', null, 'SI') "; 
-            echo $query1;
-            $mysqli->real_query($query1);
-            $query2 = "SELECT configuraciones_tx.precio, configuraciones_tx.sku_cadena, configuraciones_tx.id_tienda FROM configuraciones_tx WHERE (configuraciones_tx.id_producto = ".$nombrePreTop['id_prod_prec_top_'.$i]." AND configuraciones_tx.id_tienda = $tienda AND configuraciones_tx.precio != ".$datosPreTop['precio_top_'.$i].")";
-            // echo $query2;
-        }
+$mysqli = new mysqli("localhost", "root", "", "spoc_bd");
+if ($mysqli->connect_errno) {
+  echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+}
+$query = "SELECT id_tx FROM detalle_spoc ORDER BY id_tx DESC LIMIT 1"; 
+echo $query;
+$mysqli->real_query($query);
+$resultado = $mysqli->use_result();
+$idTx = $resultado->fetch_assoc();
+// echo $idTx;
+if($idTx == NULL || $idTx == ''){
+    $idTx = 1;
+}else{
+    $idTx = intval($idTx) + 1;
+}
 
-        for($i = 1; $i <= $totPrecioTopComp; $i++){
-            $query3 = "INSERT INTO `detalle_spoc`(`id_tx`, `id_usuario`, `id_tienda`, `id_producto`, `id_exhibicion`, `precio`, `foto`, `fecha_carga`, `flg_competencia`, `dsc_competencia`, `flg_existe`) VALUES ($idTx, '$id_usuario', '$tienda', ".$nombrePreTopComp['id_comp_prec_top_'.$i].", null, ".$datosPreTopComp['precio_top_comp_'.$i].", null, '$fechaActual', 'SI', null, 'SI') "; 
-            $mysqli->real_query($query3);
-        }
+//----------------------------- precio top
+for($i = 1; $i <= $totPrecioTop; $i++){
+    $query1 = "INSERT INTO `detalle_spoc`(`id_tx`, `id_usuario`, `id_tienda`, `id_producto`, `id_exhibicion`, `precio`, `foto`, `fecha_carga`, `flg_competencia`, `dsc_competencia`, `flg_existe`)  VALUES ($idTx, '$id_usuario', '$tienda', '".$nombrePreTop['id_prod_prec_top_'.$i]."', null, '".$datosPreTop['precio_top_'.$i]."', null, '$fechaActual', 'NO', null, 'SI') "; 
+    echo $query1;
+    $mysqli->real_query($query1);
+    if (!$mysqli->query($query1)) {
+        printf("Código de error: %d\n", $mysqli->errno);
+    }
+    $mysqli->next_result();
+    $query2 = "SELECT configuraciones_tx.precio, configuraciones_tx.sku_cadena, configuraciones_tx.id_tienda FROM configuraciones_tx WHERE (configuraciones_tx.id_producto = ".$nombrePreTop['id_prod_prec_top_'.$i]." AND configuraciones_tx.id_tienda = $tienda AND configuraciones_tx.precio != ".$datosPreTop['precio_top_'.$i].")";
+    // echo $query2;
+}
 
-        // -------------------------Elementos de visibilidad
-        for($i = 1; $i <= $totEDV; $i++){
-            $query5 = "INSERT INTO `detalle_spoc`(`id_tx`, `id_usuario`, `id_tienda`, `id_producto`, `id_exhibicion`, `precio`, `foto`, `fecha_carga`, `flg_competencia`, `dsc_competencia`, `flg_existe`) VALUES ($idTx, '$id_usuario', '$tienda', '".$datosEDV['id_produc_prop_vis_'.$i]."',  '".$datosEDV['id_elemento_vis_'.$i]."', null, 'ARCHIVO', '$fechaActual', 'NO', null, '".$datosEDV['radio_vis_'.$i]."') "; 
-            // echo $query;
-            $mysqli->real_query($query5);
-        }
+for($i = 1; $i <= $totPrecioTopComp; $i++){
+    $query3 = "INSERT INTO `detalle_spoc`(`id_tx`, `id_usuario`, `id_tienda`, `id_producto`, `id_exhibicion`, `precio`, `foto`, `fecha_carga`, `flg_competencia`, `dsc_competencia`, `flg_existe`) VALUES ($idTx, '$id_usuario', '$tienda', ".$nombrePreTopComp['id_comp_prec_top_'.$i].", null, ".$datosPreTopComp['precio_top_comp_'.$i].", null, '$fechaActual', 'SI', null, 'SI') "; 
+    $mysqli->real_query($query3);
+}
 
-        for($i = 1; $i <= $totEDVComp; $i++){
-            $query7 = "INSERT INTO `detalle_spoc`(`id_tx`, `id_usuario`, `id_tienda`, `id_producto`, `id_exhibicion`, `precio`, `foto`, `fecha_carga`, `flg_competencia`, `dsc_competencia`, `flg_existe`) VALUES ($idTx, '$id_usuario', '$tienda', null,  '".$elementoEDVComp['SelEdvBf2_'.$i]."', null, 'ARCHIVO', '$fechaActual', 'SI', '".$productoEDVComp['InpEdvBf2_'.$i]."', 'SI')"; 
-            // echo $query;
-            $mysqli->real_query($query7);
-        }
+// -------------------------Elementos de visibilidad
+for($i = 1; $i <= $totEDV; $i++){
+    $query5 = "INSERT INTO `detalle_spoc`(`id_tx`, `id_usuario`, `id_tienda`, `id_producto`, `id_exhibicion`, `precio`, `foto`, `fecha_carga`, `flg_competencia`, `dsc_competencia`, `flg_existe`) VALUES ($idTx, '$id_usuario', '$tienda', '".$datosEDV['id_produc_prop_vis_'.$i]."',  '".$datosEDV['id_elemento_vis_'.$i]."', null, 'ARCHIVO', '$fechaActual', 'NO', null, '".$datosEDV['radio_vis_'.$i]."') "; 
+    // echo $query;
+    $mysqli->real_query($query5);
+}
 
-        // --------------------------------Exhibiciones
-        for($i = 1; $i <= $totEXH; $i++){
-            $query9 = "INSERT INTO `detalle_spoc`(`id_tx`, `id_usuario`, `id_tienda`, `id_producto`, `id_exhibicion`, `precio`, `foto`, `fecha_carga`, `flg_competencia`, `dsc_competencia`, `flg_existe`) VALUES ($idTx, '$id_usuario', '$tienda', '".$productoEXH['id_produc_prop_exh_'.$i]."',  '".$elementoEXH['id_elemento_exh_'.$i]."', '".$precioEXH['precio_prop_'.$i]."', 'ARCHIVO', '$fechaActual', 'NO', null, '".$radio_EXH['radio_EXH_'.$i]."')"; 
-            // echo $query;
-            $mysqli->real_query($query9);
-        }
+for($i = 1; $i <= $totEDVComp; $i++){
+    $query7 = "INSERT INTO `detalle_spoc`(`id_tx`, `id_usuario`, `id_tienda`, `id_producto`, `id_exhibicion`, `precio`, `foto`, `fecha_carga`, `flg_competencia`, `dsc_competencia`, `flg_existe`) VALUES ($idTx, '$id_usuario', '$tienda', null,  '".$elementoEDVComp['SelEdvBf2_'.$i]."', null, 'ARCHIVO', '$fechaActual', 'SI', '".$productoEDVComp['InpEdvBf2_'.$i]."', 'SI')"; 
+    // echo $query;
+    $mysqli->real_query($query7);
+}
 
-        for($i = 1; $i <= $totEXHComp; $i++){
-            $query11 = "INSERT INTO `detalle_spoc`(`id_tx`, `id_usuario`, `id_tienda`, `id_producto`, `id_exhibicion`, `precio`, `foto`, `fecha_carga`, `flg_competencia`, `dsc_competencia`, `flg_existe`) VALUES ($idTx, '$id_usuario', '$tienda', null, '".$elementoEXHComp['SelEdvBf3_'.$i]."',  '".$precioEXHComp['preEdvComp_'.$i]."', 'ARCHIVO', '$fechaActual', 'SI', '".$productoEXHComp['InpEdvBf3_'.$i]."', 'SI' ) "; 
-            // echo $query;
-            $mysqli->real_query($query11);
-        }
+// --------------------------------Exhibiciones
+for($i = 1; $i <= $totEXH; $i++){
+    $query9 = "INSERT INTO `detalle_spoc`(`id_tx`, `id_usuario`, `id_tienda`, `id_producto`, `id_exhibicion`, `precio`, `foto`, `fecha_carga`, `flg_competencia`, `dsc_competencia`, `flg_existe`) VALUES ($idTx, '$id_usuario', '$tienda', '".$productoEXH['id_produc_prop_exh_'.$i]."',  '".$elementoEXH['id_elemento_exh_'.$i]."', '".$precioEXH['precio_prop_'.$i]."', 'ARCHIVO', '$fechaActual', 'NO', null, '".$radio_EXH['radio_EXH_'.$i]."')"; 
+    // echo $query;
+    $mysqli->real_query($query9);
+}
 
-        // $datos = array();
-        // while ($fila = $resultado->fetch_assoc()) {
-        //     $datos[] =  $fila;
-        // }
+for($i = 1; $i <= $totEXHComp; $i++){
+    $query11 = "INSERT INTO `detalle_spoc`(`id_tx`, `id_usuario`, `id_tienda`, `id_producto`, `id_exhibicion`, `precio`, `foto`, `fecha_carga`, `flg_competencia`, `dsc_competencia`, `flg_existe`) VALUES ($idTx, '$id_usuario', '$tienda', null, '".$elementoEXHComp['SelEdvBf3_'.$i]."',  '".$precioEXHComp['preEdvComp_'.$i]."', 'ARCHIVO', '$fechaActual', 'SI', '".$productoEXHComp['InpEdvBf3_'.$i]."', 'SI' ) "; 
+    // echo $query;
+    $mysqli->real_query($query11);
+}
 
-        // return $datos;
-        $mysqli->close();
+// $datos = array();
+// while ($fila = $resultado->fetch_assoc()) {
+//     $datos[] =  $fila;
+// }
+
+// return $datos;
+
+$mysqli->free();
+$mysqli->close();
 
 
 //-----------------------------------------------------envio de correo---------------------------------//
