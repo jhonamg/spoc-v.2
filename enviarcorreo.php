@@ -135,7 +135,6 @@ for($i = 1; $i <= $totEXHComp; $i++){
 
 // return $datos;
 
-$mysqli->free();
 $mysqli->close();
 
 
