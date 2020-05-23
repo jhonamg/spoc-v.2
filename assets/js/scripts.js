@@ -251,16 +251,7 @@ jQuery(document).ready(function() {
     			$(this).removeClass('input-error');
     		}
       });
-      parent_fieldset.find('input[type="text"], textarea').each(function() {
-    		if( ($(this).attr('hidden',false) || $(this).prop(hidden)) && $(this).val()=='' ) {
-    			$(this).addClass('input-error');
-    			next_step = false;
-    		}
-    		else {
-    			$(this).removeClass('input-error');
-    		}
-      });
-
+    
 
 
     	// fields validation
