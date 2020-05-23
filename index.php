@@ -19,60 +19,9 @@
   <link rel="stylesheet" href="assets/css/form-elements.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-
-
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-  <!-- Favicon and touch icons -->
-  <!-- <link rel="shortcut icon" href="">
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png"> -->
-
 </head>
 
 <body>
-
-  <!-- Top menu -->
-  <!-- <nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
-			<div class="container"> -->
-  <!-- <div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="index.html">BootZard - Bootstrap Wizard Template</a>
-				</div> -->
-  <!-- Collect the nav links, forms, and other content for toggling -->
-  <!-- <div class="collapse navbar-collapse" id="top-navbar-1">
-					<ul class="nav navbar-nav navbar-right">
-						<li>
-							<span class="li-text">
-								Put some text or
-							</span> 
-							<a href="#"><strong>links</strong></a> 
-							<span class="li-text">
-								here, or some icons: 
-							</span> 
-							<span class="li-social">
-								<a href="https://www.facebook.com/pages/Azmindcom/196582707093191" target="_blank"><i class="fa fa-facebook"></i></a> 
-								<a href="https://twitter.com/anli_zaimi" target="_blank"><i class="fa fa-twitter"></i></a> 
-								<a href="https://plus.google.com/+AnliZaimi_azmind" target="_blank"><i class="fa fa-google-plus"></i></a> 
-								<a href="https://github.com/AZMIND" target="_blank"><i class="fa fa-github"></i></a>
-							</span>
-						</li>
-					</ul>
-				</div> -->
-  <!-- </div>
-		</nav> -->
 
   <!-- Top content -->
   <div class="top-con.tent">
@@ -336,31 +285,7 @@
               </h4>
 
               <div id="containerProp5stg">
-                <!-- comienza el bloque -->
-                <!-- <div class="row">
-                                        <div class="contador col-1 col-md-2">
-                                          <label for="">1.</label>
-                                        </div>
-                                        <div class="radio col-2 col-md-3">
-                                          <div class="form-check form-check-inline">
-                                            <input class="form-check-input radio_vis" type="radio" name="radio_1" id="radio_vis_1" value="option1"/>
-                                            <label class="form-check-label" for="radio_vis_1">Si</label>
-                                          </div>
-                                          <div class="form-check form-check-inline">
-                                            <input class="form-check-input radio_vis" type="radio" name="radio_1" id="radio_vis_1" value="option2" />
-                                            <label class="form-check-label" for="radio_vis_1">No</label>
-                                          </div>
-                                        </div>
-                                        <div class="col-8 col-md-6">
-                                          <label for="nombreprod">Jalavista de Nescafe fina selección 200gr.</label>
-                                        </div>
-                                        <div class="input-group col-2 col-md-4">
-                                          <label for="prop_vis_1" class="btn btn-sm btn-light" id="label_prop_vis_1" hidden>
-                                            <i class="bx bx-upload" id="texto_prop_vis_1"> Cargar</i>
-                                            <input id="prop_vis_1" disabled class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="" hidden /></label>
-                                        </div>
-                                      </div> -->
-                <!-- final de linea -->
+
               </div>
 
               <!-- seguna parte -->
