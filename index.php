@@ -106,10 +106,10 @@
                                             <button class="btn col-6 col-xm-6 col-sm-6 col-md-6 col-lg-6 responsive" type="button"><img class=" col-6 col-xm-6 col-sm-6 col-md-6 col-lg-6 img-responsive imgbotones" src="assets/img/Nueva carpeta/palaxavea.png"  alt=""></button>
                                           </div> -->
 
-                    <div class="col-6 col-xm-6 col-sm-6 col-md-6 col-lg-6 responsive"><a href="#"><img id="1" class="img-responsive imgbotones" src="assets/img/Nueva carpeta/Wong.png" alt=""></a></div>
-                    <div class="col-6 col-xm-6 col-sm-6 col-md-6 col-lg-6 responsive"><a href="#"><img id="4" class="img-responsive imgbotones" src="assets/img/Nueva carpeta/metro.png" alt=""></a></div>
-                    <div class="col-6 col-xm-6 col-sm-6 col-md-6 col-lg-6 responsive"><a href="#"><img id="2" class="img-responsive imgbotones" src="assets/img/Nueva carpeta/Tottus.png" alt=""></a></div>
-                    <div class="col-6 col-xm-6 col-sm-6 col-md-6 col-lg-6 responsive"><a href="#"><img id="3" class="img-responsive imgbotones" src="assets/img/Nueva carpeta/palaxavea.png" alt=""></a></div>
+                    <div class="col-6 col-xm-6 col-sm-6 col-md-6 col-lg-6 responsive"><img id="1" class="img-responsive imgbotones" src="assets/img/Nueva carpeta/Wong.png" alt=""></a></div>
+                    <div class="col-6 col-xm-6 col-sm-6 col-md-6 col-lg-6 responsive"><img id="4" class="img-responsive imgbotones" src="assets/img/Nueva carpeta/metro.png" alt=""></a></div>
+                    <div class="col-6 col-xm-6 col-sm-6 col-md-6 col-lg-6 responsive"><img id="2" class="img-responsive imgbotones" src="assets/img/Nueva carpeta/Tottus.png" alt=""></a></div>
+                    <div class="col-6 col-xm-6 col-sm-6 col-md-6 col-lg-6 responsive"><img id="3" class="img-responsive imgbotones" src="assets/img/Nueva carpeta/palaxavea.png" alt=""></a></div>
                   </div>
                   <!-- <a href="#" class="download-btn"><i class="bx bxl-play-store"></i>Seleccionar</a>
                                         <a href="#" class="download-btn"><i class="bx bxl-apple bx-flashing-hover"></i>Seleccionar</a>
