@@ -168,7 +168,7 @@ for($i = 1; $i <= $totEDV; $i++){
 
     ///////////CArga del file img en la bd//////////////////
     if (move_uploaded_file($nombre_archivo_temp, $fichero_subido)) {                   ///<---SUBIDA DE LA IMG DESDE EL DISPOSITIVO A LA BD///
-        rename ( $fichero_subido , $nombre_foto_correo );                              /////<----AQUI LA FUNCION QUE RENOMBRA EL ARCHIVO IMG EN LA BD.
+        rename ( $fichero_subido , $direc_img_en_bd );                              /////<----AQUI LA FUNCION QUE RENOMBRA EL ARCHIVO IMG EN LA BD.
         echo "El fichero es válido y se subió con éxito.\n";
     } else {
         echo "¡Posible ataque de subida de ficheros!\n";
@@ -218,17 +218,25 @@ for($i = 1; $i <= $totEDVComp; $i++){
     $nombre_archivo_temp= $fotoEDVComp['foto_vis_comp_temp_'.$i];  ///<---NAME DE UBICACION TEMPORAL DEL ELEMENTO IMG EN EL DISPOSITIVO////
 
     $fichero_subido = $dir_subida.basename($nombre_archivo); ///<---LA UBICACION DEFINITIVA DEL IMG CON EL NOMBRE VIEJO DEL DISPOSITIVO
-
+    // echo'</br>';
+    // print_r($nombre_archivo_temp);
+    // echo'</br>';
+    // print_r($fichero_subido);
+    // echo'</br>';
+    // print_r($direc_img_en_bd);
+    // echo'</br>';
+    // print_r($nombre_foto_correo);
+    // echo'</br>';
     ///////////CArga del file img en la bd//////////////////
     if (move_uploaded_file( $nombre_archivo_temp, $fichero_subido)) {                   ///<---SUBIDA DE LA IMG DESDE EL DISPOSITIVO A LA BD///
-        rename ( $fichero_subido , $nombre_foto_correo );                              /////<----AQUI LA FUNCION QUE RENOMBRA EL ARCHIVO IMG EN LA BD.
+        rename ( $fichero_subido , $direc_img_en_bd );                              /////<----AQUI LA FUNCION QUE RENOMBRA EL ARCHIVO IMG EN LA BD.
         echo "El fichero es válido y se subió con éxito.\n";
     } else {
         echo "¡Posible ataque de subida de ficheros!\n";
     }
     
-    $foto_EDV_COMP .= $mail2->addAttachment('$direc_img_en_bd');
-    echo 'Más información de depuración:';
+    // $foto_EDV_COMP .= $mail2->addAttachment('$direc_img_en_bd');
+    echo '</br> Más información de depuración:';
     print_r($_FILES);
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -272,7 +280,7 @@ for($i = 1; $i <= $totEXH; $i++){
 
     ///////////CArga del file img en la bd//////////////////
     if (move_uploaded_file($nombre_archivo_temp, $fichero_subido)) {                   ///<---SUBIDA DE LA IMG DESDE EL DISPOSITIVO A LA BD///
-        rename ( $fichero_subido , $nombre_foto_correo );                              /////<----AQUI LA FUNCION QUE RENOMBRA EL ARCHIVO IMG EN LA BD.
+        rename ( $fichero_subido , $direc_img_en_bd );                              /////<----AQUI LA FUNCION QUE RENOMBRA EL ARCHIVO IMG EN LA BD.
         echo "El fichero es válido y se subió con éxito.\n";
     } else {
         echo "¡Posible ataque de subida de ficheros!\n";
@@ -323,7 +331,7 @@ for($i = 1; $i <= $totEXHComp; $i++){
 
     ///////////CArga del file img en la bd//////////////////
     if (move_uploaded_file($nombre_archivo_temp, $fichero_subido)) {                   ///<---SUBIDA DE LA IMG DESDE EL DISPOSITIVO A LA BD///
-        rename ( $fichero_subido , $nombre_foto_correo );                              /////<----AQUI LA FUNCION QUE RENOMBRA EL ARCHIVO IMG EN LA BD.
+        rename ( $fichero_subido , $direc_img_en_bd );                              /////<----AQUI LA FUNCION QUE RENOMBRA EL ARCHIVO IMG EN LA BD.
         echo "El fichero es válido y se subió con éxito.\n";
     } else {
         echo "¡Posible ataque de subida de ficheros!\n";
