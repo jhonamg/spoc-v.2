@@ -222,7 +222,13 @@ try {
     // $mail->addBCC('bcc@example.com');
 
     // Attachments
-    $foto_EDV_COMP;
+     for($i = 1; $i <= $totEDVComp ; $i++){
+        $mail2->addAttachment($dir_subida.'EDV_COMP_'.$id_usuario.'_'.$fecha.'_'.$i.'.jpg';);
+    }
+    for($i = 1; $i <= $totEXHComp ; $i++){
+        $mail2->addAttachment($dir_subida.'EXH_COMP_'.$id_usuario.'_'.$fecha.'_'.$i.'.jpg';);
+    }
+    //$foto_EDV_COMP;
     // $mail->addAttachment('D:\Xampp\htdocs\spoc-v.2\assets\img\Nueva carpeta\tottus.jpg','imagen de tottus baner');         // Add attachments
     // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 
