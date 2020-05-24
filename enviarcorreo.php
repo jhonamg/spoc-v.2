@@ -31,23 +31,23 @@ for($i = 1; $i <= $totPrecioTopComp; $i++){
 }
 $datosEDV = [];
 for($i = 1; $i <= $totEDV; $i++){
-    $nombrefoto="'prop_vis_".$i."'";
+    // $nombrefoto="'prop_vis_".$i."'";
     $datosEDV += [ "radio_vis_$i" => $_POST["radio_vis_$i"] ];
     $datosEDV += [ "id_produc_prop_vis_$i" => $_POST["id_produc_prop_vis_$i"] ];
     $datosEDV += [ "id_elemento_vis_$i" => $_POST["id_elemento_vis_$i"] ];
-    $datosEDV += [ "foto_vis_$i" => $_FILES[$nombrefoto]['name'] ]; //-----------------aqui foto
-    $datosEDV += [ "foto_vis_temp_$i" => $_FILES[$nombrefoto]['tmp_name'] ];
+    $datosEDV += [ "foto_vis_$i" => $_FILES['prop_vis_'.$i]['name'] ]; //-----------------aqui foto
+    $datosEDV += [ "foto_vis_temp_$i" => $_FILES['prop_vis_'.$i]['tmp_name'] ];
 
 }
 $productoEDVComp = [];
 $elementoEDVComp = [];
 $fotoEDVComp = [];
 for($i = 1; $i <= $totEDVComp; $i++){
-    $nombrefotoEDVComp= "'carga_".$i."'";
+    // $nombrefotoEDVComp= "'carga_".$i."'";
     $productoEDVComp += [ "InpEdvBf2_$i" => $_POST["InpEdvBf2_$i"] ];
     $elementoEDVComp += [ "SelEdvBf2_$i" => $_POST["SelEdvBf2_$i"] ];
-    $fotoEDVComp += [ "foto_vis_comp_$i" => $_FILES[$nombrefotoEDVComp]['name'] ]; ///-----------------aqui foto
-    $fotoEDVComp += [ "foto_vis_comp_temp_$i" => $_FILES[$nombrefotoEDVComp]['tmp_name'] ];
+    $fotoEDVComp += [ "foto_vis_comp_$i" => $_FILES['carga_'.$i]['name'] ]; ///-----------------aqui foto
+    $fotoEDVComp += [ "foto_vis_comp_temp_$i" => $_FILES['carga_'.$i]['tmp_name'] ];
 }
 $productoEXH = [];
 $elementoEXH = [];
@@ -163,6 +163,7 @@ for($i = 1; $i <= $totEDV; $i++){
     $nombre_archivo= $datosEDV['foto_vis_'.$i];            ///<---NAME DEL ELEMNTO IMG EN EL DISPOSITIVO/////////
     $nombre_archivo_temp= $datosEDV['foto_vis_temp_'.$i];  ///<---NAME DE UBICACION TEMPORAL DEL ELEMENTO IMG EN EL DISPOSITIVO////
 
+
     $fichero_subido = $dir_subida.basename($nombre_archivo); ///<---LA UBICACION DEFINITIVA DEL IMG CON EL NOMBRE VIEJO DEL DISPOSITIVO
 
     ///////////CArga del file img en la bd//////////////////
@@ -173,8 +174,8 @@ for($i = 1; $i <= $totEDV; $i++){
         echo "¡Posible ataque de subida de ficheros!\n";
     }
 
-    // echo 'Más información de depuración:';
-    // print_r($_FILES);
+    echo 'Más información de depuración:';
+    print_r($_FILES);
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -226,9 +227,9 @@ for($i = 1; $i <= $totEDVComp; $i++){
         echo "¡Posible ataque de subida de ficheros!\n";
     }
     
-    $foto_EDV_COMP .= "$mail2->addAttachment('$direc_img_en_bd');";
+    $foto_EDV_COMP .= $mail2->addAttachment('$direc_img_en_bd');
     echo 'Más información de depuración:';
-    // print_r($_FILES);
+    print_r($_FILES);
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -277,8 +278,8 @@ for($i = 1; $i <= $totEXH; $i++){
         echo "¡Posible ataque de subida de ficheros!\n";
     }
 
-    // echo 'Más información de depuración:';
-    // print_r($_FILES);
+    echo 'Más información de depuración:';
+    print_r($_FILES);
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     $query9 = "INSERT INTO `detalle_spoc`(`id_tx`, `id_usuario`, `id_tienda`, `id_producto`, `id_exhibicion`, `precio`, `foto`, `fecha_carga`, `flg_competencia`, `dsc_competencia`, `flg_existe`) VALUES ($idTx, '$id_usuario', '$tienda', '".$productoEXH['id_produc_prop_exh_'.$i]."',  '".$elementoEXH['id_elemento_exh_'.$i]."', '".$precioEXH['precio_prop_'.$i]."', '$direc_img_en_bd', '$fechaActual', 'NO', null, '".$radio_EXH['radio_EXH_'.$i]."')"; 
@@ -328,8 +329,8 @@ for($i = 1; $i <= $totEXHComp; $i++){
         echo "¡Posible ataque de subida de ficheros!\n";
     }
 
-    // echo 'Más información de depuración:';
-    // print_r($_FILES);
+    echo 'Más información de depuración:';
+    print_r($_FILES);
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
