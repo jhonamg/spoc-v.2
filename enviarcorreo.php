@@ -35,8 +35,8 @@ for($i = 1; $i <= $totEDV; $i++){
     $datosEDV += [ "radio_vis_$i" => $_POST["radio_vis_$i"] ];
     $datosEDV += [ "id_produc_prop_vis_$i" => $_POST["id_produc_prop_vis_$i"] ];
     $datosEDV += [ "id_elemento_vis_$i" => $_POST["id_elemento_vis_$i"] ];
-    $datosEDV += [ "foto_vis_$i" => $_FILES['prop_vis_$i']['name'] ]; //-----------------aqui foto
-    $datosEDV += [ "foto_vis_temp_$i" => $_FILES['prop_vis_$i']['tmp_name'] ];
+    $datosEDV += [ "foto_vis_$i" => $_FILES['prop_vis_'.$i]['name'] ]; //-----------------aqui foto
+    $datosEDV += [ "foto_vis_temp_$i" => $_FILES['prop_vis_'.$i]['tmp_name'] ];
 }
 $productoEDVComp = [];
 $elementoEDVComp = [];
@@ -44,8 +44,8 @@ $fotoEDVComp = [];
 for($i = 1; $i <= $totEDVComp; $i++){
     $productoEDVComp += [ "InpEdvBf2_$i" => $_POST["InpEdvBf2_$i"] ];
     $elementoEDVComp += [ "SelEdvBf2_$i" => $_POST["SelEdvBf2_$i"] ];
-    $fotoEDVComp += [ "foto_vis_comp_$i" => $_FILES['carga_$i']['name'] ]; ///-----------------aqui foto
-    $fotoEDVComp += [ "foto_vis_comp_temp_$i" => $_FILES['carga_$i']['tmp_name'] ];
+    $fotoEDVComp += [ "foto_vis_comp_$i" => $_FILES['carga_'.$i]['name'] ]; ///-----------------aqui foto
+    $fotoEDVComp += [ "foto_vis_comp_temp_$i" => $_FILES['carga_'.$i]['tmp_name'] ];
 }
 $productoEXH = [];
 $elementoEXH = [];
@@ -57,8 +57,8 @@ for($i = 1; $i <= $totEXH; $i++){
     $elementoEXH += [ "id_elemento_exh_$i" => $_POST["id_elemento_exh_$i"] ];
     $precioEXH += [ "precio_prop_$i" => $_POST["precio_prop_$i"] ];
     $radio_EXH += [ "radio_EXH_$i" => $_POST["radio_EXH_$i"] ];
-    $foto_EXH += [ "foto_exh_$i" => $_FILES['prop2_EXH_$i']['name'] ]; ///-----------------aqui foto
-    $foto_EXH += [ "foto_exh_temp_$i" => $_FILES['prop2_EXH_$i']['tmp_name'] ];
+    $foto_EXH += [ "foto_exh_$i" => $_FILES['prop2_EXH_'.$i]['name'] ]; ///-----------------aqui foto
+    $foto_EXH += [ "foto_exh_temp_$i" => $_FILES['prop2_EXH_'.$i]['tmp_name'] ];
     
 }
 $productoEXHComp = [];
@@ -69,8 +69,8 @@ for($i = 1; $i <= $totEXHComp; $i++){
     $productoEXHComp += [ "InpEdvBf3_$i" => $_POST["InpEdvBf3_$i"] ];
     $elementoEXHComp += [ "SelEdvBf3_$i" => $_POST["SelEdvBf3_$i"] ];
     $precioEXHComp += [ "preEdvComp_$i" => $_POST["preEdvComp_$i"] ];
-    $foto_EXHComp += [ "foto_exh_Comp_$i" => $_FILES['carga2_$i']['name'] ]; //-----------------aqui foto
-    $foto_EXHComp += [ "foto_exh_Comp_temp_$i" => $_FILES['carga2_$i']['tmp_name'] ];
+    $foto_EXHComp += [ "foto_exh_Comp_$i" => $_FILES['carga2_'.$i]['name'] ]; //-----------------aqui foto
+    $foto_EXHComp += [ "foto_exh_Comp_temp_$i" => $_FILES['carga2_'.$i]['tmp_name'] ];
 }
 $tienda = $_POST['listatiendas'];
 
@@ -199,6 +199,7 @@ for($i = 1; $i <= $totEDV; $i++){
 }
 
 $mensaje_EDV_comp = '';
+$foto_EDV_COMP= '';
 for($i = 1; $i <= $totEDVComp; $i++){
     $mysqli = new mysqli("localhost", "root", "", "spoc_bd");
     if ($mysqli->connect_errno) {
@@ -222,9 +223,10 @@ for($i = 1; $i <= $totEDVComp; $i++){
     } else {
         echo "¡Posible ataque de subida de ficheros!\n";
     }
-
-    // echo 'Más información de depuración:';
-    // print_r($_FILES);
+    
+    $foto_EDV_COMP .= "$mail2->addAttachment('$direc_img_en_bd');";
+    echo 'Más información de depuración:';
+    print_r($_FILES);
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -243,7 +245,7 @@ for($i = 1; $i <= $totEDVComp; $i++){
     $mysqli->real_query($query2);
     $resultado = $mysqli->use_result();
     $fila = $resultado->fetch_assoc();
-    $mensaje_EDV_comp .= "Detectado ".$fila['dsc_exhibicion']." de ".$productoEDVComp['InpEdvBf2_'.$i].", (Ref. <b>nombre de imagen</b>) </br>";
+    $mensaje_EDV_comp .= "Detectado ".$fila['dsc_exhibicion']." de ".$productoEDVComp['InpEdvBf2_'.$i].", (Ref. <b>".$nombre_foto_correo."</b>) </br>";
     $mysqli->close();
 }
 
@@ -344,7 +346,7 @@ for($i = 1; $i <= $totEXHComp; $i++){
     $mysqli->real_query($query2);
     $resultado = $mysqli->use_result();
     $fila = $resultado->fetch_assoc();
-    $mensaje_EXH_comp .=  "Detectado ".$fila['dsc_exhibicion']." de ".$productoEXHComp['InpEdvBf3_'.$i].", precio S/ ".$precioEXHComp['preEdvComp_'.$i].", (Ref. <b>nombre de imagen</b>) </br>";
+    $mensaje_EXH_comp .=  "Detectado ".$fila['dsc_exhibicion']." de ".$productoEXHComp['InpEdvBf3_'.$i].", precio S/ ".$precioEXHComp['preEdvComp_'.$i].", (Ref. <b>".$nombre_foto_correo."</b>) </br>";
     $mysqli->close();
 
 
@@ -412,7 +414,8 @@ try {
     // $mail->addBCC('bcc@example.com');
 
     // Attachments
-    // $mail->addAttachment('D:\Xampp\htdocs\spoc-v.2\assets\img\Nueva carpeta\tottus.jpg','imagen de tottus baner');         // Add attachments
+    
+    // $mail->addAttachment($foto_EDV_COMP);         // Add attachments
     // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 
     // Content
@@ -425,7 +428,7 @@ try {
         $mail->send();
     }
     echo 'Message has been sent';
-    echo '<script> window.history.go(-1); </script>';
+    // echo '<script> window.history.go(-1); </script>';
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
@@ -469,6 +472,7 @@ try {
     // $mail->addBCC('bcc@example.com');
 
     // Attachments
+    $foto_EDV_COMP;
     // $mail->addAttachment('D:\Xampp\htdocs\spoc-v.2\assets\img\Nueva carpeta\tottus.jpg','imagen de tottus baner');         // Add attachments
     // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 
@@ -482,7 +486,7 @@ try {
         $mail2->send();
     }
     echo 'Message has been sent';
-    echo '<script> window.history.go(-1); </script>';
+    // echo '<script> window.history.go(-1); </script>';
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
