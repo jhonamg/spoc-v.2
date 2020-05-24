@@ -287,7 +287,7 @@ for($i = 1; $i <= $totEXH; $i++){
     }
 
     echo 'Más información de depuración:';
-    print_r($_FILES);
+    // print_r($_FILES);
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     $query9 = "INSERT INTO `detalle_spoc`(`id_tx`, `id_usuario`, `id_tienda`, `id_producto`, `id_exhibicion`, `precio`, `foto`, `fecha_carga`, `flg_competencia`, `dsc_competencia`, `flg_existe`) VALUES ($idTx, '$id_usuario', '$tienda', '".$productoEXH['id_produc_prop_exh_'.$i]."',  '".$elementoEXH['id_elemento_exh_'.$i]."', '".$precioEXH['precio_prop_'.$i]."', '$direc_img_en_bd', '$fechaActual', 'NO', null, '".$radio_EXH['radio_EXH_'.$i]."')"; 
@@ -319,7 +319,7 @@ for($i = 1; $i <= $totEXHComp; $i++){
       echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }
 
-    //////////////////variables para transformacion del img//////////////////////////
+    //-------------------------------variables para transformacion del img------------------------------------
     $nombre_foto_correo = 'EXH_COMP_'.$id_usuario.'_'.$fecha.'_'.$i.'.jpg'; ///<---AQUI ES LA VARIABLE QUE RENOMBRA EL ARCHIVO .JPG///
     $direc_img_en_bd = $dir_subida.$nombre_foto_correo;  ///<---DIRECCION DEFINITIVA DEL IMG EN LA BD
 
@@ -329,17 +329,17 @@ for($i = 1; $i <= $totEXHComp; $i++){
 
     $fichero_subido = $dir_subida.basename($nombre_archivo); ///<---LA UBICACION DEFINITIVA DEL IMG CON EL NOMBRE VIEJO DEL DISPOSITIVO
 
-    ///////////CArga del file img en la bd//////////////////
-    if (move_uploaded_file($nombre_archivo_temp, $fichero_subido)) {                   ///<---SUBIDA DE LA IMG DESDE EL DISPOSITIVO A LA BD///
-        rename ( $fichero_subido , $direc_img_en_bd );                              /////<----AQUI LA FUNCION QUE RENOMBRA EL ARCHIVO IMG EN LA BD.
+    //--------------------------CArga del file img en la bd------------------------------
+    if (move_uploaded_file($nombre_archivo_temp, $fichero_subido)) {                   //<---SUBIDA DE LA IMG DESDE EL DISPOSITIVO A LA BD///
+        rename ( $fichero_subido , $direc_img_en_bd );                              //<----AQUI LA FUNCION QUE RENOMBRA EL ARCHIVO IMG EN LA BD.
         echo "El fichero es válido y se subió con éxito.\n";
     } else {
         echo "¡Posible ataque de subida de ficheros!\n";
     }
 
     echo 'Más información de depuración:';
-    print_r($_FILES);
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // print_r($_FILES);
+    //----------------------------------------------------------------------------------------------------------------------------
 
 
     $query11 = "INSERT INTO `detalle_spoc`(`id_tx`, `id_usuario`, `id_tienda`, `id_producto`, `id_exhibicion`, `precio`, `foto`, `fecha_carga`, `flg_competencia`, `dsc_competencia`, `flg_existe`) VALUES ($idTx, '$id_usuario', '$tienda', null, '".$elementoEXHComp['SelEdvBf3_'.$i]."',  '".$precioEXHComp['preEdvComp_'.$i]."', '$direc_img_en_bd', '$fechaActual', 'SI', '".$productoEXHComp['InpEdvBf3_'.$i]."', 'SI' ) "; 
