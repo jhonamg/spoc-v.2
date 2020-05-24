@@ -7,6 +7,7 @@
 
 //----------------------------variables----------------------------------//
 
+$dir_subida = 'assets/img/';
 $fecha = date('Y-m-d');
 $hora = date('H:i:s');
 $fechaActual = $fecha.' '.$hora;
@@ -34,7 +35,8 @@ for($i = 1; $i <= $totEDV; $i++){
     $datosEDV += [ "radio_vis_$i" => $_POST["radio_vis_$i"] ];
     $datosEDV += [ "id_produc_prop_vis_$i" => $_POST["id_produc_prop_vis_$i"] ];
     $datosEDV += [ "id_elemento_vis_$i" => $_POST["id_elemento_vis_$i"] ];
-    //$datosEDV += [ "foto_elemento_vis_$i" => $_FILES["prop_vis_$i"] ]; -----------------aqui foto
+    $datosEDV += [ "foto_vis_$i" => $_FILES['prop_vis_$i']['name'] ]; //-----------------aqui foto
+    $datosEDV += [ "foto_vis_temp_$i" => $_FILES['prop_vis_$i']['tmp_name'] ];
 }
 $productoEDVComp = [];
 $elementoEDVComp = [];
@@ -42,7 +44,8 @@ $fotoEDVComp = [];
 for($i = 1; $i <= $totEDVComp; $i++){
     $productoEDVComp += [ "InpEdvBf2_$i" => $_POST["InpEdvBf2_$i"] ];
     $elementoEDVComp += [ "SelEdvBf2_$i" => $_POST["SelEdvBf2_$i"] ];
-    //$fotoEDVComp += [ "foto_elemento_vis_comp_$i" => $_FILES["carga_$i"] ]; -----------------aqui foto
+    $fotoEDVComp += [ "foto_vis_comp_$i" => $_FILES['carga_$i']['name'] ]; ///-----------------aqui foto
+    $fotoEDVComp += [ "foto_vis_comp_temp_$i" => $_FILES['carga_$i']['tmp_name'] ];
 }
 $productoEXH = [];
 $elementoEXH = [];
@@ -54,7 +57,9 @@ for($i = 1; $i <= $totEXH; $i++){
     $elementoEXH += [ "id_elemento_exh_$i" => $_POST["id_elemento_exh_$i"] ];
     $precioEXH += [ "precio_prop_$i" => $_POST["precio_prop_$i"] ];
     $radio_EXH += [ "radio_EXH_$i" => $_POST["radio_EXH_$i"] ];
-    //$foto_EXH += [ "foto_exh_$i" => $_FILES["prop2_EXH_$i"] ]; -----------------aqui foto
+    $foto_EXH += [ "foto_exh_$i" => $_FILES['prop2_EXH_$i']['name'] ]; ///-----------------aqui foto
+    $foto_EXH += [ "foto_exh_temp_$i" => $_FILES['prop2_EXH_$i']['tmp_name'] ];
+    
 }
 $productoEXHComp = [];
 $elementoEXHComp = [];
@@ -64,7 +69,8 @@ for($i = 1; $i <= $totEXHComp; $i++){
     $productoEXHComp += [ "InpEdvBf3_$i" => $_POST["InpEdvBf3_$i"] ];
     $elementoEXHComp += [ "SelEdvBf3_$i" => $_POST["SelEdvBf3_$i"] ];
     $precioEXHComp += [ "preEdvComp_$i" => $_POST["preEdvComp_$i"] ];
-    //$foto_EXHComp += [ "foto_exhComp_$i" => $_FILES["carga2_$i"] ]; -----------------aqui foto
+    $foto_EXHComp += [ "foto_exh_Comp_$i" => $_FILES['carga2_$i']['name'] ]; //-----------------aqui foto
+    $foto_EXHComp += [ "foto_exh_Comp_temp_$i" => $_FILES['carga2_$i']['tmp_name'] ];
 }
 $tienda = $_POST['listatiendas'];
 
@@ -146,7 +152,34 @@ for($i = 1; $i <= $totEDV; $i++){
     if ($mysqli->connect_errno) {
       echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }
-    $query5 = "INSERT INTO `detalle_spoc`(`id_tx`, `id_usuario`, `id_tienda`, `id_producto`, `id_exhibicion`, `precio`, `foto`, `fecha_carga`, `flg_competencia`, `dsc_competencia`, `flg_existe`) VALUES ($idTx, '$id_usuario', '$tienda', '".$datosEDV['id_produc_prop_vis_'.$i]."',  '".$datosEDV['id_elemento_vis_'.$i]."', null, 'ARCHIVO', '$fechaActual', 'NO', null, '".$datosEDV['radio_vis_'.$i]."') "; 
+
+    //////////////////variables para transformacion del img//////////////////////////
+    $nombre_foto_correo = 'EDV'.$id_usuario.'_'.$fecha.'_'.$i.'.jpg'; ///<---AQUI ES LA VARIABLE QUE RENOMBRA EL ARCHIVO .JPG///
+    $direc_img_en_bd = $dir_subida.$nombre_foto_correo;  ///<---DIRECCION DEFINITIVA DEL IMG EN LA BD
+
+
+    $nombre_archivo= $datosEDV['foto_vis_'.$i];            ///<---NAME DEL ELEMNTO IMG EN EL DISPOSITIVO/////////
+    $nombre_archivo_temp= $datosEDV['foto_vis_temp_'.$i];  ///<---NAME DE UBICACION TEMPORAL DEL ELEMENTO IMG EN EL DISPOSITIVO////
+
+    $fichero_subido = $dir_subida.basename($nombre_archivo); ///<---LA UBICACION DEFINITIVA DEL IMG CON EL NOMBRE VIEJO DEL DISPOSITIVO
+
+    ///////////CArga del file img en la bd//////////////////
+    if (move_uploaded_file($nombre_archivo_temp, $fichero_subido)) {                   ///<---SUBIDA DE LA IMG DESDE EL DISPOSITIVO A LA BD///
+        rename ( $fichero_subido , $nombre_foto_correo );                              /////<----AQUI LA FUNCION QUE RENOMBRA EL ARCHIVO IMG EN LA BD.
+        echo "El fichero es válido y se subió con éxito.\n";
+    } else {
+        echo "¡Posible ataque de subida de ficheros!\n";
+    }
+
+    // echo 'Más información de depuración:';
+    // print_r($_FILES);
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+    $query5 = "INSERT INTO `detalle_spoc`(`id_tx`, `id_usuario`, `id_tienda`, `id_producto`, `id_exhibicion`, `precio`, `foto`, `fecha_carga`, `flg_competencia`, `dsc_competencia`, `flg_existe`) VALUES ($idTx, '$id_usuario', '$tienda', '".$datosEDV['id_produc_prop_vis_'.$i]."',  '".$datosEDV['id_elemento_vis_'.$i]."', null, '$direc_img_en_bd', '$fechaActual', 'NO', null, '".$datosEDV['radio_vis_'.$i]."') "; 
     // echo $query;
     $mysqli->real_query($query5);
     $mysqli->close();
@@ -171,7 +204,31 @@ for($i = 1; $i <= $totEDVComp; $i++){
     if ($mysqli->connect_errno) {
       echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }
-    $query7 = "INSERT INTO `detalle_spoc`(`id_tx`, `id_usuario`, `id_tienda`, `id_producto`, `id_exhibicion`, `precio`, `foto`, `fecha_carga`, `flg_competencia`, `dsc_competencia`, `flg_existe`) VALUES ($idTx, '$id_usuario', '$tienda', null,  '".$elementoEDVComp['SelEdvBf2_'.$i]."', null, 'ARCHIVO', '$fechaActual', 'SI', '".$productoEDVComp['InpEdvBf2_'.$i]."', 'SI')"; 
+
+    //////////////////variables para transformacion del img//////////////////////////
+    $nombre_foto_correo = 'EDV_COMP_'.$id_usuario.'_'.$fecha.'_'.$i.'.jpg'; ///<---AQUI ES LA VARIABLE QUE RENOMBRA EL ARCHIVO .JPG///
+    $direc_img_en_bd = $dir_subida.$nombre_foto_correo;  ///<---DIRECCION DEFINITIVA DEL IMG EN LA BD
+
+
+    $nombre_archivo= $fotoEDVComp['foto_vis_comp_'.$i];            ///<---NAME DEL ELEMNTO IMG EN EL DISPOSITIVO/////////
+    $nombre_archivo_temp= $fotoEDVComp['foto_vis_comp_temp_'.$i];  ///<---NAME DE UBICACION TEMPORAL DEL ELEMENTO IMG EN EL DISPOSITIVO////
+
+    $fichero_subido = $dir_subida.basename($nombre_archivo); ///<---LA UBICACION DEFINITIVA DEL IMG CON EL NOMBRE VIEJO DEL DISPOSITIVO
+
+    ///////////CArga del file img en la bd//////////////////
+    if (move_uploaded_file($nombre_archivo_temp, $fichero_subido)) {                   ///<---SUBIDA DE LA IMG DESDE EL DISPOSITIVO A LA BD///
+        rename ( $fichero_subido , $nombre_foto_correo );                              /////<----AQUI LA FUNCION QUE RENOMBRA EL ARCHIVO IMG EN LA BD.
+        echo "El fichero es válido y se subió con éxito.\n";
+    } else {
+        echo "¡Posible ataque de subida de ficheros!\n";
+    }
+
+    // echo 'Más información de depuración:';
+    // print_r($_FILES);
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    $query7 = "INSERT INTO `detalle_spoc`(`id_tx`, `id_usuario`, `id_tienda`, `id_producto`, `id_exhibicion`, `precio`, `foto`, `fecha_carga`, `flg_competencia`, `dsc_competencia`, `flg_existe`) VALUES ($idTx, '$id_usuario', '$tienda', null,  '".$elementoEDVComp['SelEdvBf2_'.$i]."', null, '$direc_img_en_bd', '$fechaActual', 'SI', '".$productoEDVComp['InpEdvBf2_'.$i]."', 'SI')"; 
     // echo $query;
     $mysqli->real_query($query7);
     $mysqli->close();
@@ -197,7 +254,30 @@ for($i = 1; $i <= $totEXH; $i++){
     if ($mysqli->connect_errno) {
       echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }
-    $query9 = "INSERT INTO `detalle_spoc`(`id_tx`, `id_usuario`, `id_tienda`, `id_producto`, `id_exhibicion`, `precio`, `foto`, `fecha_carga`, `flg_competencia`, `dsc_competencia`, `flg_existe`) VALUES ($idTx, '$id_usuario', '$tienda', '".$productoEXH['id_produc_prop_exh_'.$i]."',  '".$elementoEXH['id_elemento_exh_'.$i]."', '".$precioEXH['precio_prop_'.$i]."', 'ARCHIVO', '$fechaActual', 'NO', null, '".$radio_EXH['radio_EXH_'.$i]."')"; 
+
+    //////////////////variables para transformacion del img//////////////////////////
+    $nombre_foto_correo = 'EXH_'.$id_usuario.'_'.$fecha.'_'.$i.'.jpg'; ///<---AQUI ES LA VARIABLE QUE RENOMBRA EL ARCHIVO .JPG///
+    $direc_img_en_bd = $dir_subida.$nombre_foto_correo;  ///<---DIRECCION DEFINITIVA DEL IMG EN LA BD
+
+
+    $nombre_archivo= $foto_EXH['foto_exh_'.$i];            ///<---NAME DEL ELEMNTO IMG EN EL DISPOSITIVO/////////
+    $nombre_archivo_temp= $foto_EXH['foto_exh_temp_'.$i];  ///<---NAME DE UBICACION TEMPORAL DEL ELEMENTO IMG EN EL DISPOSITIVO////
+
+    $fichero_subido = $dir_subida.basename($nombre_archivo); ///<---LA UBICACION DEFINITIVA DEL IMG CON EL NOMBRE VIEJO DEL DISPOSITIVO
+
+    ///////////CArga del file img en la bd//////////////////
+    if (move_uploaded_file($nombre_archivo_temp, $fichero_subido)) {                   ///<---SUBIDA DE LA IMG DESDE EL DISPOSITIVO A LA BD///
+        rename ( $fichero_subido , $nombre_foto_correo );                              /////<----AQUI LA FUNCION QUE RENOMBRA EL ARCHIVO IMG EN LA BD.
+        echo "El fichero es válido y se subió con éxito.\n";
+    } else {
+        echo "¡Posible ataque de subida de ficheros!\n";
+    }
+
+    // echo 'Más información de depuración:';
+    // print_r($_FILES);
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    $query9 = "INSERT INTO `detalle_spoc`(`id_tx`, `id_usuario`, `id_tienda`, `id_producto`, `id_exhibicion`, `precio`, `foto`, `fecha_carga`, `flg_competencia`, `dsc_competencia`, `flg_existe`) VALUES ($idTx, '$id_usuario', '$tienda', '".$productoEXH['id_produc_prop_exh_'.$i]."',  '".$elementoEXH['id_elemento_exh_'.$i]."', '".$precioEXH['precio_prop_'.$i]."', '$direc_img_en_bd', '$fechaActual', 'NO', null, '".$radio_EXH['radio_EXH_'.$i]."')"; 
     // echo $query;
     $mysqli->real_query($query9);
     $mysqli->close();
@@ -225,7 +305,31 @@ for($i = 1; $i <= $totEXHComp; $i++){
     if ($mysqli->connect_errno) {
       echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }
-    $query11 = "INSERT INTO `detalle_spoc`(`id_tx`, `id_usuario`, `id_tienda`, `id_producto`, `id_exhibicion`, `precio`, `foto`, `fecha_carga`, `flg_competencia`, `dsc_competencia`, `flg_existe`) VALUES ($idTx, '$id_usuario', '$tienda', null, '".$elementoEXHComp['SelEdvBf3_'.$i]."',  '".$precioEXHComp['preEdvComp_'.$i]."', 'ARCHIVO', '$fechaActual', 'SI', '".$productoEXHComp['InpEdvBf3_'.$i]."', 'SI' ) "; 
+
+    //////////////////variables para transformacion del img//////////////////////////
+    $nombre_foto_correo = 'EXH_COMP_'.$id_usuario.'_'.$fecha.'_'.$i.'.jpg'; ///<---AQUI ES LA VARIABLE QUE RENOMBRA EL ARCHIVO .JPG///
+    $direc_img_en_bd = $dir_subida.$nombre_foto_correo;  ///<---DIRECCION DEFINITIVA DEL IMG EN LA BD
+
+
+    $nombre_archivo= $foto_EXHComp['foto_exh_Comp_'.$i];            ///<---NAME DEL ELEMNTO IMG EN EL DISPOSITIVO/////////
+    $nombre_archivo_temp= $foto_EXHComp['foto_exh_Comp_temp_'.$i];  ///<---NAME DE UBICACION TEMPORAL DEL ELEMENTO IMG EN EL DISPOSITIVO////
+
+    $fichero_subido = $dir_subida.basename($nombre_archivo); ///<---LA UBICACION DEFINITIVA DEL IMG CON EL NOMBRE VIEJO DEL DISPOSITIVO
+
+    ///////////CArga del file img en la bd//////////////////
+    if (move_uploaded_file($nombre_archivo_temp, $fichero_subido)) {                   ///<---SUBIDA DE LA IMG DESDE EL DISPOSITIVO A LA BD///
+        rename ( $fichero_subido , $nombre_foto_correo );                              /////<----AQUI LA FUNCION QUE RENOMBRA EL ARCHIVO IMG EN LA BD.
+        echo "El fichero es válido y se subió con éxito.\n";
+    } else {
+        echo "¡Posible ataque de subida de ficheros!\n";
+    }
+
+    // echo 'Más información de depuración:';
+    // print_r($_FILES);
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    $query11 = "INSERT INTO `detalle_spoc`(`id_tx`, `id_usuario`, `id_tienda`, `id_producto`, `id_exhibicion`, `precio`, `foto`, `fecha_carga`, `flg_competencia`, `dsc_competencia`, `flg_existe`) VALUES ($idTx, '$id_usuario', '$tienda', null, '".$elementoEXHComp['SelEdvBf3_'.$i]."',  '".$precioEXHComp['preEdvComp_'.$i]."', '$direc_img_en_bd', '$fechaActual', 'SI', '".$productoEXHComp['InpEdvBf3_'.$i]."', 'SI' ) "; 
     // echo $query;
     $mysqli->real_query($query11);
     $mysqli->close();

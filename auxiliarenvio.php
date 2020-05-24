@@ -2,7 +2,7 @@
 @session_start();
 $dir_subida = 'assets/img/';
 $fecha = date('Y-m-d');
-$hora = date('H:i:s');
+// $hora = date('H:i:s');
 $nombre=$_POST['a11'];
 $apellido=$_POST['a21'];
 // $foto=$_FILES['a31'];/// attr name="a11".... del file imagen
