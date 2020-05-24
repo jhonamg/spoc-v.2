@@ -4,7 +4,6 @@
 // $correo=$_POST['respondera'];  
 // $telefono="1234568, de contacto";
 // $mensaje= $_POST['mensajeenviador'];
-
 //----------------------------variables----------------------------------//
 
 $dir_subida = 'assets/img/';
@@ -38,17 +37,17 @@ for($i = 1; $i <= $totEDV; $i++){
     $datosEDV += [ "id_elemento_vis_$i" => $_POST["id_elemento_vis_$i"] ];
     $datosEDV += [ "foto_vis_$i" => $_FILES[$nombrefoto]['name'] ]; //-----------------aqui foto
     $datosEDV += [ "foto_vis_temp_$i" => $_FILES[$nombrefoto]['tmp_name'] ];
-    var_dump($datosEDV["foto_vis_$i"]);
+
 }
 $productoEDVComp = [];
 $elementoEDVComp = [];
 $fotoEDVComp = [];
 for($i = 1; $i <= $totEDVComp; $i++){
-    // $nombrefotoEDVComp= "'carga_".$i."'";
+    $nombrefotoEDVComp= "'carga_".$i."'";
     $productoEDVComp += [ "InpEdvBf2_$i" => $_POST["InpEdvBf2_$i"] ];
     $elementoEDVComp += [ "SelEdvBf2_$i" => $_POST["SelEdvBf2_$i"] ];
-    // $fotoEDVComp += [ "foto_vis_comp_$i" => $_FILES[$nombrefotoEDVComp]['name'] ]; ///-----------------aqui foto
-    // $fotoEDVComp += [ "foto_vis_comp_temp_$i" => $_FILES[$nombrefotoEDVComp]['tmp_name'] ];
+    $fotoEDVComp += [ "foto_vis_comp_$i" => $_FILES[$nombrefotoEDVComp]['name'] ]; ///-----------------aqui foto
+    $fotoEDVComp += [ "foto_vis_comp_temp_$i" => $_FILES[$nombrefotoEDVComp]['tmp_name'] ];
 }
 $productoEXH = [];
 $elementoEXH = [];
@@ -214,13 +213,13 @@ for($i = 1; $i <= $totEDVComp; $i++){
     $direc_img_en_bd = $dir_subida.$nombre_foto_correo;  ///<---DIRECCION DEFINITIVA DEL IMG EN LA BD
 
 
-    // $nombre_archivo= $fotoEDVComp['foto_vis_comp_'.$i];            ///<---NAME DEL ELEMNTO IMG EN EL DISPOSITIVO/////////
-    // $nombre_archivo_temp= $fotoEDVComp['foto_vis_comp_temp_'.$i];  ///<---NAME DE UBICACION TEMPORAL DEL ELEMENTO IMG EN EL DISPOSITIVO////
+    $nombre_archivo= $fotoEDVComp['foto_vis_comp_'.$i];            ///<---NAME DEL ELEMNTO IMG EN EL DISPOSITIVO/////////
+    $nombre_archivo_temp= $fotoEDVComp['foto_vis_comp_temp_'.$i];  ///<---NAME DE UBICACION TEMPORAL DEL ELEMENTO IMG EN EL DISPOSITIVO////
 
-    $fichero_subido = $dir_subida.basename($_FILES['carga_2']['name']); ///<---LA UBICACION DEFINITIVA DEL IMG CON EL NOMBRE VIEJO DEL DISPOSITIVO
+    $fichero_subido = $dir_subida.basename($nombre_archivo); ///<---LA UBICACION DEFINITIVA DEL IMG CON EL NOMBRE VIEJO DEL DISPOSITIVO
 
     ///////////CArga del file img en la bd//////////////////
-    if (move_uploaded_file($_FILES['carga_2']['tmp_name'], $fichero_subido)) {                   ///<---SUBIDA DE LA IMG DESDE EL DISPOSITIVO A LA BD///
+    if (move_uploaded_file( $nombre_archivo_temp, $fichero_subido)) {                   ///<---SUBIDA DE LA IMG DESDE EL DISPOSITIVO A LA BD///
         rename ( $fichero_subido , $nombre_foto_correo );                              /////<----AQUI LA FUNCION QUE RENOMBRA EL ARCHIVO IMG EN LA BD.
         echo "El fichero es válido y se subió con éxito.\n";
     } else {
@@ -229,7 +228,7 @@ for($i = 1; $i <= $totEDVComp; $i++){
     
     $foto_EDV_COMP .= "$mail2->addAttachment('$direc_img_en_bd');";
     echo 'Más información de depuración:';
-    print_r($_FILES);
+    // print_r($_FILES);
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
