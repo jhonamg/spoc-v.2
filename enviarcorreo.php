@@ -175,7 +175,7 @@ for($i = 1; $i <= $totEDV; $i++){
     }
 
     echo 'Más información de depuración:';
-    print_r($_FILES);
+    // print_r($_FILES);
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -237,7 +237,7 @@ for($i = 1; $i <= $totEDVComp; $i++){
     
     // $foto_EDV_COMP .= $mail2->addAttachment('$direc_img_en_bd');
     echo '</br> Más información de depuración:';
-    print_r($_FILES);
+    // print_r($_FILES);
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -502,7 +502,7 @@ try {
         $mail2->send();
     }
     echo 'Message has been sent';
-    // echo '<script> window.history.go(-1); </script>';
+    echo '<script> window.history.go(-1); </script>';
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
