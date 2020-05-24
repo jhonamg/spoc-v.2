@@ -447,7 +447,7 @@ if($mensaje_EXH_comp != ''){
     $mensaje2 .= "EXHIBICIONES: </br>".$mensaje_EXH_comp."</br>";
 }
 
-$body2="<b>Spoc:</b> ".$id_usuario."</br><b>Tienda:</b> ".$fila1['id']." | ".$fila1['dsc_tienda']." | ".$fila1['dsc_ubicacion']."</br><b>Fecha y hora:</b> ".$fechaActual."</br><b>Mensaje:</b> ".$mensaje2;
+$body2="<p><b>Spoc:</b> ".$id_usuario."</br><b>Tienda:</b> ".$fila1['id']." | ".$fila1['dsc_tienda']." | ".$fila1['dsc_ubicacion']."</br><b>Fecha y hora:</b> ".$fechaActual."</br><b>Mensaje:</b> ".$mensaje2."</p>";
 
     // Instantiation and passing `true` enables exceptions
 $mail2 = new PHPMailer(true);
