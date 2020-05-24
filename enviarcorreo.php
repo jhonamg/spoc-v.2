@@ -34,34 +34,37 @@ for($i = 1; $i <= $totEDV; $i++){
     $datosEDV += [ "radio_vis_$i" => $_POST["radio_vis_$i"] ];
     $datosEDV += [ "id_produc_prop_vis_$i" => $_POST["id_produc_prop_vis_$i"] ];
     $datosEDV += [ "id_elemento_vis_$i" => $_POST["id_elemento_vis_$i"] ];
-    //falta foto
+    //$datosEDV += [ "foto_elemento_vis_$i" => $_FILES["prop_vis_$i"] ]; -----------------aqui foto
 }
 $productoEDVComp = [];
 $elementoEDVComp = [];
+$fotoEDVComp = [];
 for($i = 1; $i <= $totEDVComp; $i++){
     $productoEDVComp += [ "InpEdvBf2_$i" => $_POST["InpEdvBf2_$i"] ];
     $elementoEDVComp += [ "SelEdvBf2_$i" => $_POST["SelEdvBf2_$i"] ];
-    //falta foto
+    //$fotoEDVComp += [ "foto_elemento_vis_comp_$i" => $_FILES["carga_$i"] ]; -----------------aqui foto
 }
 $productoEXH = [];
 $elementoEXH = [];
 $precioEXH = [];
 $radio_EXH = [];
+$foto_EXH = [];
 for($i = 1; $i <= $totEXH; $i++){
     $productoEXH += [ "id_produc_prop_exh_$i" => $_POST["id_produc_prop_exh_$i"] ];
     $elementoEXH += [ "id_elemento_exh_$i" => $_POST["id_elemento_exh_$i"] ];
     $precioEXH += [ "precio_prop_$i" => $_POST["precio_prop_$i"] ];
     $radio_EXH += [ "radio_EXH_$i" => $_POST["radio_EXH_$i"] ];
-    //falta foto
+    //$foto_EXH += [ "foto_exh_$i" => $_FILES["prop2_EXH_$i"] ]; -----------------aqui foto
 }
 $productoEXHComp = [];
 $elementoEXHComp = [];
 $precioEXHComp = [];
+$foto_EXHComp = [];
 for($i = 1; $i <= $totEXHComp; $i++){
     $productoEXHComp += [ "InpEdvBf3_$i" => $_POST["InpEdvBf3_$i"] ];
     $elementoEXHComp += [ "SelEdvBf3_$i" => $_POST["SelEdvBf3_$i"] ];
     $precioEXHComp += [ "preEdvComp_$i" => $_POST["preEdvComp_$i"] ];
-    //falta foto
+    //$foto_EXHComp += [ "foto_exhComp_$i" => $_FILES["carga2_$i"] ]; -----------------aqui foto
 }
 $tienda = $_POST['listatiendas'];
 

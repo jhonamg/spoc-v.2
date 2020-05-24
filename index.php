@@ -447,7 +447,7 @@
                     </div>
 
                     <div class="input-group btn-group btncargaizq col-6 col-lg-3">
-                      <label for="carga2_1" class="btn btn-sm upcarga btn-primary" id="label_carga2_1"><i class="bx bx-upload" id="texto_carga2_1"> Cargar</i><input id="carga2_1"  onClick="btncargaex2part(this);" class="form-control-file btnCarga2" type="file" accept=".jpeg, .jpg, .png" name="" hidden /></label>
+                      <label for="carga2_1" class="btn btn-sm upcarga btn-primary" id="label_carga2_1"><i class="bx bx-upload" id="texto_carga2_1"> Cargar</i><input id="carga2_1"  onClick="btncargaex2part(this);" class="form-control-file btnCarga2" type="file" accept=".jpeg, .jpg, .png" name="carga2_1" hidden /></label>
                     </div>
                     <div class="input-group btn-group btncargader col-6 col-lg-3">
                       <label class="btn btn-sm btn-danger bx bxs-x-circle" for="borrarFila2_1"> Borrar<button id="borrarFila2_1" type="button" onclick="borrarFila2(this);" hidden></button>
