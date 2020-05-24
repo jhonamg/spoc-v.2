@@ -61,8 +61,8 @@ print_r($_FILES);
 //--------------------------------------proceso de guardado---------------------------------------------//
 
 // $id_usuario = 'user1';
-$mysqli = mysqli_connect('localhost', 'root', '', 'prueba_bd');
-if (!$mysqli) {
+$mysqli = new mysqli('localhost', 'root', '', 'prueba_bd');
+if ($mysqli->connect_errno) {
     echo "Error: Unable to connect to MySQL.";
     echo "Debugging errno: " . mysqli_connect_errno();
     echo "Debugging error: " . mysqli_connect_error();
@@ -84,7 +84,8 @@ $query1="SELECT * FROM `tablaprueba` ORDER BY 1 DESC";
 
 
 
-
+$mysqli->real_query($query);
+$mysqli->close();
 
 
 // $mysqli->real_query($query);
@@ -92,7 +93,7 @@ $query1="SELECT * FROM `tablaprueba` ORDER BY 1 DESC";
 
 // $resultado = $mysqli->use_result();
 
-mysqli_close($mysqli);
+// mysqli_close($mysqli);
 
 // $idTx = $resultado->fetch_assoc();
 
