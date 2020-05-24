@@ -507,13 +507,4 @@ try {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 
-?>_EDV_comp != ''){
-        $mail2->send();
-    }
-    echo 'Message has been sent';
-    echo '<script> window.history.go(-1); </script>';
-    } catch (Exception $e) {
-        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-    }
-
 ?>
