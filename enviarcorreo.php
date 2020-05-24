@@ -174,8 +174,8 @@ for($i = 1; $i <= $totEDV; $i++){
         echo "¡Posible ataque de subida de ficheros!\n";
     }
 
-    echo 'Más información de depuración:';
-    print_r($_FILES);
+    // echo 'Más información de depuración:';
+    // print_r($_FILES);
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -236,8 +236,8 @@ for($i = 1; $i <= $totEDVComp; $i++){
     }
     
     // $foto_EDV_COMP .= $mail2->addAttachment('$direc_img_en_bd');
-    echo '</br> Más información de depuración:';
-    print_r($_FILES);
+    // echo '</br> Más información de depuración:';
+    // print_r($_FILES);
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -286,8 +286,8 @@ for($i = 1; $i <= $totEXH; $i++){
         echo "¡Posible ataque de subida de ficheros!\n";
     }
 
-    echo 'Más información de depuración:';
-    print_r($_FILES);
+    // echo 'Más información de depuración:';
+    // print_r($_FILES);
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     $query9 = "INSERT INTO `detalle_spoc`(`id_tx`, `id_usuario`, `id_tienda`, `id_producto`, `id_exhibicion`, `precio`, `foto`, `fecha_carga`, `flg_competencia`, `dsc_competencia`, `flg_existe`) VALUES ($idTx, '$id_usuario', '$tienda', '".$productoEXH['id_produc_prop_exh_'.$i]."',  '".$elementoEXH['id_elemento_exh_'.$i]."', '".$precioEXH['precio_prop_'.$i]."', '$direc_img_en_bd', '$fechaActual', 'NO', null, '".$radio_EXH['radio_EXH_'.$i]."')"; 
@@ -337,8 +337,8 @@ for($i = 1; $i <= $totEXHComp; $i++){
         echo "¡Posible ataque de subida de ficheros!\n";
     }
 
-    echo 'Más información de depuración:';
-    print_r($_FILES);
+    // echo 'Más información de depuración:';
+    // print_r($_FILES);
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
