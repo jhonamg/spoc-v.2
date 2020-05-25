@@ -1,3 +1,11 @@
+<?php
+date_default_timezone_set("America/Lima");
+$fecha= date('H:i:s');
+
+$fecha2=date("h:m:s");
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,10 +33,10 @@
 <table class="table" style="color:black;text-align: start;background-color: aliceblue;">
     <tbody>
         <tr>
-            <td><b>Spoc:</b> user1</td>
+            <td><b>Spoc:</b><?php echo"$fecha"; ?></td>
         </tr>
         <tr>
-            <td><b>Tienda:</b> ht001</td>
+            <td><b>Tienda:</b> <?php echo"$fecha2"; ?></td>
         </tr>
         <tr>
             <td>Wong chacarilla | Surco</td>

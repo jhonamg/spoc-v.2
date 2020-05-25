@@ -6,6 +6,7 @@
 // $mensaje= $_POST['mensajeenviador'];
 //----------------------------variables----------------------------------//
 
+date_default_timezone_set("America/Lima");
 $dir_subida = 'assets/img/';
 $fecha = date('Y-m-d');
 $hora = date('H:i:s');
