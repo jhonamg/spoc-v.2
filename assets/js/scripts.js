@@ -229,7 +229,7 @@ jQuery(document).ready(function() {
     */
     $('.f1 fieldset:first').fadeIn('slow');
     
-    $(' .f1 input[type="password"], .f1 textarea').on('focus', function() {
+    $(' .f1 input[type="password"]').on('focus', function() {
     	$(this).removeClass('input-error');
     });
     
@@ -302,7 +302,7 @@ jQuery(document).ready(function() {
     $('.f1').on('submit', function(e) {
     	
     	// fields validation
-    	$(this).find('input[type="text"], input[type="password"], textarea').each(function() {
+    	$(this).find('input[type="password"]').each(function() {
     		if( $(this).val() == "" ) {
     			e.preventDefault();
     			$(this).addClass('input-error');
