@@ -118,7 +118,8 @@ for($i = 1; $i <= $totPrecioTop; $i++){
     $fila = $resultado->fetch_assoc();
     if($fila['precio'] != $datosPreTop['precio_top_'.$i]){
         $diff = intval($datosPreTop['precio_top_'.$i])-intval($fila['precio']);
-        $mensaje_top .= "Producto ".$fila['dsc_producto'].", detectado S/ ".$datosPreTop['precio_top_'.$i]." contra S/ ".$fila['precio']." (".$diff.") (Ref:  SKU Nestle: ".$fila['sku_nestle'].", SKU Cadena: ".$fila['sku_cadena'].") ";
+        $mensaje_top .= "<tr>
+        <td>Producto ".$fila['dsc_producto'].", detectado S/ ".$datosPreTop['precio_top_'.$i]." contra S/ ".$fila['precio']." (".$diff.") (Ref:  SKU Nestle: ".$fila['sku_nestle'].", SKU Cadena: ".$fila['sku_cadena'].") </td</tr>";
     }
     $mysqli->close();
 }
@@ -197,7 +198,8 @@ for($i = 1; $i <= $totEDV; $i++){
     $resultado = $mysqli->use_result();
     $fila = $resultado->fetch_assoc();
     if($datosEDV['radio_vis_'.$i] == 'NO'){
-        $mensaje_EDV .= "Producto ".$fila['dsc_producto']." NO encontrado (Ref:  SKU Nestle: ".$fila['sku_nestle'].", SKU Cadena: ".$fila['sku_cadena'].") ";
+        $mensaje_EDV .= "<tr>
+        <td>Producto ".$fila['dsc_producto']." NO encontrado (Ref:  SKU Nestle: ".$fila['sku_nestle'].", SKU Cadena: ".$fila['sku_cadena'].") </td></tr>";
     }
     $mysqli->close();
 }
@@ -306,10 +308,12 @@ for($i = 1; $i <= $totEXH; $i++){
     $resultado = $mysqli->use_result();
     $fila = $resultado->fetch_assoc();
     if($radio_EXH['radio_EXH_'.$i] == 'NO'){
-        $mensaje_EXH .= "Producto ".$fila['dsc_producto']." NO encontrado (Ref:  SKU Nestle: ".$fila['sku_nestle'].", SKU Cadena: ".$fila['sku_cadena'].") ";
+        $mensaje_EXH .= "<tr>
+        <td>Producto ".$fila['dsc_producto']." NO encontrado (Ref:  SKU Nestle: ".$fila['sku_nestle'].", SKU Cadena: ".$fila['sku_cadena'].") </td></tr>";
     }else if($radio_EXH['radio_EXH_'.$i] == 'SI' && $fila['precio'] != $precioEXH['precio_prop_'.$i]){
         $diff = intval($precioEXH['precio_prop_'.$i])-intval($fila['precio']);
-        $mensaje_EXH .= "Producto ".$fila['dsc_producto'].", detectado S/ ".$precioEXH['precio_prop_'.$i]." contra S/ ".$fila['precio']." (".$diff.") (Ref:  SKU Nestle: ".$fila['sku_nestle'].", SKU Cadena: ".$fila['sku_cadena'].") ";
+        $mensaje_EXH .= "<tr>
+        <td>Producto ".$fila['dsc_producto'].", detectado S/ ".$precioEXH['precio_prop_'.$i]." contra S/ ".$fila['precio']." (".$diff.") (Ref:  SKU Nestle: ".$fila['sku_nestle'].", SKU Cadena: ".$fila['sku_cadena'].") </td></tr>";
     }
     $mysqli->close();
 }
@@ -391,18 +395,46 @@ require 'PHPMailer/SMTP.php';
 
 $mensaje = '';
 if($mensaje_top != ''){
-    $mensaje .= "PRECIOS TOP: ".$mensaje_top;
+    $mensaje .= "<tr>
+    <td><b>PRECIOS TOP: </b></td>
+    </tr>".$mensaje_top;
 }
 if($mensaje_EDV != ''){
-    $mensaje .= "VISIBILIDAD: ".$mensaje_EDV;
+    $mensaje .= "<tr>
+    <td><b>VISIBILIDAD:</b></td>
+    </tr> ".$mensaje_EDV;
 }
 if($mensaje_EXH != ''){
-    $mensaje .= "EXHIBICIONES:".$mensaje_EXH;
+    $mensaje .= "<tr>
+    <td><b>EXHIBICIONES:</b></td>
+    </tr>".$mensaje_EXH;
 }
 
 $subbject= "ALERTAS - ".$_POST["listatiendas"];
 
-$body="Spoc:".$id_usuario."<b>Tienda:</b> ".$fila1['id']." | ".$fila1['dsc_tienda']." | ".$fila1['dsc_ubicacion']."<b>Fecha y hora:</b> ".$fechaActual."<b>Mensaje:</b> ".$mensaje;
+
+$premensaje='<table class="table" style="color:black;text-align: start;background-color: aliceblue;">
+<tbody>
+    <tr>
+        <td>';
+$postmensaje='
+</tbody>
+</table>';
+
+$body=$premensaje."<b>Spoc:</b> ".$id_usuario."</td>
+</tr>
+<tr>
+    <td><b>Tienda:</b></b></td>
+    </tr>
+    <tr>
+        <td> ".$fila1['id']." | ".$fila1['dsc_tienda']." | ".$fila1['dsc_ubicacion']."</td>
+        </tr>
+        <tr>
+            <td><b>Fecha y hora:</b> ".$fechaActual."</td>
+            </tr>
+            <tr>
+                <td><b>Mensaje:</b></td>
+                </tr> ".$mensaje.$postmensaje;
 
 // Instantiation and passing `true` enables exceptions
 $mail = new PHPMailer(true);
@@ -533,7 +565,7 @@ try {
         $mail2->send();
     }
     echo 'El mensaje ha sido enviado exitosamente';
-    // echo '<script> window.history.go(-1); </script>';
+    echo '<script> window.history.go(-1); </script>';
     } catch (Exception $e) {
         echo "El mensaje no ha podido ser enviado. Por favor, contace con su proveedor de servicio.: {$mail->ErrorInfo}";
     }
