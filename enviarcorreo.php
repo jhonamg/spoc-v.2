@@ -118,7 +118,7 @@ for($i = 1; $i <= $totPrecioTop; $i++){
     $fila = $resultado->fetch_assoc();
     if($fila['precio'] != $datosPreTop['precio_top_'.$i]){
         $diff = intval($datosPreTop['precio_top_'.$i])-intval($fila['precio']);
-        $mensaje_top .= "Producto ".$fila['dsc_producto'].", detectado S/ ".$datosPreTop['precio_top_'.$i]." contra S/ ".$fila['precio']." (".$diff.") (Ref:  SKU Nestle: ".$fila['sku_nestle'].", SKU Cadena: ".$fila['sku_cadena'].") \n";
+        $mensaje_top .= "Producto ".$fila['dsc_producto'].", detectado S/ ".$datosPreTop['precio_top_'.$i]." contra S/ ".$fila['precio']." (".$diff.") (Ref:  SKU Nestle: ".$fila['sku_nestle'].", SKU Cadena: ".$fila['sku_cadena'].") ";
     }
     $mysqli->close();
 }
@@ -143,7 +143,8 @@ for($i = 1; $i <= $totPrecioTopComp; $i++){
     $mysqli->real_query($query2);
     $resultado = $mysqli->use_result();
     $fila = $resultado->fetch_assoc();
-    $mensaje_top_comp .= "Producto ".$fila['dsc_competencia'].", detectado S/ ".$datosPreTopComp['precio_top_comp_'.$i]." \n";
+    $mensaje_top_comp .= "<tr>
+    <td>Producto ".$fila['dsc_competencia'].", detectado S/ ".$datosPreTopComp['precio_top_comp_'.$i]."</td></tr>";
     $mysqli->close();
 }
 
@@ -169,9 +170,9 @@ for($i = 1; $i <= $totEDV; $i++){
     ///////////CArga del file img en la bd//////////////////
     if (move_uploaded_file($nombre_archivo_temp, $fichero_subido)) {                   ///<---SUBIDA DE LA IMG DESDE EL DISPOSITIVO A LA BD///
         rename ( $fichero_subido , $direc_img_en_bd );                              /////<----AQUI LA FUNCION QUE RENOMBRA EL ARCHIVO IMG EN LA BD.
-        echo "El fichero es válido y se subió con éxito.\n";
+        echo "El fichero es válido y se subió con éxito.";
     } else {
-        echo "¡Posible ataque de subida de ficheros!\n";
+        echo "¡Posible ataque de subida de ficheros!";
     }
 
     echo 'Más información de depuración:';
@@ -196,7 +197,7 @@ for($i = 1; $i <= $totEDV; $i++){
     $resultado = $mysqli->use_result();
     $fila = $resultado->fetch_assoc();
     if($datosEDV['radio_vis_'.$i] == 'NO'){
-        $mensaje_EDV .= "Producto ".$fila['dsc_producto']." NO encontrado (Ref:  SKU Nestle: ".$fila['sku_nestle'].", SKU Cadena: ".$fila['sku_cadena'].") \n";
+        $mensaje_EDV .= "Producto ".$fila['dsc_producto']." NO encontrado (Ref:  SKU Nestle: ".$fila['sku_nestle'].", SKU Cadena: ".$fila['sku_cadena'].") ";
     }
     $mysqli->close();
 }
@@ -256,7 +257,8 @@ for($i = 1; $i <= $totEDVComp; $i++){
     $mysqli->real_query($query2);
     $resultado = $mysqli->use_result();
     $fila = $resultado->fetch_assoc();
-    $mensaje_EDV_comp .= "Detectado ".$fila['dsc_exhibicion']." de ".$productoEDVComp['InpEdvBf2_'.$i].", (Ref. <b>".$nombre_foto_correo."</b>) \n";
+    $mensaje_EDV_comp .= "<tr>
+    <td>Detectado ".$fila['dsc_exhibicion']." de ".$productoEDVComp['InpEdvBf2_'.$i].", (Ref. <b>".$nombre_foto_correo."</b>) </td></tr>";
     $mysqli->close();
 }
 
@@ -304,10 +306,10 @@ for($i = 1; $i <= $totEXH; $i++){
     $resultado = $mysqli->use_result();
     $fila = $resultado->fetch_assoc();
     if($radio_EXH['radio_EXH_'.$i] == 'NO'){
-        $mensaje_EXH .= "Producto ".$fila['dsc_producto']." NO encontrado (Ref:  SKU Nestle: ".$fila['sku_nestle'].", SKU Cadena: ".$fila['sku_cadena'].") \n";
+        $mensaje_EXH .= "Producto ".$fila['dsc_producto']." NO encontrado (Ref:  SKU Nestle: ".$fila['sku_nestle'].", SKU Cadena: ".$fila['sku_cadena'].") ";
     }else if($radio_EXH['radio_EXH_'.$i] == 'SI' && $fila['precio'] != $precioEXH['precio_prop_'.$i]){
         $diff = intval($precioEXH['precio_prop_'.$i])-intval($fila['precio']);
-        $mensaje_EXH .= "Producto ".$fila['dsc_producto'].", detectado S/ ".$precioEXH['precio_prop_'.$i]." contra S/ ".$fila['precio']." (".$diff.") (Ref:  SKU Nestle: ".$fila['sku_nestle'].", SKU Cadena: ".$fila['sku_cadena'].") \n";
+        $mensaje_EXH .= "Producto ".$fila['dsc_producto'].", detectado S/ ".$precioEXH['precio_prop_'.$i]." contra S/ ".$fila['precio']." (".$diff.") (Ref:  SKU Nestle: ".$fila['sku_nestle'].", SKU Cadena: ".$fila['sku_cadena'].") ";
     }
     $mysqli->close();
 }
@@ -357,7 +359,8 @@ for($i = 1; $i <= $totEXHComp; $i++){
     $mysqli->real_query($query2);
     $resultado = $mysqli->use_result();
     $fila = $resultado->fetch_assoc();
-    $mensaje_EXH_comp .=  "Detectado ".$fila['dsc_exhibicion']." de ".$productoEXHComp['InpEdvBf3_'.$i].", precio S/ ".$precioEXHComp['preEdvComp_'.$i].", (Ref. <b>".$nombre_foto_correo."</b>) \n";
+    $mensaje_EXH_comp .=  "<tr>
+    <td>Detectado ".$fila['dsc_exhibicion']." de ".$productoEXHComp['InpEdvBf3_'.$i].", precio S/ ".$precioEXHComp['preEdvComp_'.$i].", (Ref. <b>".$nombre_foto_correo."</b>) </td></tr>";
     $mysqli->close();
 
 
@@ -388,18 +391,18 @@ require 'PHPMailer/SMTP.php';
 
 $mensaje = '';
 if($mensaje_top != ''){
-    $mensaje .= "PRECIOS TOP: \n".$mensaje_top."\n";
+    $mensaje .= "PRECIOS TOP: ".$mensaje_top;
 }
 if($mensaje_EDV != ''){
-    $mensaje .= "VISIBILIDAD: \n".$mensaje_EDV."\n";
+    $mensaje .= "VISIBILIDAD: ".$mensaje_EDV;
 }
 if($mensaje_EXH != ''){
-    $mensaje .= "EXHIBICIONES: \n".$mensaje_EXH."\n";
+    $mensaje .= "EXHIBICIONES:".$mensaje_EXH;
 }
 
 $subbject= "ALERTAS - ".$_POST["listatiendas"];
 
-$body="\nSpoc:\n ".$id_usuario."\n<b>Tienda:</b> ".$fila1['id']." | ".$fila1['dsc_tienda']." | ".$fila1['dsc_ubicacion']."\n<b>Fecha y hora:</b> ".$fechaActual."\n<b>Mensaje:</b> ".$mensaje."\n";
+$body="Spoc:".$id_usuario."<b>Tienda:</b> ".$fila1['id']." | ".$fila1['dsc_tienda']." | ".$fila1['dsc_ubicacion']."<b>Fecha y hora:</b> ".$fechaActual."<b>Mensaje:</b> ".$mensaje;
 
 // Instantiation and passing `true` enables exceptions
 $mail = new PHPMailer(true);
@@ -448,16 +451,44 @@ try {
 
 $mensaje2 = '';
 if($mensaje_top_comp != ''){
-    $mensaje2 .= "PRECIOS COMPETENCIA: \n".$mensaje_top_comp."\n";
+    $mensaje2 .= "<tr>
+    <td><b>PRECIOS COMPETENCIA:</b></td>
+    </tr>".$mensaje_top_comp;
 }
 if($mensaje_EDV_comp != ''){
-    $mensaje2 .= "VISIBILIDAD: \n".$mensaje_EDV_comp."\n";
+    $mensaje2 .= "<tr>
+    <td><b>VISIBILIDAD:</b></td>
+    </tr>".$mensaje_EDV_comp;
 }
 if($mensaje_EXH_comp != ''){
-    $mensaje2 .= "EXHIBICIONES: \n".$mensaje_EXH_comp."\n";
+    $mensaje2 .= "<tr>
+    <td><b>EXHIBICIONES:</b></td>
+    </tr>".$mensaje_EXH_comp;
 }
 
-$body2="<p><b>Spoc:</b> ".$id_usuario."\n<b>Tienda:</b> ".$fila1['id']." | ".$fila1['dsc_tienda']." | ".$fila1['dsc_ubicacion']."\n<b>Fecha y hora:</b> ".$fechaActual."\n<b>Mensaje:</b> ".$mensaje2."</p>";
+$premensaje='<table class="table" style="color:black;text-align: start;background-color: aliceblue;">
+<tbody>
+    <tr>
+        <td>';
+$postmensaje='
+</tbody>
+</table>';
+
+
+$body2=$premensaje."<b>Spoc:</b> ".$id_usuario."</td>
+</tr>
+<tr>
+    <td><b>Tienda:</b></td>
+    </tr>
+    <tr>
+        <td> ".$fila1['id']." | ".$fila1['dsc_tienda']." | ".$fila1['dsc_ubicacion']."</td>
+        </tr>
+        <tr>
+            <td><b>Fecha y hora:</b> ".$fechaActual."</td>
+            </tr>
+            <tr>
+                <td><b>Mensaje:</b></td>
+                </tr> ".$mensaje2."</p>".$postmensaje;
 
     // Instantiation and passing `true` enables exceptions
 $mail2 = new PHPMailer(true);
@@ -502,7 +533,7 @@ try {
         $mail2->send();
     }
     echo 'El mensaje ha sido enviado exitosamente';
-    echo '<script> window.history.go(-1); </script>';
+    // echo '<script> window.history.go(-1); </script>';
     } catch (Exception $e) {
         echo "El mensaje no ha podido ser enviado. Por favor, contace con su proveedor de servicio.: {$mail->ErrorInfo}";
     }
