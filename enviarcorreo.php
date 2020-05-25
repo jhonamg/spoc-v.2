@@ -118,7 +118,7 @@ for($i = 1; $i <= $totPrecioTop; $i++){
     $fila = $resultado->fetch_assoc();
     if($fila['precio'] != $datosPreTop['precio_top_'.$i]){
         $diff = intval($datosPreTop['precio_top_'.$i])-intval($fila['precio']);
-        $mensaje_top .= "Producto ".$fila['dsc_producto'].", detectado S/ ".$datosPreTop['precio_top_'.$i]." contra S/ ".$fila['precio']." (".$diff.") (Ref:  SKU Nestle: ".$fila['sku_nestle'].", SKU Cadena: ".$fila['sku_cadena'].") </br>";
+        $mensaje_top .= "Producto ".$fila['dsc_producto'].", detectado S/ ".$datosPreTop['precio_top_'.$i]." contra S/ ".$fila['precio']." (".$diff.") (Ref:  SKU Nestle: ".$fila['sku_nestle'].", SKU Cadena: ".$fila['sku_cadena'].") \n";
     }
     $mysqli->close();
 }
@@ -143,7 +143,7 @@ for($i = 1; $i <= $totPrecioTopComp; $i++){
     $mysqli->real_query($query2);
     $resultado = $mysqli->use_result();
     $fila = $resultado->fetch_assoc();
-    $mensaje_top_comp .= "Producto ".$fila['dsc_competencia'].", detectado S/ ".$datosPreTopComp['precio_top_comp_'.$i]." </br>";
+    $mensaje_top_comp .= "Producto ".$fila['dsc_competencia'].", detectado S/ ".$datosPreTopComp['precio_top_comp_'.$i]." \n";
     $mysqli->close();
 }
 
@@ -196,7 +196,7 @@ for($i = 1; $i <= $totEDV; $i++){
     $resultado = $mysqli->use_result();
     $fila = $resultado->fetch_assoc();
     if($datosEDV['radio_vis_'.$i] == 'NO'){
-        $mensaje_EDV .= "Producto ".$fila['dsc_producto']." NO encontrado (Ref:  SKU Nestle: ".$fila['sku_nestle'].", SKU Cadena: ".$fila['sku_cadena'].") </br>";
+        $mensaje_EDV .= "Producto ".$fila['dsc_producto']." NO encontrado (Ref:  SKU Nestle: ".$fila['sku_nestle'].", SKU Cadena: ".$fila['sku_cadena'].") \n";
     }
     $mysqli->close();
 }
@@ -256,7 +256,7 @@ for($i = 1; $i <= $totEDVComp; $i++){
     $mysqli->real_query($query2);
     $resultado = $mysqli->use_result();
     $fila = $resultado->fetch_assoc();
-    $mensaje_EDV_comp .= "Detectado ".$fila['dsc_exhibicion']." de ".$productoEDVComp['InpEdvBf2_'.$i].", (Ref. <b>".$nombre_foto_correo."</b>) </br>";
+    $mensaje_EDV_comp .= "Detectado ".$fila['dsc_exhibicion']." de ".$productoEDVComp['InpEdvBf2_'.$i].", (Ref. <b>".$nombre_foto_correo."</b>) \n";
     $mysqli->close();
 }
 
@@ -304,10 +304,10 @@ for($i = 1; $i <= $totEXH; $i++){
     $resultado = $mysqli->use_result();
     $fila = $resultado->fetch_assoc();
     if($radio_EXH['radio_EXH_'.$i] == 'NO'){
-        $mensaje_EXH .= "Producto ".$fila['dsc_producto']." NO encontrado (Ref:  SKU Nestle: ".$fila['sku_nestle'].", SKU Cadena: ".$fila['sku_cadena'].") </br>";
+        $mensaje_EXH .= "Producto ".$fila['dsc_producto']." NO encontrado (Ref:  SKU Nestle: ".$fila['sku_nestle'].", SKU Cadena: ".$fila['sku_cadena'].") \n";
     }else if($radio_EXH['radio_EXH_'.$i] == 'SI' && $fila['precio'] != $precioEXH['precio_prop_'.$i]){
         $diff = intval($precioEXH['precio_prop_'.$i])-intval($fila['precio']);
-        $mensaje_EXH .= "Producto ".$fila['dsc_producto'].", detectado S/ ".$precioEXH['precio_prop_'.$i]." contra S/ ".$fila['precio']." (".$diff.") (Ref:  SKU Nestle: ".$fila['sku_nestle'].", SKU Cadena: ".$fila['sku_cadena'].") </br>";
+        $mensaje_EXH .= "Producto ".$fila['dsc_producto'].", detectado S/ ".$precioEXH['precio_prop_'.$i]." contra S/ ".$fila['precio']." (".$diff.") (Ref:  SKU Nestle: ".$fila['sku_nestle'].", SKU Cadena: ".$fila['sku_cadena'].") \n";
     }
     $mysqli->close();
 }
@@ -357,7 +357,7 @@ for($i = 1; $i <= $totEXHComp; $i++){
     $mysqli->real_query($query2);
     $resultado = $mysqli->use_result();
     $fila = $resultado->fetch_assoc();
-    $mensaje_EXH_comp .=  "Detectado ".$fila['dsc_exhibicion']." de ".$productoEXHComp['InpEdvBf3_'.$i].", precio S/ ".$precioEXHComp['preEdvComp_'.$i].", (Ref. <b>".$nombre_foto_correo."</b>) </br>";
+    $mensaje_EXH_comp .=  "Detectado ".$fila['dsc_exhibicion']." de ".$productoEXHComp['InpEdvBf3_'.$i].", precio S/ ".$precioEXHComp['preEdvComp_'.$i].", (Ref. <b>".$nombre_foto_correo."</b>) \n";
     $mysqli->close();
 
 
@@ -388,18 +388,18 @@ require 'PHPMailer/SMTP.php';
 
 $mensaje = '';
 if($mensaje_top != ''){
-    $mensaje .= "PRECIOS TOP: </br>".$mensaje_top."</br>";
+    $mensaje .= "PRECIOS TOP: \n".$mensaje_top."\n";
 }
 if($mensaje_EDV != ''){
-    $mensaje .= "VISIBILIDAD: </br>".$mensaje_EDV."</br>";
+    $mensaje .= "VISIBILIDAD: \n".$mensaje_EDV."\n";
 }
 if($mensaje_EXH != ''){
-    $mensaje .= "EXHIBICIONES: </br>".$mensaje_EXH."</br>";
+    $mensaje .= "EXHIBICIONES: \n".$mensaje_EXH."\n";
 }
 
 $subbject= "ALERTAS - ".$_POST["listatiendas"];
 
-$body="<b>Spoc:</b> ".$id_usuario."</br><b>Tienda:</b> ".$fila1['id']." | ".$fila1['dsc_tienda']." | ".$fila1['dsc_ubicacion']."</br><b>Fecha y hora:</b> ".$fechaActual."</br><b>Mensaje:</b> ".$mensaje;
+$body="\nSpoc:\n ".$id_usuario."\n<b>Tienda:</b> ".$fila1['id']." | ".$fila1['dsc_tienda']." | ".$fila1['dsc_ubicacion']."\n<b>Fecha y hora:</b> ".$fechaActual."\n<b>Mensaje:</b> ".$mensaje."\n";
 
 // Instantiation and passing `true` enables exceptions
 $mail = new PHPMailer(true);
@@ -448,16 +448,16 @@ try {
 
 $mensaje2 = '';
 if($mensaje_top_comp != ''){
-    $mensaje2 .= "PRECIOS COMPETENCIA: </br>".$mensaje_top_comp."</br>";
+    $mensaje2 .= "PRECIOS COMPETENCIA: \n".$mensaje_top_comp."\n";
 }
 if($mensaje_EDV_comp != ''){
-    $mensaje2 .= "VISIBILIDAD: </br>".$mensaje_EDV_comp."</br>";
+    $mensaje2 .= "VISIBILIDAD: \n".$mensaje_EDV_comp."\n";
 }
 if($mensaje_EXH_comp != ''){
-    $mensaje2 .= "EXHIBICIONES: </br>".$mensaje_EXH_comp."</br>";
+    $mensaje2 .= "EXHIBICIONES: \n".$mensaje_EXH_comp."\n";
 }
 
-$body2="<p><b>Spoc:</b> ".$id_usuario."</br><b>Tienda:</b> ".$fila1['id']." | ".$fila1['dsc_tienda']." | ".$fila1['dsc_ubicacion']."</br><b>Fecha y hora:</b> ".$fechaActual."</br><b>Mensaje:</b> ".$mensaje2."</p>";
+$body2="<p><b>Spoc:</b> ".$id_usuario."\n<b>Tienda:</b> ".$fila1['id']." | ".$fila1['dsc_tienda']." | ".$fila1['dsc_ubicacion']."\n<b>Fecha y hora:</b> ".$fechaActual."\n<b>Mensaje:</b> ".$mensaje2."</p>";
 
     // Instantiation and passing `true` enables exceptions
 $mail2 = new PHPMailer(true);
