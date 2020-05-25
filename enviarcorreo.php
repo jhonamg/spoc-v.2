@@ -437,10 +437,10 @@ try {
     if($mensaje_top != '' || $mensaje_EXH != '' || $mensaje_EDV != ''){
         $mail->send();
     }
-    echo 'Message has been sent';
+    echo 'El mensaje ha sido enviado exitosamente';
     // echo '<script> window.history.go(-1); </script>';
     } catch (Exception $e) {
-        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        echo "El mensaje no ha podido ser enviado. Por favor, contace con su proveedor de servicio.: {$mail->ErrorInfo}";
     }
 
 
@@ -501,10 +501,10 @@ try {
     if($mensaje_top_comp != '' || $mensaje_EXH_comp != '' || $mensaje_EDV_comp != ''){
         $mail2->send();
     }
-    echo 'Message has been sent';
+    echo 'El mensaje ha sido enviado exitosamente';
     echo '<script> window.history.go(-1); </script>';
     } catch (Exception $e) {
-        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        echo "El mensaje no ha podido ser enviado. Por favor, contace con su proveedor de servicio.: {$mail->ErrorInfo}";
     }
 
 ?>
