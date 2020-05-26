@@ -251,7 +251,110 @@ jQuery(document).ready(function() {
     			$(this).removeClass('input-error');
     		}
       });
+
+
+      //SE LOGRO VALIDAR N:N:N:N:N:N
+    //---------------------TIPO DE VALIDACION-----------------------
+
+      parent_fieldset.find("input[type='radio']").each(function() {      //<---------------EL TIPO DE INPUT A REVISAR------------------
+
+        var length3 = $("#containerProp5stg .row").length;              //<----------------AQUI DEFINO EL CONTAINER DEL FIELSET-------
+
+        // alert(length3);
+
+        for (var i=1; i <= length3 ; i++){
+
+          if( !$("#formSpoc input[name='radio_vis_"+i+"']:radio").is(':checked')) {  
+            // alert('Error, rellena la contraprestacion '+i);
+
+
+            Swal.fire({
+              icon: 'error',
+              // title: 'Oops...',
+              text: 'Por favor, marque "si" o "no", en la opción '+i,
+              // footer: '<a href>Why do I have this issue?</a>'
+            })
+              
+            next_step = false;
+   
+            // $(this).addClass('has-error');
+            
+            // $("#containerProp5stg .row").addClass('alert alert-danger');
+      
+            // next_step=false;
+            // alert("Bien!!!, la edad seleccionada es: " + $('input:radio[name=edad]:checked').val());
+            // $("#formulario").submit();  
+            } else{
+              // next_step = true;  
+              // $("#containerProp5stg .row").removeClass('alert alert-danger');
+              // $(this).removeClass('has-error');
+              // alert("listo!!"+i);  
+              } 
+
+        }
+
+      });
+
+
+    //-------------------------------------------------------------//////////////////////////////////
+
+     //---------------------TIPO DE VALIDACION-----------------------
+     parent_fieldset1 = $(this).parents('#id5')
+
+     parent_fieldset1.find("input[type='text']").each(function() {      //<---------------EL TIPO DE INPUT A REVISAR------------------
+
+      var lengthg = $("#bloqueform2 .filit").length;              //<----------------AQUI DEFINO EL CONTAINER DEL FIELSET-------
+
+      // alert(lengthg);
+
+      for (var i=1; i <= lengthg ; i++){
+
+        if( $("#formSpoc input[name='InpEdvBf2_"+i+"']:text").val()=="" ) {  
+          // alert("opcion"+i);
+          // alert('Error, rellena la contraprestacion '+i);
+          
+
+          Swal.fire({
+            icon: 'error',
+            // title: 'Oops...',
+            text: 'Por favor, llene la descripcion en orden: '+i,
+            // footer: '<a href>Why do I have this issue?</a>'
+          })
+            
+          next_step = false;
+ 
+          // $(this).addClass('has-error');
+          
+          // $("#containerProp5stg .row").addClass('alert alert-danger');
     
+          // next_step=false;
+          // alert("Bien!!!, la edad seleccionada es: " + $('input:radio[name=edad]:checked').val());
+          // $("#formulario").submit();  
+          } else{
+            // next_step = true;  
+            // $("#containerProp5stg .row").removeClass('alert alert-danger');
+            // $(this).removeClass('has-error');
+            // alert("listo!!"+i);  
+            } 
+
+      }
+
+    });
+
+
+  //-------------------------------------------------------------//////////////////////////////////
+   
+      // parent_fieldset.find('input[type="radio"]').each(function() {
+      //   alert('entra en tipo radio');
+    	// 	if( $(this).prop('type') == 'radio' && !parent_fieldset.find('input[name="'+$field.prop('name')+'"]:checked').length)  {
+    	// 		$(this).addClass('input-error');
+    	// 		next_step = false;
+    	// 	}
+    	// 	else {
+    	// 		$(this).removeClass('input-error');
+    	// 	}
+      // });
+
 
 
     	// fields validation
@@ -264,7 +367,8 @@ jQuery(document).ready(function() {
     	// 	else {
     	// 		$(this).removeClass('input-error');
     	// 	}
-    	// });      
+      // });    
+        
     	if( next_step ) {
     		parent_fieldset.fadeOut(400, function() {
     			// change icons
@@ -334,6 +438,17 @@ function cargaArchivos(obj){
         // $('#texto_prop_vis1_'+aux).addClass('bx-upload');
         // $("#prop_vis1_"+aux).prop('disabled',false);
         $("#label_prop_vis1_"+aux).prop('hidden',false);
+        // $("#prop_vis1_"+aux).trigger('click');
+        // $("#prop_vis1_"+aux).on('change', 
+        // function(){
+        //   if ($("#prop_vis1_"+aux).value != '') 
+        //   {
+        //     alert("Debe cargar una foto");
+        //     $("#prop_vis1_"+aux).focus();
+        //   }
+        // });
+                  
+        
     }else{
         // $('#label_prop_vis1_'+aux).removeClass('btn-primary');
         // $('#label_prop_vis1_'+aux).addClass('btn-light');
@@ -346,6 +461,56 @@ function cargaArchivos(obj){
     }
     // console.log(aux);
 }
+
+// function validavis(obj) {
+//   alert('entro en la funcion');
+
+//   var length3 = $("#containerProp5stg .row").length;
+
+//   // alert(length3);
+
+//   for (var i=1; i <= length3 ; i++){
+
+//     // console.log($("#radio_vis_".i).value);
+//     // console.log($("#radio_vis_"+i).value);
+//     // console.log($("#radio_vis_".i).val());
+ 
+//     // if (!$('input:radio[name=radio_vis_'+i+']:checked')) {
+//     //   alert('debe selecionar el radio' + i);
+      
+//     // }
+
+//     if( !$("#formSpoc input[name='radio_vis_"+i+"']:radio").is(':checked')) {  
+//       // alert('Error, rellena la contraprestacion '+i);
+//       // $("#containerProp5stg .row").addClass('alert alert-danger');
+
+//       // next_step=false;
+//       // alert("Bien!!!, la edad seleccionada es: " + $('input:radio[name=edad]:checked').val());
+//       // $("#formulario").submit();  
+//       } else{
+//         // next_step = true;  
+//         // $("#containerProp5stg .row").removeClass('alert alert-danger');
+//         // alert("Selecciona la edad por favor!!!");  
+//         } 
+
+//     // if(!$("#containerProp5stg .row").find('input[name="radio_vis_"'+i+']:checked')) {
+//     //   alert('Error, rellena la contraprestacion '+i);
+//     //   hasError = true;
+//     //   }
+
+//     // if ($("#prop_vis1_"+i).val()=='') {
+      
+//     //   $("#prop_vis1_"+i).addClass(input-error);
+//     //   $("#prop_vis1_"+i).focus();
+      
+//     // }
+
+//   }
+
+//   var cant = $(".bloqueform2 .filit").length;
+// }
+
+
 
 function borrarFila(compo){
     Swal.fire({

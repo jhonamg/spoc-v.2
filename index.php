@@ -348,7 +348,7 @@
 
               <div class="f1-buttons">
                 <button type="button" class="btn btn-previous">Atras</button>
-                <button type="button" class="btn btn-next">siguiente</button>
+                <button id="botonvis" type="button" class="btn btn-next">siguiente</button>
               </div>
 
 
