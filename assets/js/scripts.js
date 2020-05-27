@@ -252,6 +252,7 @@ jQuery(document).ready(function() {
     		}
       });
 
+      //<------------ZONA DE VISIBILIDAD--------------------------------------------------------
 
       //SE LOGRO VALIDAR N:N:N:N:N:N
     //---------------------TIPO DE VALIDACION-----------------------
@@ -263,34 +264,33 @@ jQuery(document).ready(function() {
         // alert(length3);
 
         for (var i=1; i <= length3 ; i++){
+          console.log($("#radio_vis_"+i).val());
+          console.log($("#prop_vis1_"+i).val());
 
           if( !$("#formSpoc input[name='radio_vis_"+i+"']:radio").is(':checked')) {  
-            // alert('Error, rellena la contraprestacion '+i);
-
 
             Swal.fire({
               icon: 'error',
               // title: 'Oops...',
               text: 'Por favor, marque "si" o "no", en la opción '+i,
               // footer: '<a href>Why do I have this issue?</a>'
-            })
+            });
               
             next_step = false;
-   
-            // $(this).addClass('has-error');
-            
-            // $("#containerProp5stg .row").addClass('alert alert-danger');
-      
-            // next_step=false;
-            // alert("Bien!!!, la edad seleccionada es: " + $('input:radio[name=edad]:checked').val());
-            // $("#formulario").submit();  
-            } else{
-              // next_step = true;  
-              // $("#containerProp5stg .row").removeClass('alert alert-danger');
-              // $(this).removeClass('has-error');
-              // alert("listo!!"+i);  
-              } 
+  
+            } 
 
+           else if(($("#label_prop_vis1_"+i).prop('hidden')==false) && ($("#prop_vis1_"+i).val()=="") ){
+
+            Swal.fire({
+              icon: 'error',
+              // title: 'Oops...',
+              text: 'Por favor, cargue una foto en la opción '+i,
+              // footer: '<a href>Why do I have this issue?</a>'
+            });
+             next_step = false;
+           }
+           
         }
 
       });
@@ -322,19 +322,9 @@ jQuery(document).ready(function() {
           })
             
           next_step = false;
- 
-          // $(this).addClass('has-error');
-          
-          // $("#containerProp5stg .row").addClass('alert alert-danger');
-    
-          // next_step=false;
-          // alert("Bien!!!, la edad seleccionada es: " + $('input:radio[name=edad]:checked').val());
-          // $("#formulario").submit();  
+  
           } else{
-            // next_step = true;  
-            // $("#containerProp5stg .row").removeClass('alert alert-danger');
-            // $(this).removeClass('has-error');
-            // alert("listo!!"+i);  
+
             } 
 
       }
@@ -343,6 +333,16 @@ jQuery(document).ready(function() {
 
 
   //-------------------------------------------------------------//////////////////////////////////
+
+  //----------------FIN ZONA DE VISIBILIDAD----------------------------------------
+
+  //---------------------------COMIENZO ZONA DE EXHIBICIONES--------------------------------------
+
+
+
+
+
+  //-------------------------FIN ZONA DE EXHIBICION----------------------------------------------
    
       // parent_fieldset.find('input[type="radio"]').each(function() {
       //   alert('entra en tipo radio');
