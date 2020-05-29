@@ -281,7 +281,7 @@ jQuery(document).ready(function() {
             } 
 
            else if(($("#label_prop_vis1_"+i).prop('hidden')==false) && ($("#prop_vis1_"+i).val()=="") ){
-
+           
             Swal.fire({
               icon: 'error',
               // title: 'Oops...',
@@ -338,7 +338,63 @@ jQuery(document).ready(function() {
 
   //---------------------------COMIENZO ZONA DE EXHIBICIONES--------------------------------------
 
+      //SE LOGRO VALIDAR N:N:N:N:N:N
+    //---------------------TIPO DE VALIDACION-----------------------
 
+    // parent_fieldset.find("input[type='radio']").each(function() {      //<---------------EL TIPO DE INPUT A REVISAR------------------
+
+    //   var length3 = $("#containerProp6stg .row").length;              //<----------------AQUI DEFINO EL CONTAINER DEL FIELSET-------
+
+    //   // alert(length3);
+
+    //   for (var i=1; i <= length3 ; i++){
+    //     console.log($("#radio_EXH_"+i).val());
+    //     console.log($("#prop_vis1_"+i).val());
+
+    //     if( !$("#formSpoc input[name='radio_EXH_"+i+"']:radio").is(':checked')) {  
+
+    //       Swal.fire({
+    //         icon: 'error',
+    //         // title: 'Oops...',
+    //         text: 'Por favor, marque "si" o "no", en la opción '+i,
+    //         // footer: '<a href>Why do I have this issue?</a>'
+    //       });
+            
+    //       next_step = false;
+
+    //       } 
+
+    //      else if(($("#label_prop2_EXH_"+i).prop('hidden')==false) && ($("#prop2_EXH_"+i).val()=="") ){
+
+    //       Swal.fire({
+    //         icon: 'error',
+    //         // title: 'Oops...',
+    //         text: 'Por favor, cargue una foto en la opción '+i,
+    //         // footer: '<a href>Why do I have this issue?</a>'
+    //       });
+    //        next_step = false;
+
+    //      } else if( $("#formSpoc input[name='precio_prop_"+i+"']:text").val()=="" ) {  
+    //       // alert("opcion"+i);
+    //       // alert('Error, rellena la contraprestacion '+i);
+          
+
+    //       Swal.fire({
+    //         icon: 'error',
+    //         // title: 'Oops...',
+    //         text: 'Por favor, llene la descripcion en orden: '+i,
+    //         // footer: '<a href>Why do I have this issue?</a>'
+    //       })
+            
+    //       next_step = false;
+  
+    //       } else{
+
+    //         }
+         
+    //   }
+
+    // });
 
 
 
@@ -588,7 +644,22 @@ function btncargavis1part(obj) {
     $('#texto_'+id).removeClass('bx-upload');
     $('#texto_'+id).addClass('bx-refresh');
     $('#texto_'+id).html(' Remplazar');
+  } 
+  
 }
+
+function btnvalidavis1part(obj) {
+  var id = obj.id;
+  var valor = obj.value;
+  // console.log('id',id);
+  // console.log('ruta',valor);
+  if(valor == ''){
+    $('#label_'+id).removeClass('btn-outline-secondary');
+    $('#label_'+id).addClass('btn-primary');
+    $('#texto_'+id).removeClass('bx-refresh');
+    $('#texto_'+id).addClass('bx-upload');
+    $('#texto_'+id).html(' Cargar');
+  } 
   
 }
 
