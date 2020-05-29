@@ -302,34 +302,7 @@
               <!-- comienza el bloque (fila) -->
 
               <div id="bloqueform2" class="bloqueform2">
-                <div class="filit">
 
-                  <div class="row">
-
-                    <div class="col-6 col-lg-4">
-                      <input class="form-control texto" placeholder="Descripción" type="text" name="InpEdvBf2_1" id="InpEdvBf2_1" />
-                    </div>
-
-                    <div class="col-6 col-lg-4 selec">
-                      <select id="SelEdvBf2_1" class="custom-select suiche2" name="SelEdvBf2_1">
-                        <option value="">Seleccione...</option>
-                        <option value="5">Jalavistas</option>
-                        <option value="6">Marco de góndola</option>
-                      </select>
-                    </div>
-
-                    <div class="input-group btn-group btncargaizq col-6 col-md-6 col-lg-2">
-                      <label for="carga_1" class="btn btn-sm upcarga btn-primary" id="label_carga_1"><i class="bx bx-upload" id="texto_carga_1"> Cargar</i><input id="carga_1" name="carga_1" onClick="btnCargavis(this);" class="form-control-file btnCarga" type="file" accept=".jpeg, .jpg, .png" name="carga_1" hidden /></label>
-                    </div>
-
-                    <div class="input-group btn-group btncargader col-6 col-md-6 col-lg-2">
-                      <label class="btn btn-sm btn-danger bx bxs-x-circle" for="borrarFila_1">
-                        Borrar<button id="borrarFila_1" type="button" onclick="borrarFila(this);" hidden></button></label>
-                    </div>
-
-                  </div>
-
-                </div>
 
               </div>
 
